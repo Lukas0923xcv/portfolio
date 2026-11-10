@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="de" data-title-en="Self-hosted messenger, Lukas Dalloz" data-desc-en="School project: a self-hosted chat server with Matrix Synapse and Element, with documentation and a test concept.">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eigener Messenger, Lukas Dalloz</title>
+<meta name="description" content="Schulprojekt: ein eigener Chat-Server mit Matrix Synapse und Element, mit Dokumentation und Testkonzept.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Eigener Messenger, Lukas Dalloz">
+<meta property="og:description" content="Schulprojekt: ein eigener Chat-Server mit Matrix Synapse und Element, mit Dokumentation und Testkonzept.">
+<meta property="og:locale" content="de_CH">
+<meta property="og:locale:alternate" content="en_GB">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='0' fill='%23E4002B'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='%23fff' text-anchor='middle'%3ELD%3C/text%3E%3C/svg%3E">
+<link rel="preload" href="../assets/fonts/archivo-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main" data-en="Skip to content">Zum Inhalt springen</a>
+<div class="bar" id="bar">
+  <div class="page"><header class="top">
+    <a class="brand" href="../index.html">Lukas Dalloz</a>
+    <div class="right">
+      <nav aria-label="Navigation">
+        <a href="../index.html#projects" data-en="Projects">Projekte</a>
+        <a href="../index.html#about" data-en="About me">Über mich</a>
+        <a href="../index.html#contact" data-en="Contact">Kontakt</a>
+      </nav>
+      <div class="lang" role="group" aria-label="Sprache / Language">
+        <button data-lang="de" aria-pressed="true" lang="de" title="Deutsch">DE</button>
+        <button data-lang="en" aria-pressed="false" lang="en" title="English">EN</button>
+      </div>
+    </div>
+  </header></div>
+</div>
+<div class="page" id="top">
+<main id="main">
+
+  <p class="crumb"><a href="../index.html#projects" data-en="All projects">Alle Projekte</a></p>
+
+  <div class="case-hero">
+    <h1 data-en="Self-hosted messenger">Eigener Messenger</h1>
+    <p class="lead" data-en="A private chat server with Matrix Synapse and Element, run as a project from planning and test concept to the finished result.">Ein privater Chat-Server mit Matrix Synapse und Element, abgewickelt als Projekt von der Planung über das Testkonzept bis zum fertigen Ergebnis.</p>
+    <dl class="facts-row">
+      <div><dt data-en="Context">Kontext</dt><dd data-en="School project, module 306 (project management)">Schulprojekt, Modul 306 (Projektmanagement)</dd></div>
+      <div><dt data-en="School">Schule</dt><dd>Technische Fachschule Bern</dd></div>
+      <div><dt>Status</dt><dd data-en="Completed">Abgeschlossen</dd></div>
+      <div><dt data-en="Tools">Werkzeuge</dt><dd data-en="Matrix Synapse, Element, Docker, virtual machine">Matrix Synapse, Element, Docker, virtuelle Maschine</dd></div>
+    </dl>
+  </div>
+
+  <div class="case">
+    <section aria-labelledby="s1">
+      <div class="prose">
+        <h2 id="s1" data-en="The task">Ausgangslage</h2>
+        <p data-en="Module 306 is about running an IT project properly: planning it, carrying it out, testing it and documenting it. The project was a messenger of our own, so messages stay on a server we control instead of with a large provider.">Im Modul 306 geht es darum, ein IT-Projekt sauber abzuwickeln: planen, umsetzen, testen und dokumentieren. Das Projekt war ein eigener Messenger, damit Nachrichten auf einem Server bleiben, den man selbst kontrolliert, statt bei einem grossen Anbieter.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="s2">
+      <h2 id="s2" data-en="How it's built">Aufbau</h2>
+      <div class="shots-2">
+        <div class="prose">
+          <ul>
+            <li data-en="The server runs in a virtual machine, with Docker wherever it made sense.">Der Server läuft in einer virtuellen Maschine, mit Docker überall dort, wo es sinnvoll war.</li>
+            <li data-en="Matrix Synapse is the chat server, Element is the client on computers and phones.">Matrix Synapse ist der Chat-Server, Element der Client auf Computer und Handy.</li>
+            <li data-en="Besides the setup, the project includes documentation, a test concept and a test report.">Neben dem Aufbau gehören Dokumentation, Testkonzept und Testprotokoll zum Projekt.</li>
+          </ul>
+        </div>
+        <figure class="figure">
+          <ol class="flow">
+            <li data-en="&lt;strong&gt;Element client&lt;/strong&gt;&lt;span&gt;On computers and phones.&lt;/span&gt;"><strong>Element-Client</strong><span>Auf Computer und Handy.</span></li>
+            <li data-en="&lt;strong&gt;Encrypted connection&lt;/strong&gt;&lt;span&gt;HTTPS with the project's own certificate.&lt;/span&gt;"><strong>Verschlüsselte Verbindung</strong><span>HTTPS mit dem eigenen Zertifikat des Projekts.</span></li>
+            <li class="stop" data-en="&lt;strong&gt;Matrix Synapse&lt;/strong&gt;&lt;span&gt;Chat server in Docker on a virtual machine.&lt;/span&gt;"><strong>Matrix Synapse</strong><span>Chat-Server in Docker auf einer virtuellen Maschine.</span></li>
+          </ol>
+          <figcaption data-en="How a message gets from the client to the server.">So kommt eine Nachricht vom Client zum Server.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section aria-labelledby="s3">
+      <h2 id="s3" data-en="Challenges and solutions">Schwierigkeiten und Lösungen</h2>
+      <div class="problem">
+        <h3 data-en="The app didn't trust the certificate">Die App vertraute dem Zertifikat nicht</h3>
+        <p data-en="The server used a certificate that wasn't issued by a public certificate authority. Browsers can be told to accept it, but the client app refused to connect.">Der Server nutzte ein Zertifikat, das nicht von einer öffentlichen Zertifizierungsstelle stammt. Einem Browser kann man sagen, dass er es akzeptieren soll, die Client-App verweigerte die Verbindung aber.</p>
+        <p class="fix" data-en="&lt;strong&gt;Solution:&lt;/strong&gt; The certificate was installed manually as trusted on the client devices. After that, the app connected without errors."><strong>Lösung:</strong> Das Zertifikat wurde auf den Client-Geräten von Hand als vertrauenswürdig installiert. Danach verband sich die App ohne Fehler.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="s4">
+      <h2 id="s4" data-en="What I learned">Was ich gelernt habe</h2>
+      <ul class="learned">
+        <li data-en="&lt;strong&gt;Running a project&lt;/strong&gt;&lt;span&gt;Planning in phases, keeping to the plan, and closing the project properly.&lt;/span&gt;"><strong>Ein Projekt abwickeln</strong><span>In Phasen planen, den Plan einhalten und das Projekt sauber abschliessen.</span></li>
+        <li data-en="&lt;strong&gt;Certificates and trust&lt;/strong&gt;&lt;span&gt;Why a device only trusts certain certificates, and how to add your own.&lt;/span&gt;"><strong>Zertifikate und Vertrauen</strong><span>Warum ein Gerät nur bestimmten Zertifikaten vertraut, und wie man ein eigenes hinzufügt.</span></li>
+        <li data-en="&lt;strong&gt;Testing systematically&lt;/strong&gt;&lt;span&gt;Writing a test concept first, then testing against it and recording the results.&lt;/span&gt;"><strong>Systematisch testen</strong><span>Zuerst ein Testkonzept schreiben, dann danach testen und die Ergebnisse festhalten.</span></li>
+        <li data-en="&lt;strong&gt;Documenting for others&lt;/strong&gt;&lt;span&gt;Writing documentation that someone else can follow without asking.&lt;/span&gt;"><strong>Für andere dokumentieren</strong><span>Eine Dokumentation schreiben, mit der jemand anderes ohne Nachfragen arbeiten kann.</span></li>
+      </ul>
+    </section>
+
+    <nav class="next" aria-label="Weitere Projekte">
+      <a href="homelab.html"><small data-en="Previous project">Vorheriges Projekt</small><span data-en="My homelab">Mein Homelab</span></a>
+      <a class="right" href="../index.html#projects"><small data-en="Back">Zurück</small><span data-en="All projects">Alle Projekte</span></a>
+    </nav>
+  </div>
+
+</main>
+</div>
+<footer>
+  <div class="page"><a class="to-top" href="#top" data-en="Back to top">Nach oben</a><span data-en="This site runs on my own server, in the DMZ of my homelab.">Diese Seite läuft auf meinem eigenen Server, in der DMZ meines Homelabs.</span></div>
+</footer>
+</body>
+</html>

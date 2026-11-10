@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="de" data-title-en="My homelab, Lukas Dalloz" data-desc-en="A Proxmox server run like a small company network: three network zones, single sign-on, automated updates and off-site backups.">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mein Homelab, Lukas Dalloz</title>
+<meta name="description" content="Ein Proxmox-Server, betrieben wie ein kleines Firmennetz: drei Netzzonen, Single Sign-on, automatische Updates und Backups ausser Haus.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mein Homelab, Lukas Dalloz">
+<meta property="og:description" content="Ein Proxmox-Server, betrieben wie ein kleines Firmennetz: drei Netzzonen, Single Sign-on, automatische Updates und Backups ausser Haus.">
+<meta property="og:locale" content="de_CH">
+<meta property="og:locale:alternate" content="en_GB">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='0' fill='%23E4002B'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='%23fff' text-anchor='middle'%3ELD%3C/text%3E%3C/svg%3E">
+<link rel="preload" href="../assets/fonts/archivo-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main" data-en="Skip to content">Zum Inhalt springen</a>
+<div class="bar" id="bar">
+  <div class="page"><header class="top">
+    <a class="brand" href="../index.html">Lukas Dalloz</a>
+    <div class="right">
+      <nav aria-label="Navigation">
+        <a href="../index.html#projects" data-en="Projects">Projekte</a>
+        <a href="../index.html#about" data-en="About me">Über mich</a>
+        <a href="../index.html#contact" data-en="Contact">Kontakt</a>
+      </nav>
+      <div class="lang" role="group" aria-label="Sprache / Language">
+        <button data-lang="de" aria-pressed="true" lang="de" title="Deutsch">DE</button>
+        <button data-lang="en" aria-pressed="false" lang="en" title="English">EN</button>
+      </div>
+    </div>
+  </header></div>
+</div>
+<div class="page" id="top">
+<main id="main">
+
+  <p class="crumb"><a href="../index.html#projects" data-en="All projects">Alle Projekte</a></p>
+
+  <div class="case-hero">
+    <h1 data-en="My homelab">Mein Homelab</h1>
+    <p class="lead" data-en="One Proxmox server at home that I run like a small company network: three network zones, single sign-on, automated updates and backups that leave the house.">Ein Proxmox-Server zu Hause, den ich wie ein kleines Firmennetz betreibe: drei Netzzonen, Single Sign-on, automatische Updates und Backups, die das Haus verlassen.</p>
+    <dl class="facts-row">
+      <div><dt data-en="Context">Kontext</dt><dd data-en="Personal project">Privatprojekt</dd></div>
+      <div><dt data-en="Time">Zeitraum</dt><dd data-en="Since 2025">Seit 2025</dd></div>
+      <div><dt>Status</dt><dd data-en="Running every day, still growing">Täglich in Betrieb, wird laufend erweitert</dd></div>
+      <div><dt data-en="Tools">Werkzeuge</dt><dd>Proxmox VE, pfSense, TrueNAS, Docker, Ansible</dd></div>
+    </dl>
+  </div>
+
+  <div class="case">
+    <section aria-labelledby="s1">
+      <div class="prose">
+        <h2 id="s1" data-en="Why I built it">Ausgangslage</h2>
+        <p data-en="I started the homelab in 2025 out of interest: I wanted a place where I can try things that aren't possible in my training, and break them without consequences. Today it also runs services my family and friends use every day, so it has to be reliable.">Angefangen habe ich das Homelab 2025 aus Interesse: Ich wollte einen Ort, an dem ich Dinge ausprobieren kann, die in der Ausbildung nicht möglich sind, und sie ohne Folgen kaputt machen darf. Heute laufen darauf auch Dienste, die meine Familie und meine Freunde täglich nutzen. Darum muss es zuverlässig laufen.</p>
+        <h3 data-en="Hardware">Hardware</h3>
+        <ul class="hw">
+          <li><span data-en="Processor">Prozessor</span><span>Intel Core Ultra 7 265KF</span></li>
+          <li><span data-en="Memory">Arbeitsspeicher</span><span>32 GB</span></li>
+          <li><span data-en="System storage">Systemspeicher</span><span data-en="2 × 1 TB NVMe">2 × 1 TB NVMe</span></li>
+          <li><span data-en="Data storage">Datenspeicher</span><span data-en="4 hard disks in RAIDZ1 for TrueNAS">4 Festplatten im RAIDZ1 für TrueNAS</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="s2">
+      <h2 id="s2" data-en="How it's built">Aufbau</h2>
+      <div class="tabs" role="tablist" aria-label="Homelab">
+        <button role="tab" id="t-net" aria-controls="p-net" aria-selected="true" data-en="Network">Netzwerk</button>
+        <button role="tab" id="t-svc" aria-controls="p-svc" aria-selected="false" tabindex="-1" data-en="Services">Dienste</button>
+        <button role="tab" id="t-sec" aria-controls="p-sec" aria-selected="false" tabindex="-1" data-en="Security">Sicherheit</button>
+        <button role="tab" id="t-ops" aria-controls="p-ops" aria-selected="false" tabindex="-1" data-en="Backups and upkeep">Backups und Unterhalt</button>
+      </div>
+
+      <div class="panel" id="p-net" role="tabpanel" aria-labelledby="t-net">
+        <div class="split">
+          <div class="text">
+            <p data-en="A pfSense firewall splits the lab into three zones. Public services live in a DMZ that's cut off from everything else, internal tools stay in the lab network, and test machines get a sandbox of their own.">Eine pfSense-Firewall teilt das Lab in drei Zonen. Öffentliche Dienste laufen in einer DMZ, die vom Rest abgeschnitten ist, interne Tools bleiben im Lab-Netz, und Testmaschinen haben ihre eigene Sandbox.</p>
+            <p data-en="Admin tools are never exposed directly. I reach them through Cloudflare Tunnels with multi-factor login, which also works from networks where a VPN isn't allowed.">Admin-Tools sind nie direkt erreichbar. Ich greife über Cloudflare Tunnels mit Mehrfaktor-Login darauf zu. Das funktioniert auch aus Netzen, in denen kein VPN erlaubt ist.</p>
+            <div class="stack">pfSense, pfBlockerNG, Proxmox VE, Cloudflare Tunnel</div>
+          </div>
+          <figure class="figure">
+            <div class="net">
+              <p class="net-hint" data-en="Pick a part of the network to see what it does.">Wähle einen Teil des Netzwerks, um zu sehen, was er macht.</p>
+              <button class="box" data-node="internet">Internet</button>
+              <div class="line"></div>
+              <button class="box" data-node="router" data-en="ISP router">Router des Providers</button>
+              <div class="line"></div>
+              <button class="box" data-node="fw" data-en="pfSense firewall">pfSense-Firewall</button>
+              <div class="line"></div>
+              <div class="fan"></div>
+              <div class="zones">
+                <button class="box" data-node="lab" data-en="Lab<small>internal services</small>">Lab<small>interne Dienste</small></button>
+                <button class="box" data-node="dmz" data-en="DMZ<small>proxy and public apps</small>">DMZ<small>Proxy und öffentliche Apps</small></button>
+                <button class="box" data-node="iso" data-en="Isolated<small>test machines</small>">Isoliert<small>Testmaschinen</small></button>
+              </div>
+              <div class="net-info" id="net-info" aria-live="polite"><h4></h4><p></p></div>
+            </div>
+          </figure>
+        </div>
+      </div>
+
+      <div class="panel" id="p-svc" role="tabpanel" aria-labelledby="t-svc" hidden>
+        <div class="split">
+          <div class="text">
+            <p data-en="These are the things people actually use. Everything that's reachable from outside sits behind the same reverse proxy and login, and the admin tools are only reachable for me, through Cloudflare.">Das sind die Dienste, die tatsächlich genutzt werden. Alles, was von aussen erreichbar ist, läuft hinter demselben Reverse Proxy und Login. Die Admin-Tools erreiche nur ich, über Cloudflare.</p>
+            <div class="stack">Docker, LXC, Nginx Proxy Manager, Crafty Controller, immich</div>
+          </div>
+          <figure class="figure">
+            <div class="services">
+              <div class="svc"><h4 data-en="Photo library">Fotobibliothek</h4><p data-en="Private photo backup for my family, built on immich, with the photos on my storage server.">Private Foto-Sicherung für meine Familie mit immich. Die Fotos liegen auf meinem Speicherserver.</p><span class="who" data-en="Family">Familie</span></div>
+              <div class="svc"><h4 data-en="Minecraft server">Minecraft-Server</h4><p data-en="Managed with Crafty Controller. Friends join with a name on my domain.">Verwaltet mit Crafty Controller. Freunde verbinden sich über einen Namen auf meiner Domain.</p><span class="who" data-en="Friends">Freunde</span></div>
+              <div class="svc private"><h4 data-en="Start page">Startseite</h4><p data-en="One page that links every tool in the lab. Designed and written by me.">Eine Seite mit Links zu allen Tools im Lab. Selbst gestaltet und geschrieben.</p><span class="who" data-en="Just me">Nur ich</span></div>
+              <div class="svc private"><h4 data-en="Pokédex tracker">Pokédex-Tracker</h4><p data-en="A small web app for tracking my Pokémon collection.">Eine kleine Web-App, mit der ich meine Pokémon-Sammlung verfolge.</p><span class="who" data-en="Just me">Nur ich</span></div>
+              <div class="svc private"><h4 data-en="Browser SSH terminal">SSH-Terminal im Browser</h4><p data-en="SSH to my servers from any browser, behind Cloudflare Access.">SSH auf meine Server aus jedem Browser, hinter Cloudflare Access.</p><span class="who" data-en="Just me">Nur ich</span></div>
+              <div class="svc private"><h4>Admin-Tools</h4><p data-en="Proxmox, firewall, storage, inventory, monitoring and automation.">Proxmox, Firewall, Speicher, Inventar, Monitoring und Automatisierung.</p><span class="who" data-en="Just me">Nur ich</span></div>
+            </div>
+            <p class="legend"><span data-en="Used by others">Von anderen genutzt</span><span class="private" data-en="Only for me">Nur für mich</span></p>
+          </figure>
+        </div>
+      </div>
+
+      <div class="panel" id="p-sec" role="tabpanel" aria-labelledby="t-sec" hidden>
+        <div class="split">
+          <div class="text">
+            <p data-en="A request from the internet has to pass several checks before it reaches one of my apps. Each layer catches something different, so one mistake in one place doesn't open everything.">Eine Anfrage aus dem Internet muss mehrere Prüfungen bestehen, bevor sie eine meiner Apps erreicht. Jede Schicht fängt etwas anderes ab, ein Fehler an einer Stelle öffnet also nicht gleich alles.</p>
+            <p data-en="Logins use passkeys or authenticator codes wherever I can set them up, including on the firewall, thanks to my own add-on.">Für Logins nutze ich Passkeys oder Authenticator-Codes, wo immer es geht. Dank meinem eigenen Add-on auch auf der Firewall.</p>
+            <div class="stack">pfBlockerNG, CrowdSec, Nginx Proxy Manager, Authentik, Cloudflare Access</div>
+          </div>
+          <figure class="figure">
+            <ol class="flow">
+              <li data-en="<strong>Blocklists and country filter</strong><span>pfSense drops known bad addresses and traffic from outside the allowed countries.</span>"><strong>Blocklisten und Länderfilter</strong><span>pfSense verwirft bekannte schädliche Adressen und Verkehr aus nicht erlaubten Ländern.</span></li>
+              <li data-en="<strong>Attack detection</strong><span>CrowdSec reads the proxy's logs and bans IPs that scan or attack.</span>"><strong>Angriffserkennung</strong><span>CrowdSec liest die Logs des Proxys und sperrt IPs, die scannen oder angreifen.</span></li>
+              <li data-en="<strong>Reverse proxy</strong><span>Nginx Proxy Manager handles HTTPS and picks the right app.</span>"><strong>Reverse Proxy</strong><span>Nginx Proxy Manager übernimmt HTTPS und wählt die richtige App.</span></li>
+              <li data-en="<strong>Login</strong><span>Authentik asks who you are before the app sees the request.</span>"><strong>Login</strong><span>Authentik fragt, wer du bist, bevor die App die Anfrage sieht.</span></li>
+              <li class="stop" data-en="<strong>The app</strong><span>Only now does the request reach the service itself.</span>"><strong>Die App</strong><span>Erst jetzt erreicht die Anfrage den Dienst selbst.</span></li>
+            </ol>
+            <figcaption data-en="The path of a request from the internet to an app.">Der Weg einer Anfrage vom Internet bis zur App.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="panel" id="p-ops" role="tabpanel" aria-labelledby="t-ops" hidden>
+        <div class="split">
+          <div class="text">
+            <ul class="plain">
+              <li data-en="<strong>Updates.</strong> I update the whole lab from Ansible playbooks, started in Semaphore. Containers are updated by hand, and Diun e-mails me when a new image is out."><strong>Updates.</strong> Ich aktualisiere das ganze Lab mit Ansible-Playbooks, gestartet in Semaphore. Container aktualisiere ich von Hand, und Diun schickt mir eine Mail, wenn ein neues Image da ist.</li>
+              <li data-en="<strong>Monitoring.</strong> Pulse watches every machine and e-mails me when something goes down, and the disks are checked with SMART."><strong>Monitoring.</strong> Pulse überwacht jede Maschine und schickt mir eine Mail, wenn etwas ausfällt. Die Festplatten werden per SMART geprüft.</li>
+              <li data-en="<strong>Inventory.</strong> Netbox lists every machine and IP address, synced from Proxmox automatically."><strong>Inventar.</strong> Netbox führt alle Maschinen und IP-Adressen, automatisch aus Proxmox synchronisiert.</li>
+              <li data-en="<strong>Documentation.</strong> A full write-up of the lab, with the decisions behind it and a recovery guide for when something breaks."><strong>Dokumentation.</strong> Eine vollständige Beschreibung des Labs, mit den Entscheidungen dahinter und einer Anleitung für den Notfall.</li>
+            </ul>
+          </div>
+          <figure class="figure">
+            <ol class="flow">
+              <li data-en="<span class='when'>every day</span><strong>All virtual machines</strong><span>Backed up from Proxmox to the storage server.</span>"><span class="when">täglich</span><strong>Alle virtuellen Maschinen</strong><span>Werden von Proxmox auf den Speicherserver gesichert.</span></li>
+              <li data-en="<span class='when'>every day</span><strong>TrueNAS storage server</strong><span>Four disks in RAIDZ1, with ZFS snapshots.</span>"><span class="when">täglich</span><strong>TrueNAS-Speicherserver</strong><span>Vier Disks im RAIDZ1, mit ZFS-Snapshots.</span></li>
+              <li class="stop" data-en="<span class='when'>every week</span><strong>Encrypted cloud copy</strong><span>The whole share leaves the house, encrypted before upload.</span>"><span class="when">wöchentlich</span><strong>Verschlüsselte Cloud-Kopie</strong><span>Der ganze Share verlässt das Haus, vor dem Upload verschlüsselt.</span></li>
+            </ol>
+            <figcaption data-en="How a backup travels from a machine to off-site storage. Firewall and server configs are saved separately on top.">Wie ein Backup von der Maschine bis ausser Haus kommt. Firewall- und Server-Konfigurationen werden zusätzlich separat gesichert.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+
+      <figure class="shot">
+        <img src="../assets/img/homelab-startseite.webp" width="1535" height="781" alt="Startseite des Homelabs mit allen Diensten, nach Apps, Server, Zugang und Betrieb gruppiert" data-alt-en="Homelab start page with all services, grouped into apps, servers, access and operations" loading="lazy">
+        <figcaption data-en="My start page links every service in the lab. I designed and wrote it myself. (Addresses blurred.)">Meine Startseite verlinkt jeden Dienst im Lab. Gestaltet und geschrieben habe ich sie selbst. (Adressen unkenntlich gemacht.)</figcaption>
+      </figure>
+    </section>
+
+    <section aria-labelledby="s3">
+      <h2 id="s3" data-en="Challenges and solutions">Schwierigkeiten und Lösungen</h2>
+      <div class="problem">
+        <h3 data-en="An IP address that kept changing">Eine IP-Adresse, die sich ständig änderte</h3>
+        <p data-en="My services are reached through my own domain, so it has to point to my current home IP (DynDNS). pfSense reported the wrong address: my router uses a 4G booster, and part of the outgoing traffic leaves through the mobile network with a different IP.">Meine Dienste sind über meine eigene Domain erreichbar, also muss sie auf meine aktuelle IP zu Hause zeigen (DynDNS). pfSense meldete aber die falsche Adresse: Mein Router nutzt einen 4G-Booster, und ein Teil des ausgehenden Verkehrs verlässt das Haus über das Mobilfunknetz, mit einer anderen IP.</p>
+        <p class="fix" data-en="&lt;strong&gt;Solution:&lt;/strong&gt; DynDNS now runs on the router itself, which knows the real fixed-line IP. My domain points to that name, so a change at home updates everything automatically."><strong>Lösung:</strong> DynDNS läuft jetzt direkt auf dem Router, der die echte Festnetz-IP kennt. Meine Domain zeigt auf diesen Namen, so wird bei einer Änderung alles automatisch nachgeführt.</p>
+      </div>
+      <div class="problem">
+        <h3 data-en="Too small for photos">Zu klein für Fotos</h3>
+        <p data-en="At first, everything went through Cloudflare Tunnels. For the photo library that doesn't work: Cloudflare limits the size of a single upload, and videos from a phone are quickly bigger than that.">Anfangs lief alles über Cloudflare Tunnels. Für die Fotobibliothek funktioniert das nicht: Cloudflare begrenzt die Grösse eines einzelnen Uploads, und Videos vom Handy sind schnell grösser.</p>
+        <p class="fix" data-en="&lt;strong&gt;Solution:&lt;/strong&gt; I built a DMZ. Public services now come in directly through the firewall to a reverse proxy with single sign-on, while admin tools stay behind the tunnel. That made the whole setup clearer, not just the photo uploads."><strong>Lösung:</strong> Ich habe eine DMZ aufgebaut. Öffentliche Dienste kommen jetzt direkt über die Firewall zu einem Reverse Proxy mit Single Sign-on, die Admin-Tools bleiben hinter dem Tunnel. Dadurch wurde das ganze Setup übersichtlicher, nicht nur die Foto-Uploads.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="s4">
+      <h2 id="s4" data-en="What I learned">Was ich gelernt habe</h2>
+      <ul class="learned">
+        <li data-en="&lt;strong&gt;Many different systems&lt;/strong&gt;&lt;span&gt;Configuring hypervisor, firewall, storage, proxy, identity provider and monitoring, and making them work together.&lt;/span&gt;"><strong>Viele verschiedene Systeme</strong><span>Hypervisor, Firewall, Speicher, Proxy, Identity Provider und Monitoring konfigurieren und zusammenbringen.</span></li>
+        <li data-en="&lt;strong&gt;Industry best practices&lt;/strong&gt;&lt;span&gt;Network segmentation, least privilege, one central login, and backups with an off-site copy.&lt;/span&gt;"><strong>Best Practices aus der Industrie</strong><span>Netzsegmentierung, so wenig Rechte wie nötig, eine zentrale Anmeldung und Backups mit einer Kopie ausser Haus.</span></li>
+        <li data-en="&lt;strong&gt;Documentation pays off&lt;/strong&gt;&lt;span&gt;Every decision and every recovery step is written down, so a problem at night doesn't start with guessing.&lt;/span&gt;"><strong>Dokumentation lohnt sich</strong><span>Jede Entscheidung und jeder Wiederherstellungsschritt ist aufgeschrieben, damit ein Problem in der Nacht nicht mit Raten beginnt.</span></li>
+        <li data-en="&lt;strong&gt;Running, not just building&lt;/strong&gt;&lt;span&gt;Updates, monitoring and alerts are just as much work as setting something up for the first time.&lt;/span&gt;"><strong>Betreiben, nicht nur aufbauen</strong><span>Updates, Monitoring und Alarme sind genauso viel Arbeit wie das erste Einrichten.</span></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="s5">
+      <div class="prose changelog">
+        <h2 id="s5" data-en="Recent changes">Zuletzt geändert</h2>
+        <p data-en="The lab is never finished. These are the latest changes, newest first.">Das Lab ist nie fertig. Das sind die letzten Änderungen, die neuste zuoberst.</p>
+        <ol>
+          <li><time datetime="2026-11-09" data-en="9 Nov 2026">9. Nov. 2026</time><span data-en="Redesigned the start page that links all my tools.">Startseite mit den Links zu allen Tools neu gestaltet.</span></li>
+          <li><time datetime="2026-11-06" data-en="6 Nov 2026">6. Nov. 2026</time><span data-en="Added an isolated network for test machines.">Isoliertes Netz für Testmaschinen eingerichtet.</span></li>
+          <li><time datetime="2026-11-03" data-en="3 Nov 2026">3. Nov. 2026</time><span data-en="CrowdSec on the reverse proxy, and Diun e-mails for new container images.">CrowdSec auf dem Reverse Proxy und Diun-Mails für neue Container-Images.</span></li>
+          <li><time datetime="2026-10-30" data-en="30 Oct 2026">30. Okt. 2026</time><span data-en="Moved two apps into the DMZ, set up config backups and e-mail alerts.">Zwei Apps in die DMZ verschoben, Konfigurations-Backups und E-Mail-Alarme eingerichtet.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <nav class="next" aria-label="Weitere Projekte">
+      <a href="netzwaechter.html"><small data-en="Previous project">Vorheriges Projekt</small>Netzwächter</a>
+      <a class="right" href="messenger.html"><small data-en="Next project">Nächstes Projekt</small><span data-en="Self-hosted messenger">Eigener Messenger</span></a>
+    </nav>
+  </div>
+
+</main>
+</div>
+<footer>
+  <div class="page"><a class="to-top" href="#top" data-en="Back to top">Nach oben</a><span data-en="This site runs on my own server, in the DMZ of my homelab.">Diese Seite läuft auf meinem eigenen Server, in der DMZ meines Homelabs.</span></div>
+</footer>
+</body>
+</html>

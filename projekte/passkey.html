@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="de" data-title-en="Passkey login for pfSense, Lukas Dalloz" data-desc-en="An open source add-on that protects the pfSense login with a passkey as a second factor.">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Passkey-Login für pfSense, Lukas Dalloz</title>
+<meta name="description" content="Ein Open-Source-Add-on, das den Login auf pfSense mit einem Passkey als zweitem Faktor absichert.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Passkey-Login für pfSense, Lukas Dalloz">
+<meta property="og:description" content="Ein Open-Source-Add-on, das den Login auf pfSense mit einem Passkey als zweitem Faktor absichert.">
+<meta property="og:locale" content="de_CH">
+<meta property="og:locale:alternate" content="en_GB">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='0' fill='%23E4002B'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='%23fff' text-anchor='middle'%3ELD%3C/text%3E%3C/svg%3E">
+<link rel="preload" href="../assets/fonts/archivo-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main" data-en="Skip to content">Zum Inhalt springen</a>
+<div class="bar" id="bar">
+  <div class="page"><header class="top">
+    <a class="brand" href="../index.html">Lukas Dalloz</a>
+    <div class="right">
+      <nav aria-label="Navigation">
+        <a href="../index.html#projects" data-en="Projects">Projekte</a>
+        <a href="../index.html#about" data-en="About me">Über mich</a>
+        <a href="../index.html#contact" data-en="Contact">Kontakt</a>
+      </nav>
+      <div class="lang" role="group" aria-label="Sprache / Language">
+        <button data-lang="de" aria-pressed="true" lang="de" title="Deutsch">DE</button>
+        <button data-lang="en" aria-pressed="false" lang="en" title="English">EN</button>
+      </div>
+    </div>
+  </header></div>
+</div>
+<div class="page" id="top">
+<main id="main">
+
+  <p class="crumb"><a href="../index.html#projects" data-en="All projects">Alle Projekte</a></p>
+
+  <div class="case-hero">
+    <h1 data-en="Passkey login for pfSense">Passkey-Login für pfSense</h1>
+    <p class="lead" data-en="An add-on that protects the login to the pfSense web interface with a passkey, as a second factor after the password.">Ein Add-on, das den Login auf das Web-Interface der pfSense-Firewall mit einem Passkey absichert, als zweiten Faktor nach dem Passwort.</p>
+    <dl class="facts-row">
+      <div><dt data-en="Context">Kontext</dt><dd data-en="Personal project, open source (Apache 2.0)">Privatprojekt, Open Source (Apache 2.0)</dd></div>
+      <div><dt data-en="Time">Zeitraum</dt><dd data-en="October 2026, one day">Oktober 2026, ein Tag</dd></div>
+      <div><dt>Status</dt><dd data-en="Version 1.0.1, in use on my firewall">Version 1.0.1, im Einsatz auf meiner Firewall</dd></div>
+      <div><dt data-en="Tools">Werkzeuge</dt><dd data-en="PHP, JavaScript, WebAuthn, with AI as support">PHP, JavaScript, WebAuthn, mit KI als Unterstützung</dd></div>
+    </dl>
+  </div>
+
+  <div class="case">
+    <section aria-labelledby="s1">
+      <div class="prose">
+        <h2 id="s1" data-en="Why I built it">Ausgangslage</h2>
+        <p data-en="I reach the web interface of my pfSense firewall through a Cloudflare Tunnel. Cloudflare Access sits in front of it, but the firewall itself only asked for a password. For the most important login in my whole network, that wasn't enough for me.">Das Web-Interface meiner pfSense-Firewall erreiche ich über einen Cloudflare Tunnel. Davor sitzt zwar Cloudflare Access, die Firewall selbst fragte aber nur nach einem Passwort. Für den wichtigsten Zugang in meinem ganzen Netz war mir das zu wenig.</p>
+        <p data-en="pfSense doesn't offer passkeys for its web interface, so I added them myself. I'm not an application developer, so I wrote the code together with AI: I defined what the add-on must do and which security rules it has to follow, then reviewed, tested and installed the result on my own firewall.">pfSense bietet für sein Web-Interface keine Passkeys an, also habe ich sie selbst nachgerüstet. Ich bin kein Applikationsentwickler, darum habe ich den Code zusammen mit KI geschrieben: Ich habe festgelegt, was das Add-on können und welche Sicherheitsregeln es einhalten muss, und das Ergebnis geprüft, getestet und auf meiner eigenen Firewall installiert.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="s2">
+      <div class="prose">
+        <h2 id="s2" data-en="How it works">So funktioniert es</h2>
+        <ul>
+          <li data-en="After the normal password login, the add-on checks on every page of the web interface whether the session has been confirmed with a passkey. If not, the passkey step appears.">Nach dem normalen Passwort-Login prüft das Add-on auf jeder Seite des Web-Interface, ob die Sitzung schon mit einem Passkey bestätigt wurde. Wenn nicht, erscheint der Passkey-Schritt.</li>
+          <li data-en="Passkeys are registered per user under System &gt; WebAuthn Passkeys. They're stored in pfSense's own configuration, so every pfSense backup includes them.">Passkeys registriert man pro Benutzer unter System &gt; WebAuthn Passkeys. Gespeichert werden sie in der Konfiguration von pfSense selbst und sind damit in jedem pfSense-Backup enthalten.</li>
+          <li data-en="The signature is checked entirely on the firewall, without any outside service. That includes a small parser of my own for CBOR, the data format WebAuthn uses.">Die Signatur wird komplett auf der Firewall geprüft, ohne externen Dienst. Dazu gehört auch ein kleiner eigener Parser für CBOR, das Datenformat von WebAuthn.</li>
+          <li data-en="Installing and updating takes one command, and settings and passkeys are kept on every update.">Installieren und Aktualisieren geht mit einem einzigen Befehl, Einstellungen und Passkeys bleiben dabei erhalten.</li>
+        </ul>
+      </div>
+      <figure class="shot">
+        <img src="../assets/img/passkey-login.webp" width="1170" height="560" alt="Passkey-Schritt nach dem Login, rechts die Passkey-Auswahl des Browsers" data-alt-en="Passkey step after signing in, with the browser's passkey picker on the right" loading="lazy">
+        <figcaption data-en="After the password comes the passkey step. The browser offers the saved passkey. (Hostname blurred.)">Nach dem Passwort kommt der Passkey-Schritt. Der Browser bietet den gespeicherten Passkey an. (Hostname unkenntlich gemacht.)</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="../assets/img/passkey-verwaltung.webp" width="1442" height="362" alt="Verwaltungsseite mit registrierten Passkeys und dem Knopf zum Registrieren" data-alt-en="Management page with registered passkeys and the register button" loading="lazy">
+        <figcaption data-en="The management page in pfSense: registered passkeys per user, and a new one is added with a name.">Die Verwaltungsseite in pfSense: registrierte Passkeys pro Benutzer, ein neuer wird mit einem Namen hinzugefügt.</figcaption>
+      </figure>
+    </section>
+
+    <section aria-labelledby="s3">
+      <h2 id="s3" data-en="Challenges and solutions">Schwierigkeiten und Lösungen</h2>
+      <div class="problem">
+        <h3 data-en="Secure, without locking myself out">Sicher, ohne mich selbst auszusperren</h3>
+        <p data-en="A second factor on the firewall only makes sense if it can't be bypassed. At the same time, a mistake must never leave me unable to reach my own firewall. Both goals pull in opposite directions.">Ein zweiter Faktor auf der Firewall ist nur sinnvoll, wenn man ihn nicht umgehen kann. Gleichzeitig darf ein Fehler nie dazu führen, dass ich selbst nicht mehr auf meine Firewall komme. Beide Ziele ziehen in entgegengesetzte Richtungen.</p>
+        <div class="prose">
+          <ul>
+            <li data-en="&lt;strong&gt;Switch on in steps.&lt;/strong&gt; The second factor is only enforced once I turn it on, after registering at least two passkeys."><strong>Schrittweise einschalten.</strong> Der zweite Faktor wird erst erzwungen, wenn ich ihn einschalte, nachdem mindestens zwei Passkeys registriert sind.</li>
+            <li data-en="&lt;strong&gt;An emergency way in.&lt;/strong&gt; Trusted networks and the console still work if all passkeys are lost. Traffic through the tunnel is never exempt."><strong>Ein Notzugang.</strong> Vertrauenswürdige Netze und die Konsole funktionieren auch, wenn alle Passkeys verloren sind. Verkehr über den Tunnel ist nie ausgenommen.</li>
+            <li data-en="&lt;strong&gt;Fail closed.&lt;/strong&gt; If files of the add-on go missing, the web interface locks instead of skipping the passkey step."><strong>Im Zweifel zu.</strong> Fehlen Dateien des Add-ons, sperrt das Web-Interface, statt den Passkey-Schritt zu überspringen.</li>
+            <li data-en="&lt;strong&gt;Survive updates.&lt;/strong&gt; pfSense updates replace the files the add-on hooks into. The hooks are put back automatically at every start and every 5 minutes."><strong>Updates überstehen.</strong> pfSense-Updates ersetzen die Dateien, in die sich das Add-on einhängt. Die Hooks werden deshalb bei jedem Start und alle 5 Minuten automatisch wieder eingesetzt.</li>
+            <li data-en="&lt;strong&gt;No back door.&lt;/strong&gt; The sync interface for high availability (XMLRPC) only needs a password. Through the tunnel or any proxy it's always refused."><strong>Keine Hintertür.</strong> Die Synchronisation für Hochverfügbarkeit (XMLRPC) braucht nur ein Passwort. Über den Tunnel oder einen anderen Proxy wird sie deshalb immer abgelehnt.</li>
+            <li data-en="&lt;strong&gt;Limited sessions.&lt;/strong&gt; A confirmation expires after 12 hours, and removing a passkey also ends the sessions it confirmed."><strong>Begrenzte Sitzungen.</strong> Eine Bestätigung läuft nach 12 Stunden ab, und wer einen Passkey entfernt, beendet auch die Sitzungen, die damit bestätigt wurden.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="s4">
+      <h2 id="s4" data-en="What I learned">Was ich gelernt habe</h2>
+      <ul class="learned">
+        <li data-en="&lt;strong&gt;How WebAuthn works&lt;/strong&gt;&lt;span&gt;Challenge, public key, signature counter, and why the hostname decides which passkey is valid.&lt;/span&gt;"><strong>Wie WebAuthn funktioniert</strong><span>Challenge, öffentlicher Schlüssel, Signaturzähler, und warum der Hostname entscheidet, welcher Passkey gilt.</span></li>
+        <li data-en="&lt;strong&gt;How pfSense handles logins&lt;/strong&gt;&lt;span&gt;Where a second step can be hooked in cleanly without breaking the rest.&lt;/span&gt;"><strong>Wie pfSense anmeldet</strong><span>Wo sich ein zweiter Schritt sauber einhängen lässt, ohne den Rest zu beschädigen.</span></li>
+        <li data-en="&lt;strong&gt;Fail closed beats convenience&lt;/strong&gt;&lt;span&gt;When in doubt, locked is better than unprotected, as long as there's a planned way back in.&lt;/span&gt;"><strong>Sicherheit vor Bequemlichkeit</strong><span>Im Zweifel lieber gesperrt als ungeschützt, solange es einen geplanten Weg zurück gibt.</span></li>
+        <li data-en="&lt;strong&gt;Working with AI&lt;/strong&gt;&lt;span&gt;Using AI to move fast, while checking and understanding every part myself.&lt;/span&gt;"><strong>Arbeiten mit KI</strong><span>KI nutzen, um schnell voranzukommen, und dabei jeden Teil selbst prüfen und verstehen.</span></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="s5">
+      <h2 id="s5" data-en="Code">Code</h2>
+      <p data-en="The full code, with install guide and setup instructions, is on GitHub: &lt;a href='https://github.com/Lukas0923xcv/web-auth-pfsense'&gt;web-auth-pfsense&lt;/a&gt;">Der ganze Code mit Installations- und Einrichtungsanleitung ist auf GitHub: <a href="https://github.com/Lukas0923xcv/web-auth-pfsense">web-auth-pfsense</a></p>
+    </section>
+
+    <nav class="next" aria-label="Weitere Projekte">
+      <a href="../index.html#projects"><small data-en="Back">Zurück</small><span data-en="All projects">Alle Projekte</span></a>
+      <a class="right" href="netzwaechter.html"><small data-en="Next project">Nächstes Projekt</small>Netzwächter</a>
+    </nav>
+  </div>
+
+</main>
+</div>
+<footer>
+  <div class="page"><a class="to-top" href="#top" data-en="Back to top">Nach oben</a><span data-en="This site runs on my own server, in the DMZ of my homelab.">Diese Seite läuft auf meinem eigenen Server, in der DMZ meines Homelabs.</span></div>
+</footer>
+</body>
+</html>

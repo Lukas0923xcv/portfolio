@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="de" data-title-en="Netzwächter, Lukas Dalloz" data-desc-en="An LTE device with its own firmware and Android app that sends an SMS when the power goes out.">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Netzwächter, Lukas Dalloz</title>
+<meta name="description" content="Ein LTE-Gerät mit eigener Firmware und Android-App, das per SMS meldet, wenn der Strom ausfällt.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Netzwächter, Lukas Dalloz">
+<meta property="og:description" content="Ein LTE-Gerät mit eigener Firmware und Android-App, das per SMS meldet, wenn der Strom ausfällt.">
+<meta property="og:locale" content="de_CH">
+<meta property="og:locale:alternate" content="en_GB">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='0' fill='%23E4002B'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='%23fff' text-anchor='middle'%3ELD%3C/text%3E%3C/svg%3E">
+<link rel="preload" href="../assets/fonts/archivo-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main" data-en="Skip to content">Zum Inhalt springen</a>
+<div class="bar" id="bar">
+  <div class="page"><header class="top">
+    <a class="brand" href="../index.html">Lukas Dalloz</a>
+    <div class="right">
+      <nav aria-label="Navigation">
+        <a href="../index.html#projects" data-en="Projects">Projekte</a>
+        <a href="../index.html#about" data-en="About me">Über mich</a>
+        <a href="../index.html#contact" data-en="Contact">Kontakt</a>
+      </nav>
+      <div class="lang" role="group" aria-label="Sprache / Language">
+        <button data-lang="de" aria-pressed="true" lang="de" title="Deutsch">DE</button>
+        <button data-lang="en" aria-pressed="false" lang="en" title="English">EN</button>
+      </div>
+    </div>
+  </header></div>
+</div>
+<div class="page" id="top">
+<main id="main">
+
+  <p class="crumb"><a href="../index.html#projects" data-en="All projects">Alle Projekte</a></p>
+
+  <div class="case-hero">
+    <h1>Netzwächter</h1>
+    <p class="lead" data-en="A small LTE device that raises the alarm by SMS when the power goes out, with my own firmware and my own Android app.">Ein kleines LTE-Gerät, das per SMS Alarm schlägt, wenn der Strom ausfällt, mit eigener Firmware und eigener Android-App.</p>
+    <dl class="facts-row">
+      <div><dt data-en="Context">Kontext</dt><dd data-en="Personal project">Privatprojekt</dd></div>
+      <div><dt data-en="Time">Zeitraum</dt><dd data-en="Autumn 2026, one week at about 2 hours a day">Herbst 2026, eine Woche à etwa 2 Stunden</dd></div>
+      <div><dt>Status</dt><dd data-en="SMS alarm and app work (app v1.5.0)">SMS-Alarm und App funktionieren (App v1.5.0)</dd></div>
+      <div><dt data-en="Tools">Werkzeuge</dt><dd data-en="C++ (Arduino IDE), Flutter, GitHub Actions, with AI as support">C++ (Arduino IDE), Flutter, GitHub Actions, mit KI als Unterstützung</dd></div>
+    </dl>
+  </div>
+
+  <div class="case">
+    <section aria-labelledby="s1">
+      <div class="prose">
+        <h2 id="s1" data-en="Why I built it">Ausgangslage</h2>
+        <p data-en="While my grandparents were on holiday, their freezer stopped running. Nobody noticed, and by the time they came home everything in it had to be thrown away. A simple message at the right moment would have been enough to save it.">Während meine Grosseltern in den Ferien waren, ist ihre Kühltruhe ausgefallen. Niemand hat es bemerkt, und als sie zurückkamen, musste alles weggeworfen werden. Eine einfache Nachricht im richtigen Moment hätte gereicht, um das zu verhindern.</p>
+        <p data-en="So I built a device that watches the power and sends an SMS as soon as it's gone, and again when it's back. SMS works without Wi-Fi or internet, which is exactly what fails in a power cut.">Also habe ich ein Gerät gebaut, das den Strom überwacht und sofort eine SMS schickt, wenn er weg ist, und wieder, wenn er zurück ist. SMS funktioniert ohne WLAN und Internet, also genau ohne das, was bei einem Stromausfall auch wegfällt.</p>
+        <p data-en="The hardware, the wiring and the testing are my part. Firmware and app I wrote with AI, since I'm not an application developer: I described what the device has to do, tested every version on the real hardware and fed the problems back until it worked.">Hardware, Verkabelung und Tests sind mein Teil. Firmware und App habe ich mit KI geschrieben, weil ich kein Applikationsentwickler bin: Ich habe beschrieben, was das Gerät können muss, jede Version an der echten Hardware getestet und die Probleme zurückgemeldet, bis es funktioniert hat.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="s2">
+      <h2 id="s2" data-en="How it works">So funktioniert es</h2>
+      <div class="shots-2">
+        <div class="prose">
+          <h3 data-en="Hardware">Hardware</h3>
+          <ul class="hw">
+            <li><span>Board</span><span data-en="LilyGO T-A7670G, an ESP32 with an LTE modem">LilyGO T-A7670G, ein ESP32 mit LTE-Modem</span></li>
+            <li><span data-en="Mobile network">Mobilfunk</span><span data-en="Prepaid SIM">Prepaid-SIM</span></li>
+            <li><span data-en="Battery">Akku</span><span data-en="18650 cell on the board, takes over during a power cut">18650-Zelle auf dem Board, übernimmt beim Stromausfall</span></li>
+            <li><span data-en="Power detection">Stromerkennung</span><span data-en="5 V power supply on the board's solar input, measured by the firmware">5-V-Netzteil am Solar-Eingang des Boards, von der Firmware gemessen</span></li>
+          </ul>
+
+          <h3>Firmware</h3>
+          <ul>
+            <li data-en="Detects power loss and return with hysteresis and debouncing, so short flickers don't cause false alarms.">Erkennt Stromausfall und Wiederkehr mit Hysterese und Entprellung, damit kurze Schwankungen keinen Fehlalarm auslösen.</li>
+            <li data-en="Sends an alarm, an all-clear and a low-battery warning to up to 5 numbers. The texts can contain placeholders such as battery level and outage duration.">Schickt Alarm, Entwarnung und eine Warnung bei tiefem Akku an bis zu 5 Nummern. Die Texte können Platzhalter wie Akkustand und Dauer des Ausfalls enthalten.</li>
+            <li data-en="The modem runs in its own task on one of the two CPU cores, so the Bluetooth connection to the app never freezes.">Das Modem läuft in einem eigenen Task auf einem der beiden CPU-Kerne, damit die Bluetooth-Verbindung zur App nie einfriert.</li>
+            <li data-en="Settings are stored in flash memory and survive a restart.">Einstellungen werden im Flash gespeichert und überstehen einen Neustart.</li>
+          </ul>
+
+          <h3 data-en="Remote control by SMS">Fernsteuerung per SMS</h3>
+          <p data-en="More than 20 commands let me check and change the device from anywhere. Only saved numbers get an answer, and a fixed admin number always works, so I can't lock myself out.">Über 20 Befehle erlauben es, das Gerät von überall abzufragen und einzustellen. Nur eingetragene Nummern bekommen eine Antwort, und eine feste Admin-Nummer funktioniert immer, damit ich mich nicht aussperren kann.</p>
+          <div class="cmds"><code>/status</code><code>/alarm 3m</code><code>/pause 2h</code><code>/akku 20</code><code>/nummer neu</code><code>/test</code></div>
+
+          <h3 data-en="Android app">Android-App</h3>
+          <p data-en="The app connects over Bluetooth and shows live data every 1.5 seconds: battery, power supply voltage, modem and SMS status. All settings can be changed in the app, and a diagnostics view helps with troubleshooting. GitHub Actions builds the APK automatically.">Die App verbindet sich per Bluetooth und zeigt alle 1,5 Sekunden Live-Daten: Akku, Netzteilspannung, Modem und SMS-Status. Alle Einstellungen lassen sich in der App ändern, und eine Diagnose-Ansicht hilft bei der Fehlersuche. Die APK baut GitHub Actions automatisch.</p>
+        </div>
+        <figure class="shot phone">
+          <img src="../assets/img/netzwaechter-app.webp" width="921" height="1824" alt="Startbildschirm der Netzwächter-App mit Akku, Netzteil, SMS-Alarm und Diagnose" data-alt-en="Home screen of the Netzwächter app with battery, power supply, SMS alarm and diagnostics" loading="lazy">
+          <figcaption data-en="The app, here without a connection to the device.">Die App, hier ohne Verbindung zum Gerät.</figcaption>
+        </figure>
+      </div>
+
+      <figure class="figure figure-gap">
+        <div aria-hidden="true">
+          <div class="nw">
+            <div class="node" data-en="Power adapter&lt;small&gt;normal operation&lt;/small&gt;">Netzteil<small>Normalbetrieb</small></div>
+            <div class="node board" data-en="&lt;strong&gt;LilyGO T-A7670G&lt;/strong&gt;&lt;small&gt;LTE modem, prepaid SIM&lt;/small&gt;"><strong>LilyGO T-A7670G</strong><small>LTE-Modem, Prepaid-SIM</small></div>
+            <div class="node" data-en="Phone&lt;small&gt;SMS&lt;/small&gt;">Handy<small>SMS</small></div>
+            <div class="node" data-en="18650 battery&lt;small&gt;takes over&lt;/small&gt;">18650-Akku<small>übernimmt</small></div>
+            <div class="node" data-en="Android app&lt;small&gt;Bluetooth&lt;/small&gt;">Android-App<small>Bluetooth</small></div>
+          </div>
+          <div class="nw-out">
+            <div class="sms" data-en="&lt;small&gt;SMS&lt;/small&gt;ALARM: Power cut detected! Running on battery (84%).">
+              <small>SMS</small>ALARM: Stromausfall erkannt! Läuft auf Akku (84 %).</div>
+            <div class="sms" data-en="&lt;small&gt;SMS&lt;/small&gt;ALL CLEAR: Power is back. The outage lasted 1 h 12 min.">
+              <small>SMS</small>ENTWARNUNG: Strom ist wieder da. Ausfall dauerte 1 h 12 min.</div>
+          </div>
+        </div>
+        <figcaption data-en="Power comes from the adapter or the battery, and every switch is reported by SMS and in the app. Example messages.">Strom kommt vom Netzteil oder vom Akku. Jeder Wechsel wird per SMS und in der App gemeldet. Beispielmeldungen.</figcaption>
+      </figure>
+    </section>
+
+    <section aria-labelledby="s3">
+      <h2 id="s3" data-en="Challenges and solutions">Schwierigkeiten und Lösungen</h2>
+      <div class="problem">
+        <h3 data-en="Detecting the power cut">Den Stromausfall überhaupt erkennen</h3>
+        <p data-en="My first idea was to power the board over USB-C and detect when that power disappears. On this board, that didn't work reliably.">Meine erste Idee war, das Board über USB-C zu versorgen und zu erkennen, wenn dort der Strom wegfällt. Auf diesem Board hat das nicht zuverlässig funktioniert.</p>
+        <p class="fix" data-en="&lt;strong&gt;Solution:&lt;/strong&gt; The 5 V power supply now goes into the board's solar input. Its voltage can be measured directly, and the firmware reacts when it drops."><strong>Lösung:</strong> Das 5-V-Netzteil hängt jetzt am Solar-Eingang des Boards. Dessen Spannung lässt sich direkt messen, und die Firmware reagiert, wenn sie abfällt.</p>
+      </div>
+      <div class="problem">
+        <h3 data-en="When is the power really gone?">Wann ist der Strom wirklich weg?</h3>
+        <p data-en="A short flicker shouldn't wake anyone up, but a real outage has to be reported quickly.">Ein kurzes Flackern soll niemanden wecken, ein echter Ausfall muss aber schnell gemeldet werden.</p>
+        <p class="fix" data-en="&lt;strong&gt;Solution:&lt;/strong&gt; Two thresholds with a gap between them (hysteresis) and a short waiting time before a change counts. On top, the delay before the alarm SMS can be set per SMS command or in the app."><strong>Lösung:</strong> Zwei Schwellen mit Abstand dazwischen (Hysterese) und eine kurze Wartezeit, bevor eine Änderung zählt. Zusätzlich lässt sich die Verzögerung bis zur Alarm-SMS per SMS-Befehl oder in der App einstellen.</p>
+      </div>
+      <div class="problem">
+        <h3 data-en="Reliable SMS">SMS zuverlässig verschicken</h3>
+        <p data-en="Sending SMS through the LTE modem didn't work reliably at first.">Der SMS-Versand über das LTE-Modem lief anfangs nicht zuverlässig.</p>
+        <p class="fix" data-en="&lt;strong&gt;Solution:&lt;/strong&gt; The firmware checks the provider's SMS centre and sets it if needed, waits for the modem's confirmation, and retries after a minute if sending fails. The SIM PIN is only sent when configured, so failed attempts can't lock the SIM."><strong>Lösung:</strong> Die Firmware prüft die SMS-Zentrale des Anbieters und setzt sie bei Bedarf, wartet auf die Bestätigung des Modems und versucht es nach einer Minute erneut, wenn der Versand scheitert. Die SIM-PIN wird nur gesendet, wenn sie eingestellt ist, damit Fehlversuche die SIM nicht sperren.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="s4">
+      <h2 id="s4" data-en="What I learned">Was ich gelernt habe</h2>
+      <ul class="learned">
+        <li data-en="&lt;strong&gt;How a modem works&lt;/strong&gt;&lt;span&gt;Understanding how an LTE modem is controlled with AT commands and what its answers mean.&lt;/span&gt;"><strong>Wie ein Modem funktioniert</strong><span>Verstehen, wie ein LTE-Modem mit AT-Befehlen gesteuert wird und was seine Antworten bedeuten.</span></li>
+        <li data-en="&lt;strong&gt;A complete product&lt;/strong&gt;&lt;span&gt;Hardware, firmware and an app that fit together, from a real problem to a working solution.&lt;/span&gt;"><strong>Ein ganzes Produkt</strong><span>Hardware, Firmware und App, die zusammenpassen, von einem echten Problem bis zur funktionierenden Lösung.</span></li>
+        <li data-en="&lt;strong&gt;Building with AI&lt;/strong&gt;&lt;span&gt;Describing requirements precisely, testing on real hardware and giving clear feedback until the result works.&lt;/span&gt;"><strong>Mit KI bauen</strong><span>Anforderungen genau beschreiben, an der echten Hardware testen und klare Rückmeldungen geben, bis das Ergebnis funktioniert.</span></li>
+        <li data-en="&lt;strong&gt;Clean repositories&lt;/strong&gt;&lt;span&gt;Keeping personal data like phone numbers and the SIM PIN out of the public code, and building releases automatically.&lt;/span&gt;"><strong>Saubere Repositories</strong><span>Persönliche Daten wie Telefonnummern und SIM-PIN aus dem öffentlichen Code halten und Releases automatisch bauen.</span></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="s5">
+      <h2 id="s5" data-en="Code">Code</h2>
+      <p data-en="Firmware, app and the list of all SMS commands are on GitHub: &lt;a href='https://github.com/Lukas0923xcv/esp32'&gt;esp32&lt;/a&gt;">Firmware, App und die Liste aller SMS-Befehle sind auf GitHub: <a href="https://github.com/Lukas0923xcv/esp32">esp32</a></p>
+    </section>
+
+    <nav class="next" aria-label="Weitere Projekte">
+      <a href="passkey.html"><small data-en="Previous project">Vorheriges Projekt</small><span data-en="Passkey login for pfSense">Passkey-Login für pfSense</span></a>
+      <a class="right" href="homelab.html"><small data-en="Next project">Nächstes Projekt</small><span data-en="My homelab">Mein Homelab</span></a>
+    </nav>
+  </div>
+
+</main>
+</div>
+<footer>
+  <div class="page"><a class="to-top" href="#top" data-en="Back to top">Nach oben</a><span data-en="This site runs on my own server, in the DMZ of my homelab.">Diese Seite läuft auf meinem eigenen Server, in der DMZ meines Homelabs.</span></div>
+</footer>
+</body>
+</html>
