@@ -7,7 +7,7 @@ Läuft auf einem nginx-LXC in der DMZ meines Homelabs, hinter Nginx Proxy Manage
 
 - `index.html` – Startseite
 - `projekte/` – eine Seite pro Projekt
-- `assets/` – CSS, JavaScript und Bilder. Die Schriften Geist und Geist Mono kommen von Google Fonts.
+- `assets/` – CSS, JavaScript, Bilder und die Schrift Archivo (SIL Open Font License, siehe `assets/fonts/OFL-Archivo.txt`)
 
 ## Auf dem Server aktualisieren
 
