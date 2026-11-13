@@ -1,0 +1,22 @@
+{
+  "base_url": "https://server-lukas.com",
+  "name": "Lukas Dalloz",
+  "email_user": "lukas.dalloz",
+  "email_domain": "proton.me",
+  "github": "https://github.com/Lukas0923xcv",
+
+  "_comment_optional": "Leave a field empty and the page leaves that line out. Fill it in and rebuild.",
+  "looking_for_de": "",
+  "looking_for_en": "",
+  "geoguessr_detail_de": "",
+  "geoguessr_detail_en": "",
+  "google_site_verification": "",
+  "bing_site_verification": "",
+
+  "changelog": [
+    { "date": "2026-11-09", "de": "Startseite mit den Links zu allen Tools neu gestaltet.", "en": "Redesigned the start page that links all my tools." },
+    { "date": "2026-11-06", "de": "Isoliertes Netz für Testmaschinen eingerichtet.", "en": "Added an isolated network for test machines." },
+    { "date": "2026-11-03", "de": "CrowdSec auf dem Reverse Proxy und Diun-Mails für neue Container-Images.", "en": "CrowdSec on the reverse proxy, and Diun e-mails for new container images." },
+    { "date": "2026-10-30", "de": "Zwei Apps in die DMZ verschoben, Konfigurations-Backups und E-Mail-Alarme eingerichtet.", "en": "Moved two apps into the DMZ, set up config backups and e-mail alerts." }
+  ]
+}

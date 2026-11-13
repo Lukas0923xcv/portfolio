@@ -1,0 +1,183 @@
+<!--meta
+{
+ "type": "home",
+ "slug": "index",
+ "title_de": "Lukas Dalloz, Informatiker EFZ in Ausbildung",
+ "title_en": "Lukas Dalloz, apprentice IT specialist",
+ "desc_de": "Lukas Dalloz macht seine Lehre als Informatiker EFZ, Fachrichtung Plattformentwicklung, arbeitet im Netzwerkbereich und betreibt ein eigenes Homelab.",
+ "desc_en": "Lukas Dalloz is an apprentice IT specialist (Informatiker EFZ, platform development) who works in networking and runs his own homelab.",
+ "og_de": "Netzwerke, Server, Betrieb.",
+ "og_en": "Networks, servers, operations."
+}
+-->
+
+  <section class="hero" aria-label="Intro">
+    <h1 data-en="Networks,&lt;br&gt;servers,&lt;br&gt;operations.">Netzwerke,<br>Server,<br>Betrieb.</h1>
+    <p class="who"><strong>Lukas Dalloz</strong><br><span data-en="Apprentice Informatiker EFZ in platform development at the Technische Fachschule Bern.">Informatiker EFZ in Ausbildung, Fachrichtung Plattformentwicklung, an der Technischen Fachschule Bern.</span></p>
+    <div class="side">
+      <p data-en="I work in networking. At home I run a small data centre where I try what my training doesn't cover.">Ich arbeite im Netzwerkbereich. Zu Hause betreibe ich ein kleines Rechenzentrum und probiere dort aus, was in der Ausbildung nicht vorkommt.</p>
+      <p class="links"><a class="btn" href="#projects" data-en="View projects">Projekte ansehen</a><a href="https://github.com/Lukas0923xcv">GitHub</a></p>
+    </div>
+    <div class="lab">
+      <p class="lab-status"><span class="tag live" data-status-live>Lab</span> <span data-status="summary" data-en="1 server, 3 network zones, 13 services, backups leave the house every week">1 Server, 3 Netzzonen, 13 Dienste, Backups verlassen jede Woche das Haus</span></p>
+      <p class="lab-now"><!--latest-change--></p>
+    </div>
+  </section>
+
+  <section class="row wide" id="projects" aria-labelledby="projects-h">
+    <h2 class="label" id="projects-h"><span data-en="Projects">Projekte</span></h2>
+    <div class="content">
+      <ol class="work">
+        <li class="card">
+          <div class="thumb shot-passkey"><img src="assets/img/passkey-login.webp" alt="Passkey-Schritt nach dem Login auf der pfSense-Firewall, rechts bietet der Browser den gespeicherten Passkey an" data-alt-en="Passkey step after signing in to the pfSense firewall, with the browser offering the saved passkey on the right" data-sizes="(max-width: 820px) 100vw, 640px" data-priority></div>
+          <div class="txt">
+            <span class="tag live" data-en="v1.0.1, in use">v1.0.1, im Einsatz</span>
+            <h3><a href="projekte/passkey.html" data-en="Passkey login for pfSense">Passkey-Login für pfSense</a></h3>
+            <div class="kind" data-en="Open source add-on, built with AI, October 2026">Open-Source-Add-on, mit KI gebaut, Oktober 2026</div>
+            <p data-en="A second factor for the pfSense web interface: after the password, a passkey.">Ein zweiter Faktor für das Web-Interface von pfSense: nach dem Passwort ein Passkey.</p>
+            <p class="outcome" data-en="Protecting the login on my own firewall since October 2026.">Schützt seit Oktober 2026 den Login auf meiner eigenen Firewall.</p>
+            <p class="tech">PHP, JavaScript, WebAuthn</p>
+            <p class="card-links"><span class="go" aria-hidden="true" data-en="Read case study">Zum Projekt</span><a class="repo" href="https://github.com/Lukas0923xcv/web-auth-pfsense" data-en="Code on GitHub">Code auf GitHub</a></p>
+          </div>
+        </li>
+        <li class="card">
+          <div class="thumb phone"><img src="assets/img/netzwaechter-app.webp" alt="Netzwächter-App auf einem Android-Handy" data-alt-en="Netzwächter app on an Android phone" data-sizes="(max-width: 820px) 100vw, 340px"></div>
+          <div class="txt">
+            <span class="tag live" data-en="App v1.5.0, working">App v1.5.0, läuft</span>
+            <h3><a href="projekte/netzwaechter.html">Netzwächter</a></h3>
+            <div class="kind" data-en="Hardware, plus firmware and app built with AI, autumn 2026">Hardware, dazu Firmware und App mit KI gebaut, Herbst 2026</div>
+            <p data-en="An LTE device that sends an SMS when the power goes out. I built it after my grandparents' freezer failed while they were on holiday.">Ein LTE-Gerät, das per SMS meldet, wenn der Strom ausfällt. Entstanden, nachdem bei meinen Grosseltern während der Ferien die Kühltruhe ausgefallen war.</p>
+            <p class="outcome" data-en="A power cut now reaches a phone by SMS, even when nobody is home.">Ein Stromausfall erreicht jetzt per SMS ein Handy, auch wenn niemand zu Hause ist.</p>
+            <p class="tech">ESP32, LTE, Flutter, Bluetooth</p>
+            <p class="card-links"><span class="go" aria-hidden="true" data-en="Read case study">Zum Projekt</span><a class="repo" href="https://github.com/Lukas0923xcv/esp32" data-en="Code on GitHub">Code auf GitHub</a></p>
+          </div>
+        </li>
+        <li class="card">
+          <div class="thumb shot-wide"><img src="assets/img/homelab-startseite.webp" alt="Startseite meines Homelabs mit allen Diensten" data-alt-en="Start page of my homelab with all services" data-sizes="(max-width: 820px) 100vw, 720px"></div>
+          <div class="txt">
+            <span class="tag live" data-en="Running daily">Täglich in Betrieb</span>
+            <h3><a href="projekte/homelab.html" data-en="My homelab">Mein Homelab</a></h3>
+            <div class="kind" data-en="Personal project, since 2025">Privatprojekt, seit 2025</div>
+            <p data-en="A Proxmox server I run like a small company network: three network zones, single sign-on, automated updates and off-site backups.">Ein Proxmox-Server, den ich wie ein kleines Firmennetz betreibe: drei Netzzonen, Single Sign-on, automatische Updates und Backups ausser Haus.</p>
+            <p class="outcome" data-en="My family and friends use its services every day.">Meine Familie und Freunde nutzen die Dienste darauf täglich.</p>
+            <p class="tech">Proxmox, pfSense, TrueNAS, Docker, Ansible</p>
+            <p class="card-links"><span class="go" aria-hidden="true" data-en="Read case study">Zum Projekt</span></p>
+          </div>
+        </li>
+        <li class="card">
+          <div class="thumb drawn" aria-hidden="true"><div class="chat"><span data-en="Is the server running?">Läuft der Server?</span><span class="me" data-en="Yes, and encrypted.">Ja, und verschlüsselt.</span><span data-en="Nice!">Super!</span></div></div>
+          <div class="txt">
+            <span class="tag" data-en="Completed">Abgeschlossen</span>
+            <h3><a href="projekte/messenger.html" data-en="Self-hosted messenger">Eigener Messenger</a></h3>
+            <div class="kind" data-en="School project, module 306">Schulprojekt, Modul 306</div>
+            <p data-en="My own chat server with Matrix Synapse and Element, from planning and the test concept to the finished project.">Ein eigener Chat-Server mit Matrix Synapse und Element, von der Planung über das Testkonzept bis zum Abschluss.</p>
+            <p class="outcome" data-en="Finished with documentation, a test concept and a test report.">Abgeschlossen mit Dokumentation, Testkonzept und Testprotokoll.</p>
+            <p class="tech">Matrix Synapse, Element, Docker</p>
+            <p class="card-links"><span class="go" aria-hidden="true" data-en="Read case study">Zum Projekt</span></p>
+          </div>
+        </li>
+      </ol>
+      <div class="also">
+        <span class="tag" data-en="Apprenticeship">Lehre</span>
+        <h3 data-en="High-availability pfSense cluster">Hochverfügbarer pfSense-Cluster</h3>
+        <p data-en="In my apprenticeship I look after a pair of pfSense firewalls with CARP: if one fails, the other takes over. Because it is the school's network, I only describe it briefly here.">In der Ausbildung betreue ich zwei pfSense-Firewalls mit CARP: Fällt eine aus, übernimmt die andere. Weil es das Netz der Schule ist, beschreibe ich es hier nur kurz.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="row" id="about" aria-labelledby="about-h">
+    <h2 class="label" id="about-h"><span data-en="About me">Über mich</span></h2>
+    <div class="content about">
+      <div class="prose">
+        <p data-en="I'm doing my apprenticeship as an Informatiker EFZ in platform development at the Technische Fachschule Bern, class INF2025, where both school and practical training take place. In the practical part I mostly work on networks, including a high-availability pfSense firewall cluster.">Ich mache meine Lehre als Informatiker EFZ, Fachrichtung Plattformentwicklung, an der Technischen Fachschule Bern, Klasse INF2025. Dort finden Schule und Praxis statt. In der Praxis arbeite ich vor allem im Netzwerk, unter anderem an einem hochverfügbaren pfSense-Firewall-Cluster.</p>
+        <p data-en="Since 2025 I've run a homelab at home. Most of what I know about running services, I learned by breaking it and fixing it again.">Seit 2025 betreibe ich zu Hause ein Homelab. Das meiste, was ich über den Betrieb von Diensten weiss, habe ich gelernt, indem ich es kaputt gemacht und wieder repariert habe.</p>
+        <p data-en="I'm not an application developer. When a project needs code, I write it with AI. I decide what the solution has to do, check and test the result, and run it myself.">Ich bin kein Applikationsentwickler. Braucht ein Projekt Code, schreibe ich ihn mit KI. Ich lege fest, was die Lösung können muss, prüfe und teste das Ergebnis und betreibe es selbst.</p>
+      </div>
+      <dl class="facts">
+        <div><dt data-en="Based in">Wohnort</dt><dd data-en="Switzerland">Schweiz</dd></div>
+        <div><dt data-en="Apprenticeship">Lehre</dt><dd data-en="Informatiker EFZ, platform development">Informatiker EFZ, Plattformentwicklung</dd></div>
+        <div><dt data-en="Training company and school">Lehrbetrieb und Schule</dt><dd>Technische Fachschule Bern</dd></div>
+        <div><dt data-en="Class">Klasse</dt><dd>INF2025</dd></div>
+        <div><dt data-en="Expected to finish">Abschluss</dt><dd data-en="2029">voraussichtlich 2029</dd></div>
+        <div><dt data-en="Languages">Sprachen</dt><dd data-en="German, English">Deutsch, Englisch</dd></div>
+        <div><dt data-en="CV">Lebenslauf</dt><dd><a href="/cv/lebenslauf-lukas-dalloz.pdf" hreflang="de" data-en="German (PDF)">Deutsch (PDF)</a>, <a href="/cv/cv-lukas-dalloz-en.pdf" hreflang="en" data-en="English (PDF)">Englisch (PDF)</a></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="row" id="skills" aria-labelledby="skills-h">
+    <h2 class="label" id="skills-h"><span data-en="What I work with">Womit ich arbeite</span></h2>
+    <div class="content">
+      <p class="intro-line" data-en="My focus is the infrastructure underneath: networks, servers, security and keeping everything running. Code is a tool I use with AI when a project needs it.">Mein Schwerpunkt ist die Infrastruktur darunter: Netzwerk, Server, Sicherheit und der zuverlässige Betrieb. Code ist für mich ein Werkzeug, das ich mit KI einsetze, wenn ein Projekt ihn braucht.</p>
+      <p class="skills-key" data-en="Each tool says where I use it: in my apprenticeship, in my homelab or in a project.">Bei jedem Werkzeug steht, wo ich es einsetze: in der Lehre, im Homelab oder in einem Projekt.</p>
+      <div class="skills">
+        <div><h3 data-en="Networking">Netzwerk</h3>
+          <ul>
+            <li><span class="tool" data-en="pfSense and pfSense Plus">pfSense und pfSense Plus</span><span class="use" data-en="Firewall at home, cluster in my apprenticeship">Firewall zu Hause, Cluster in der Lehre</span><span class="src" data-en="Apprenticeship, homelab">Lehre, Homelab</span></li>
+            <li><span class="tool" data-en="CARP high availability">CARP-Hochverfügbarkeit</span><span class="use" data-en="Two firewalls that stand in for each other">Zwei Firewalls, die sich gegenseitig ersetzen</span><span class="src" data-en="Apprenticeship">Lehre</span></li>
+            <li><span class="tool">VLANs</span><span class="use" data-en="Keeping networks apart">Netze voneinander trennen</span><span class="src" data-en="Apprenticeship, homelab">Lehre, Homelab</span></li>
+            <li><span class="tool" data-en="NAT and firewall rules">NAT und Firewall-Regeln</span><span class="use" data-en="Deciding what may go in and out">Festlegen, was rein und raus darf</span><span class="src" data-en="Apprenticeship, homelab">Lehre, Homelab</span></li>
+            <li><span class="tool">DNS</span><span class="use" data-en="Names for my services on my own domain">Namen für meine Dienste auf meiner Domain</span><span class="src">Homelab</span></li>
+          </ul></div>
+        <div><h3>Server</h3>
+          <ul>
+            <li><span class="tool">Proxmox VE</span><span class="use" data-en="Hypervisor for every VM and container">Hypervisor für alle VMs und Container</span><span class="src">Homelab</span></li>
+            <li><span class="tool">Linux</span><span class="use" data-en="On almost every machine in the lab">Auf fast jeder Maschine im Lab</span><span class="src">Homelab</span></li>
+            <li><span class="tool" data-en="Docker and LXC">Docker und LXC</span><span class="use" data-en="The public apps and the chat server">Die öffentlichen Apps und der Chat-Server</span><span class="src" data-en="Homelab, project">Homelab, Projekt</span></li>
+            <li><span class="tool" data-en="TrueNAS and ZFS">TrueNAS und ZFS</span><span class="use" data-en="Four disks in RAIDZ1 with snapshots">Vier Disks im RAIDZ1 mit Snapshots</span><span class="src">Homelab</span></li>
+          </ul></div>
+        <div><h3 data-en="Security">Sicherheit</h3>
+          <ul>
+            <li><span class="tool">Authentik</span><span class="use" data-en="Single sign-on in front of every web app">Single Sign-on vor jeder Web-App</span><span class="src">Homelab</span></li>
+            <li><span class="tool">Cloudflare Zero Trust</span><span class="use" data-en="Admin access through tunnels with multi-factor login">Admin-Zugriff über Tunnels mit Mehrfaktor-Login</span><span class="src">Homelab</span></li>
+            <li><span class="tool">CrowdSec</span><span class="use" data-en="Reads the proxy logs and blocks attackers">Liest die Logs des Proxys und sperrt Angreifer</span><span class="src">Homelab</span></li>
+            <li><span class="tool">Passkeys (WebAuthn)</span><span class="use" data-en="Second factor I added to pfSense">Zweiter Faktor, den ich in pfSense nachgerüstet habe</span><span class="src" data-en="Project">Projekt</span></li>
+          </ul></div>
+        <div><h3 data-en="Operations">Betrieb</h3>
+          <ul>
+            <li><span class="tool" data-en="Ansible and Semaphore">Ansible und Semaphore</span><span class="use" data-en="Updates for the whole lab">Updates für das ganze Lab</span><span class="src">Homelab</span></li>
+            <li><span class="tool">Netbox</span><span class="use" data-en="Inventory of every machine and IP address">Inventar aller Maschinen und IP-Adressen</span><span class="src">Homelab</span></li>
+            <li><span class="tool">Pulse</span><span class="use" data-en="Watches every machine and sends alerts">Überwacht jede Maschine und schickt Alarme</span><span class="src">Homelab</span></li>
+            <li><span class="tool" data-en="Writing documentation">Dokumentation schreiben</span><span class="use" data-en="For every project and every recovery step">Für jedes Projekt und jeden Wiederherstellungsschritt</span><span class="src" data-en="Apprenticeship, homelab">Lehre, Homelab</span></li>
+          </ul></div>
+        <div><h3 data-en="Code, with AI">Code, mit KI</h3>
+          <ul>
+            <li><span class="tool">PHP</span><span class="use" data-en="The passkey add-on for pfSense">Das Passkey-Add-on für pfSense</span><span class="src" data-en="Project">Projekt</span></li>
+            <li><span class="tool">C++ (Arduino)</span><span class="use" data-en="The Netzwächter firmware">Die Firmware des Netzwächters</span><span class="src" data-en="Project">Projekt</span></li>
+            <li><span class="tool">Flutter (Dart)</span><span class="use" data-en="The Netzwächter Android app">Die Android-App des Netzwächters</span><span class="src" data-en="Project">Projekt</span></li>
+            <li><span class="tool" data-en="HTML and CSS">HTML und CSS</span><span class="use" data-en="This website and my homelab start page">Diese Website und die Startseite meines Homelabs</span><span class="src" data-en="Project">Projekt</span></li>
+          </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="row" id="path" aria-labelledby="path-h">
+    <h2 class="label" id="path-h"><span data-en="So far">Werdegang</span></h2>
+    <div class="content">
+      <ol class="steps">
+        <li><span class="when">2025</span><div><h3 data-en="Started my apprenticeship">Lehre begonnen</h3><p data-en="Informatiker EFZ in platform development at the Technische Fachschule Bern, class INF2025.">Informatiker EFZ, Fachrichtung Plattformentwicklung, an der Technischen Fachschule Bern, Klasse INF2025.</p></div></li>
+        <li><span class="when">2025</span><div><h3 data-en="Built my homelab">Homelab aufgebaut</h3><p data-en="My own Proxmox server at home, which now runs most of my projects.">Mein eigener Proxmox-Server zu Hause, auf dem heute die meisten meiner Projekte laufen.</p></div></li>
+        <li><span class="when" data-en="Oct 2026">Okt. 2026</span><div><h3 data-en="Published the passkey add-on">Passkey-Add-on veröffentlicht</h3><p data-en="My first open source project for pfSense. I wrote the code with AI.">Mein erstes Open-Source-Projekt für pfSense, den Code habe ich mit KI geschrieben.</p></div></li>
+        <li><span class="when" data-en="Autumn 2026">Herbst 2026</span><div><h3 data-en="Built the Netzwächter">Netzwächter gebaut</h3><p data-en="Hardware, firmware and Android app in one project. I wrote the code with AI.">Hardware, Firmware und Android-App in einem Projekt, den Code habe ich mit KI geschrieben.</p></div></li>
+        <li><span class="when" data-en="Today">Heute</span><div><h3 data-en="In my apprenticeship, focused on networking">In der Lehre, mit Schwerpunkt Netzwerk</h3><p data-en="At the Technische Fachschule Bern I look after a high-availability firewall cluster.">An der Technischen Fachschule Bern betreue ich einen hochverfügbaren Firewall-Cluster.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="row" id="personal" aria-labelledby="personal-h">
+    <h2 class="label" id="personal-h"><span data-en="Outside of IT">Freizeit</span></h2>
+    <div class="content">
+      <p data-en="In my free time I like playing GeoGuessr. I'm interested in geography and the world, and every round shows me new countries, roads and landscapes. Mostly I play duos and classic 25k games.">In meiner Freizeit spiele ich gerne GeoGuessr. Mich interessieren Geografie und die Welt, und jede Runde zeigt mir neue Länder, Strassen und Landschaften. Meistens spiele ich Duos und klassische 25k-Runden.</p>
+      <!--opt:geoguessr_detail-->
+    </div>
+  </section>
+
+  <section class="row contact" id="contact" aria-labelledby="contact-h">
+    <h2 class="label" id="contact-h"><span data-en="Contact">Kontakt</span></h2>
+    <div class="content">
+      <p data-en="If you have a question about one of my projects, or an apprenticeship or job I might fit, write me an e-mail.">Haben Sie eine Frage zu einem Projekt oder eine Stelle, auf die ich passen könnte? Schreiben Sie mir eine E-Mail.</p>
+      <!--opt:looking_for-->
+      <!--mail:big-->
+      <p class="more"><!--mail:btn--><a href="https://github.com/Lukas0923xcv">GitHub</a><a href="/cv/lebenslauf-lukas-dalloz.pdf" data-en="CV (PDF)">Lebenslauf (PDF)</a></p>
+    </div>
+  </section>

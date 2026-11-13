@@ -1,44 +1,19 @@
-<!DOCTYPE html>
-<html lang="de" data-title-en="My homelab, Lukas Dalloz" data-desc-en="A Proxmox server run like a small company network: three network zones, single sign-on, automated updates and off-site backups.">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mein Homelab, Lukas Dalloz</title>
-<meta name="description" content="Ein Proxmox-Server, betrieben wie ein kleines Firmennetz: drei Netzzonen, Single Sign-on, automatische Updates und Backups ausser Haus.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Mein Homelab, Lukas Dalloz">
-<meta property="og:description" content="Ein Proxmox-Server, betrieben wie ein kleines Firmennetz: drei Netzzonen, Single Sign-on, automatische Updates und Backups ausser Haus.">
-<meta property="og:locale" content="de_CH">
-<meta property="og:locale:alternate" content="en_GB">
-<meta name="theme-color" content="#141413">
-<meta name="color-scheme" content="dark">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23F5C518'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='%23141413' text-anchor='middle'%3ELD%3C/text%3E%3C/svg%3E">
-<link rel="preload" href="../assets/fonts/archivo-variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/style.css">
-<script src="../assets/site.js" defer></script>
-</head>
-<body>
-<a class="skip" href="#main" data-en="Skip to content">Zum Inhalt springen</a>
-<div class="bar" id="bar">
-  <div class="page"><header class="top">
-    <a class="brand" href="../index.html">Lukas Dalloz</a>
-    <div class="right">
-      <nav aria-label="Navigation">
-        <a href="../index.html#projects" data-en="Projects">Projekte</a>
-        <a href="../index.html#about" data-en="About me">Über mich</a>
-        <a href="../index.html#contact" data-en="Contact">Kontakt</a>
-      </nav>
-      <div class="lang" role="group" aria-label="Sprache / Language">
-        <button data-lang="de" aria-pressed="true" lang="de" title="Deutsch">DE</button>
-        <button data-lang="en" aria-pressed="false" lang="en" title="English">EN</button>
-      </div>
-    </div>
-  </header></div>
-</div>
-<div class="page" id="top">
-<main id="main">
+<!--meta
+{
+ "title_de": "Mein Homelab, Lukas Dalloz",
+ "title_en": "My homelab, Lukas Dalloz",
+ "desc_de": "Ein Proxmox-Server, betrieben wie ein kleines Firmennetz: drei Netzzonen, Single Sign-on, automatische Updates und Backups ausser Haus.",
+ "desc_en": "A Proxmox server run like a small company network: three network zones, single sign-on, automated updates and off-site backups.",
+ "type": "project",
+ "slug": "homelab",
+ "order": 3,
+ "short_de": "Mein Homelab",
+ "short_en": "My homelab",
+ "schema": "CreativeWork",
+ "toc": true
+}
+-->
 
-  <p class="crumb"><a href="../index.html#projects" data-en="All projects">Alle Projekte</a></p>
 
   <div class="case-hero">
     <h1 data-en="My homelab">Mein Homelab</h1>
@@ -84,30 +59,44 @@
           </div>
           <figure class="figure">
             <div class="net">
-              <p class="net-hint" data-en="Pick a part of the network to see what it does.">Wähle einen Teil des Netzwerks, um zu sehen, was er macht.</p>
-              <button class="box" data-node="internet">Internet</button>
+              <p class="net-hint" id="net-hint" data-en="Pick a part of the network to see what it does.">Wählen Sie einen Teil des Netzwerks, um zu sehen, was er macht.</p>
+              <div role="radiogroup" aria-labelledby="net-hint">
+              <button type="button" class="box" role="radio" aria-checked="false" data-node="internet">Internet</button>
               <div class="line"></div>
-              <button class="box" data-node="router" data-en="ISP router">Router des Providers</button>
+              <button type="button" class="box" role="radio" aria-checked="false" data-node="router" data-en="ISP router">Router des Providers</button>
               <div class="line"></div>
-              <button class="box" data-node="fw" data-en="pfSense firewall">pfSense-Firewall</button>
+              <button type="button" class="box" role="radio" aria-checked="false" data-node="fw" data-en="pfSense firewall">pfSense-Firewall</button>
               <div class="line"></div>
               <div class="fan"></div>
               <div class="zones">
-                <button class="box" data-node="lab" data-en="Lab<small>internal services</small>">Lab<small>interne Dienste</small></button>
-                <button class="box" data-node="dmz" data-en="DMZ<small>proxy and public apps</small>">DMZ<small>Proxy und öffentliche Apps</small></button>
-                <button class="box" data-node="iso" data-en="Isolated<small>test machines</small>">Isoliert<small>Testmaschinen</small></button>
+                <button type="button" class="box" role="radio" aria-checked="false" data-node="lab" data-en="Lab&lt;small&gt;internal services&lt;/small&gt;">Lab<small>interne Dienste</small></button>
+                <button type="button" class="box" role="radio" aria-checked="true" data-node="dmz" data-en="DMZ&lt;small&gt;proxy and public apps&lt;/small&gt;">DMZ<small>Proxy und öffentliche Apps</small></button>
+                <button type="button" class="box" role="radio" aria-checked="false" data-node="iso" data-en="Isolated&lt;small&gt;test machines&lt;/small&gt;">Isoliert<small>Testmaschinen</small></button>
               </div>
-              <div class="net-info" id="net-info" aria-live="polite"><h4></h4><p></p></div>
+              </div>
+              <div class="net-info" id="net-info" aria-live="polite"><h4>DMZ</h4><p data-en="Where public services live: the reverse proxy with single sign-on, the web apps behind it and the Minecraft server. The DMZ is cut off from the other networks.">Hier laufen die öffentlichen Dienste: der Reverse Proxy mit Single Sign-on, die Web-Apps dahinter und der Minecraft-Server. Die DMZ ist von den anderen Netzen abgeschnitten.</p></div>
             </div>
+            <details class="as-text">
+              <summary data-en="Read the diagram as text">Diagramm als Text lesen</summary>
+              <dl class="net-desc">
+                <div data-node="internet"><dt>Internet</dt><dd data-en="Visitors only ever reach the reverse proxy and the game server. Everything else stays closed from the outside.">Besucher erreichen nur den Reverse Proxy und den Game-Server. Alles andere bleibt von aussen zu.</dd></div>
+                <div data-node="router"><dt data-en="ISP router">Router des Providers</dt><dd data-en="The router hands incoming traffic straight to the firewall, so all filtering happens in one place.">Der Router gibt eingehenden Verkehr direkt an die Firewall weiter, so wird alles an einem Ort gefiltert.</dd></div>
+                <div data-node="fw"><dt data-en="pfSense firewall">pfSense-Firewall</dt><dd data-en="Routes and filters between all zones. Blocklists and country filters run first, and logging in to the firewall needs a passkey on top of the password.">Routet und filtert zwischen allen Zonen. Blocklisten und Länderfilter greifen zuerst, und der Login auf die Firewall braucht zusätzlich zum Passwort einen Passkey.</dd></div>
+                <div data-node="lab"><dt>Lab</dt><dd data-en="Internal services like the inventory, monitoring and automation. Nothing here is reachable from the internet. Admin access goes through Cloudflare Tunnels with multi-factor login.">Interne Dienste wie Inventar, Monitoring und Automatisierung. Nichts davon ist aus dem Internet erreichbar. Admin-Zugriff läuft über Cloudflare Tunnels mit Mehrfaktor-Login.</dd></div>
+                <div data-node="dmz"><dt>DMZ</dt><dd data-en="Where public services live: the reverse proxy with single sign-on, the web apps behind it and the Minecraft server. The DMZ is cut off from the other networks.">Hier laufen die öffentlichen Dienste: der Reverse Proxy mit Single Sign-on, die Web-Apps dahinter und der Minecraft-Server. Die DMZ ist von den anderen Netzen abgeschnitten.</dd></div>
+                <div data-node="iso"><dt data-en="Isolated">Isoliert</dt><dd data-en="A sandbox for test machines. It has internet access but can&#39;t talk to anything else in the lab.">Eine Sandbox für Testmaschinen. Sie hat Internetzugang, kann aber mit nichts anderem im Lab sprechen.</dd></div>
+              </dl>
+            </details>
           </figure>
         </div>
       </div>
 
-      <div class="panel" id="p-svc" role="tabpanel" aria-labelledby="t-svc" hidden>
+      <div class="panel" id="p-svc" role="tabpanel" aria-labelledby="t-svc">
         <div class="split">
           <div class="text">
             <p data-en="These are the things people actually use. Everything that's reachable from outside sits behind the same reverse proxy and login, and the admin tools are only reachable for me, through Cloudflare.">Das sind die Dienste, die tatsächlich genutzt werden. Alles, was von aussen erreichbar ist, läuft hinter demselben Reverse Proxy und Login. Die Admin-Tools erreiche nur ich, über Cloudflare.</p>
             <div class="stack">Docker, LXC, Nginx Proxy Manager, Crafty Controller, immich</div>
+            <p class="live-line" data-status="minecraft" hidden></p>
           </div>
           <figure class="figure">
             <div class="services">
@@ -123,7 +112,7 @@
         </div>
       </div>
 
-      <div class="panel" id="p-sec" role="tabpanel" aria-labelledby="t-sec" hidden>
+      <div class="panel" id="p-sec" role="tabpanel" aria-labelledby="t-sec">
         <div class="split">
           <div class="text">
             <p data-en="A request from the internet has to pass several checks before it reaches one of my apps. Each layer catches something different, so one mistake in one place doesn't open everything.">Eine Anfrage aus dem Internet muss mehrere Prüfungen bestehen, bevor sie eine meiner Apps erreicht. Jede Schicht fängt etwas anderes ab, ein Fehler an einer Stelle öffnet also nicht gleich alles.</p>
@@ -135,7 +124,7 @@
               <li data-en="<strong>Blocklists and country filter</strong><span>pfSense drops known bad addresses and traffic from outside the allowed countries.</span>"><strong>Blocklisten und Länderfilter</strong><span>pfSense verwirft bekannte schädliche Adressen und Verkehr aus nicht erlaubten Ländern.</span></li>
               <li data-en="<strong>Attack detection</strong><span>CrowdSec reads the proxy's logs and bans IPs that scan or attack.</span>"><strong>Angriffserkennung</strong><span>CrowdSec liest die Logs des Proxys und sperrt IPs, die scannen oder angreifen.</span></li>
               <li data-en="<strong>Reverse proxy</strong><span>Nginx Proxy Manager handles HTTPS and picks the right app.</span>"><strong>Reverse Proxy</strong><span>Nginx Proxy Manager übernimmt HTTPS und wählt die richtige App.</span></li>
-              <li data-en="<strong>Login</strong><span>Authentik asks who you are before the app sees the request.</span>"><strong>Login</strong><span>Authentik fragt, wer du bist, bevor die App die Anfrage sieht.</span></li>
+              <li data-en="<strong>Login</strong><span>Authentik asks who you are before the app sees the request.</span>"><strong>Login</strong><span>Authentik fragt, wer Sie sind, bevor die App die Anfrage sieht.</span></li>
               <li class="stop" data-en="<strong>The app</strong><span>Only now does the request reach the service itself.</span>"><strong>Die App</strong><span>Erst jetzt erreicht die Anfrage den Dienst selbst.</span></li>
             </ol>
             <figcaption data-en="The path of a request from the internet to an app.">Der Weg einer Anfrage vom Internet bis zur App.</figcaption>
@@ -143,7 +132,7 @@
         </div>
       </div>
 
-      <div class="panel" id="p-ops" role="tabpanel" aria-labelledby="t-ops" hidden>
+      <div class="panel" id="p-ops" role="tabpanel" aria-labelledby="t-ops">
         <div class="split">
           <div class="text">
             <ul class="plain">
@@ -152,6 +141,8 @@
               <li data-en="<strong>Inventory.</strong> Netbox lists every machine and IP address, synced from Proxmox automatically."><strong>Inventar.</strong> Netbox führt alle Maschinen und IP-Adressen, automatisch aus Proxmox synchronisiert.</li>
               <li data-en="<strong>Documentation.</strong> A full write-up of the lab, with the decisions behind it and a recovery guide for when something breaks."><strong>Dokumentation.</strong> Eine vollständige Beschreibung des Labs, mit den Entscheidungen dahinter und einer Anleitung für den Notfall.</li>
             </ul>
+            <p class="live-line" data-status="backup" hidden></p>
+            <p class="live-line" data-status="updates" hidden></p>
           </div>
           <figure class="figure">
             <ol class="flow">
@@ -195,29 +186,18 @@
       </ul>
     </section>
 
+    <section>
+      <h2 data-en="What I&#39;d do differently">Was ich anders machen würde</h2>
+      <p data-en="I would plan the DMZ from the start. At first everything ran through Cloudflare Tunnels, and I had to rebuild that later for the photo library.">Die DMZ würde ich von Anfang an einplanen. Zuerst lief alles über Cloudflare Tunnels, und für die Fotobibliothek musste ich das später umbauen.</p>
+    </section>
+
     <section aria-labelledby="s5">
       <div class="prose changelog">
         <h2 id="s5" data-en="Recent changes">Zuletzt geändert</h2>
         <p data-en="The lab is never finished. These are the latest changes, newest first.">Das Lab ist nie fertig. Das sind die letzten Änderungen, die neuste zuoberst.</p>
-        <ol>
-          <li><time datetime="2026-11-09" data-en="9 Nov 2026">9. Nov. 2026</time><span data-en="Redesigned the start page that links all my tools.">Startseite mit den Links zu allen Tools neu gestaltet.</span></li>
-          <li><time datetime="2026-11-06" data-en="6 Nov 2026">6. Nov. 2026</time><span data-en="Added an isolated network for test machines.">Isoliertes Netz für Testmaschinen eingerichtet.</span></li>
-          <li><time datetime="2026-11-03" data-en="3 Nov 2026">3. Nov. 2026</time><span data-en="CrowdSec on the reverse proxy, and Diun e-mails for new container images.">CrowdSec auf dem Reverse Proxy und Diun-Mails für neue Container-Images.</span></li>
-          <li><time datetime="2026-10-30" data-en="30 Oct 2026">30. Okt. 2026</time><span data-en="Moved two apps into the DMZ, set up config backups and e-mail alerts.">Zwei Apps in die DMZ verschoben, Konfigurations-Backups und E-Mail-Alarme eingerichtet.</span></li>
-        </ol>
+        <!--changelog-->
       </div>
     </section>
 
-    <nav class="next" aria-label="Weitere Projekte">
-      <a href="netzwaechter.html"><small data-en="Previous project">Vorheriges Projekt</small>Netzwächter</a>
-      <a class="right" href="messenger.html"><small data-en="Next project">Nächstes Projekt</small><span data-en="Self-hosted messenger">Eigener Messenger</span></a>
-    </nav>
   </div>
 
-</main>
-</div>
-<footer>
-  <div class="page"><a class="to-top" href="#top" data-en="Back to top">Nach oben</a><span class="note"><span class="ch" aria-hidden="true"></span><span data-en="Self-hosted in Switzerland, in the DMZ of my homelab">Selbst gehostet in der Schweiz, in der DMZ meines Homelabs</span><span class="sep" aria-hidden="true">/</span><span>&copy; <span data-year>2026</span> Lukas Dalloz</span></span></div>
-</footer>
-</body>
-</html>
