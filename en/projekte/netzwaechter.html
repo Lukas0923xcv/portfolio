@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Netzwächter, Lukas Dalloz</title>
+<meta name="description" content="An LTE device with its own firmware and Android app that sends an SMS when the power goes out.">
+<link rel="canonical" href="https://server-lukas.com/en/projekte/netzwaechter.html">
+<link rel="alternate" hreflang="de" href="https://server-lukas.com/projekte/netzwaechter.html">
+<link rel="alternate" hreflang="en" href="https://server-lukas.com/en/projekte/netzwaechter.html">
+<link rel="alternate" hreflang="x-default" href="https://server-lukas.com/projekte/netzwaechter.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Lukas Dalloz">
+<meta property="og:title" content="Netzwächter, Lukas Dalloz">
+<meta property="og:description" content="An LTE device with its own firmware and Android app that sends an SMS when the power goes out.">
+<meta property="og:url" content="https://server-lukas.com/en/projekte/netzwaechter.html">
+<meta property="og:image" content="https://server-lukas.com/og/en-netzwaechter.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_GB">
+<meta property="og:locale:alternate" content="de_CH">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Netzwächter, Lukas Dalloz">
+<meta name="twitter:description" content="An LTE device with its own firmware and Android app that sends an SMS when the power goes out.">
+<meta name="twitter:image" content="https://server-lukas.com/og/en-netzwaechter.png">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#141413" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F4F4F1" media="(prefers-color-scheme: light)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/archivo.376f722003.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/style.92e1ba8896.css">
+<script src="/assets/js/theme.589229f0d0.js"></script>
+<script src="/assets/js/site.843f9f46b6.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareSourceCode", "name": "Netzwächter", "description": "An LTE device with its own firmware and Android app that sends an SMS when the power goes out.", "inLanguage": "en", "url": "https://server-lukas.com/en/projekte/netzwaechter.html", "author": {"@type": "Person", "name": "Lukas Dalloz", "url": "https://server-lukas.com/", "jobTitle": "Apprentice IT specialist (Informatiker EFZ)", "sameAs": ["https://github.com/Lukas0923xcv"], "knowsLanguage": ["de", "en"], "address": {"@type": "PostalAddress", "addressCountry": "CH"}}, "codeRepository": "https://github.com/Lukas0923xcv/esp32"}</script>
+</head>
+<body class="project">
+<a class="skip" href="#main">Skip to content</a>
+<div class="bar" id="bar">
+  <div class="page"><header class="top">
+    <a class="brand" href="/en/">Lukas Dalloz</a>
+    <div class="right">
+      <nav class="mainnav" aria-label="Navigation">
+        <a href="/en/#projects" aria-current="true">Projects</a>
+        <a href="/en/#about">About me</a>
+        <a href="/en/#path">So far</a>
+        <a href="/en/#contact">Contact</a>
+      </nav>
+      <div class="tools">
+        <div class="lang" role="group" aria-label="Language"><a href="/projekte/netzwaechter.html" hreflang="de" lang="de">DE<span class="vh"> Deutsch</span></a><a href="/en/projekte/netzwaechter.html" hreflang="en" lang="en" aria-current="true">EN<span class="vh"> English</span></a></div>
+        <button type="button" class="theme" id="theme" aria-label="Switch colour scheme" title="Switch colour scheme"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17a8.5 8.5 0 0 0 0-17z"/></svg></button>
+      </div>
+    </div>
+  </header></div>
+</div>
+<div class="page" id="top">
+<main id="main">
+
+
+  <div class="crumbs"><nav aria-label="Breadcrumb"><ol class="crumb"><li><a href="/en/#projects">Projects</a></li><li><a href="/en/projekte/netzwaechter.html" aria-current="page">Netzwächter</a></li></ol></nav><div class="pager"><a href="/en/projekte/passkey.html" rel="prev"><span class="vh">Previous project: </span>← Passkey login for pfSense</a><a href="/en/projekte/homelab.html" rel="next"><span class="vh">Next project: </span>My homelab →</a></div></div>
+  <div class="case-hero">
+    <h1><span lang="de">Netzwächter</span></h1>
+    <p class="lead">A small LTE device that raises the alarm by SMS when the power goes out, with my own firmware and my own Android app.</p>
+    <dl class="facts-row">
+      <div><dt>Context</dt><dd>Personal project</dd></div>
+      <div><dt>Time</dt><dd>Autumn 2026, one week at about 2 hours a day</dd></div>
+      <div><dt>Status</dt><dd>SMS alarm and app work (app v1.5.0)</dd></div>
+      <div><dt>Tools</dt><dd>C++ (Arduino IDE), Flutter, GitHub Actions, with AI as support</dd></div>
+    </dl>
+  </div>
+
+  <div class="case">
+    <section aria-labelledby="why-i-built-it">
+      <div class="prose">
+        <h2 id="why-i-built-it">Why I built it<a class="anchor" href="#why-i-built-it" aria-label="Link to this section"><span aria-hidden="true">#</span></a></h2>
+        <p>While my grandparents were on holiday, their freezer stopped running. Nobody noticed, and by the time they came home everything in it had to be thrown away. A simple message at the right moment would have been enough to save it.</p>
+        <p>So I built a device that watches the power and sends an SMS as soon as it's gone, and again when it's back. SMS works without Wi-Fi or internet, which is exactly what fails in a power cut.</p>
+        <p>The hardware, the wiring and the testing are my part. Firmware and app I wrote with AI, since I'm not an application developer: I described what the device has to do, tested every version on the real hardware and fed the problems back until it worked.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="how-it-works">
+      <h2 id="how-it-works">How it works<a class="anchor" href="#how-it-works" aria-label="Link to this section"><span aria-hidden="true">#</span></a></h2>
+      <div class="shots-2">
+        <div class="prose">
+          <h3>Hardware</h3>
+          <ul class="hw">
+            <li><span>Board</span><span>LilyGO T-A7670G, an ESP32 with an LTE modem</span></li>
+            <li><span>Mobile network</span><span>Prepaid SIM</span></li>
+            <li><span>Battery</span><span>18650 cell on the board, takes over during a power cut</span></li>
+            <li><span>Power detection</span><span>5 V power supply on the board's solar input, measured by the firmware</span></li>
+          </ul>
+
+          <h3>Firmware</h3>
+          <ul>
+            <li>Detects power loss and return with hysteresis and debouncing, so short flickers don't cause false alarms.</li>
+            <li>Sends an alarm, an all-clear and a low-battery warning to up to 5 numbers. The texts can contain placeholders such as battery level and outage duration.</li>
+            <li>The modem runs in its own task on one of the two CPU cores, so the Bluetooth connection to the app never freezes.</li>
+            <li>Settings are stored in flash memory and survive a restart.</li>
+          </ul>
+
+          <h3>Remote control by SMS</h3>
+          <p>More than 20 commands let me check and change the device from anywhere. Only saved numbers get an answer, and a fixed admin number always works, so I can't lock myself out.</p>
+          <div class="cmds"><code>/status</code><code>/alarm 3m</code><code>/pause 2h</code><code>/akku 20</code><code>/nummer neu</code><code>/test</code></div>
+
+          <h3>Android app</h3>
+          <p>The app connects over Bluetooth and shows live data every 1.5 seconds: battery, power supply voltage, modem and SMS status. All settings can be changed in the app, and a diagnostics view helps with troubleshooting. GitHub Actions builds the APK automatically.</p>
+        </div>
+        <figure class="shot phone">
+          <picture><source type="image/avif" srcset="/assets/img/netzwaechter-app-480.186fe54256.avif 480w, /assets/img/netzwaechter-app-560.766f1c8fc1.avif 560w" sizes="(max-width: 820px) 100vw, 760px"><img src="/assets/img/netzwaechter-app-560.7d56b48e5d.webp" srcset="/assets/img/netzwaechter-app-480.3cf70d67b3.webp 480w, /assets/img/netzwaechter-app-560.7d56b48e5d.webp 560w" sizes="(max-width: 820px) 100vw, 760px" width="560" height="1109" alt="Home screen of the Netzwächter app with battery, power supply, SMS alarm and diagnostics" loading="lazy" decoding="async"></picture>
+          <figcaption>The app, here without a connection to the device.</figcaption>
+        </figure>
+      </div>
+
+      <figure class="figure figure-gap">
+        <div aria-hidden="true">
+          <div class="nw">
+            <div class="node">Power adapter<small>normal operation</small></div>
+            <div class="node board"><strong>LilyGO T-A7670G</strong><small>LTE modem, prepaid SIM</small></div>
+            <div class="node">Phone<small>SMS</small></div>
+            <div class="node">18650 battery<small>takes over</small></div>
+            <div class="node">Android app<small>Bluetooth</small></div>
+          </div>
+          <div class="nw-out">
+            <div class="sms"><small>SMS</small>ALARM: Power cut detected! Running on battery (84%).</div>
+            <div class="sms"><small>SMS</small>ALL CLEAR: Power is back. The outage lasted 1 h 12 min.</div>
+          </div>
+        </div>
+        <figcaption>Power comes from the adapter or the battery, and every switch is reported by SMS and in the app. Example messages.</figcaption>
+      </figure>
+        <details class="as-text">
+          <summary>Read the diagram as text</summary>
+          <p>In normal operation the power supply feeds the LilyGO board. When the power goes out, the 18650 battery takes over and the board sends an alarm SMS to a phone through its LTE modem and prepaid SIM. When the power returns, it sends an all-clear. The Android app connects to the board over Bluetooth.</p>
+        </details>
+    </section>
+
+    <section aria-labelledby="challenges-and-solutions">
+      <h2 id="challenges-and-solutions">Challenges and solutions<a class="anchor" href="#challenges-and-solutions" aria-label="Link to this section"><span aria-hidden="true">#</span></a></h2>
+      <div class="problem">
+        <h3>Detecting the power cut</h3>
+        <p>My first idea was to power the board over USB-C and detect when that power disappears. On this board, that didn't work reliably.</p>
+        <p class="fix"><strong>Solution:</strong> The 5 V power supply now goes into the board's solar input. Its voltage can be measured directly, and the firmware reacts when it drops.</p>
+      </div>
+      <div class="problem">
+        <h3>When is the power really gone?</h3>
+        <p>A short flicker shouldn't wake anyone up, but a real outage has to be reported quickly.</p>
+        <p class="fix"><strong>Solution:</strong> Two thresholds with a gap between them (hysteresis) and a short waiting time before a change counts. On top, the delay before the alarm SMS can be set per SMS command or in the app.</p>
+      </div>
+      <div class="problem">
+        <h3>Reliable SMS</h3>
+        <p>Sending SMS through the LTE modem didn't work reliably at first.</p>
+        <p class="fix"><strong>Solution:</strong> The firmware checks the provider's SMS centre and sets it if needed, waits for the modem's confirmation, and retries after a minute if sending fails. The SIM PIN is only sent when configured, so failed attempts can't lock the SIM.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="what-i-learned">
+      <h2 id="what-i-learned">What I learned<a class="anchor" href="#what-i-learned" aria-label="Link to this section"><span aria-hidden="true">#</span></a></h2>
+      <ul class="learned">
+        <li><strong>How a modem works</strong><span>Understanding how an LTE modem is controlled with AT commands and what its answers mean.</span></li>
+        <li><strong>A complete product</strong><span>Hardware, firmware and an app that fit together, from a real problem to a working solution.</span></li>
+        <li><strong>Building with AI</strong><span>Describing requirements precisely, testing on real hardware and giving clear feedback until the result works.</span></li>
+        <li><strong>Clean repositories</strong><span>Keeping personal data like phone numbers and the SIM PIN out of the public code, and building releases automatically.</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 id="my-part">My part<a class="anchor" href="#my-part" aria-label="Link to this section"><span aria-hidden="true">#</span></a></h2>
+      <p>I wrote the firmware and the app with AI. The hardware, the wiring and the testing are my own work. One decision of mine: two thresholds with a gap between them for detecting a power cut, so a short flicker doesn't wake anyone up.</p>
+    </section>
+
+    <section>
+      <h2 id="what-i-d-do-differently">What I'd do differently<a class="anchor" href="#what-i-d-do-differently" aria-label="Link to this section"><span aria-hidden="true">#</span></a></h2>
+      <p>I would test the power detection on a simple bench setup first, before building the firmware around it. My first idea, using USB, didn't work.</p>
+    </section>
+
+    <section aria-labelledby="code">
+      <h2 id="code">Code<a class="anchor" href="#code" aria-label="Link to this section"><span aria-hidden="true">#</span></a></h2>
+      <p>Firmware, app and the list of all SMS commands are on GitHub: <a href='https://github.com/Lukas0923xcv/esp32'>esp32</a></p>
+    </section>
+
+    <nav class="next" aria-label="More projects"><a href="/en/projekte/passkey.html" rel="prev"><small>Previous project</small>Passkey login for pfSense</a><a class="right" href="/en/projekte/homelab.html" rel="next"><small>Next project</small>My homelab</a></nav>
+  </div>
+
+</main>
+</div>
+<footer>
+  <div class="page">
+    <p class="note"><span class="ch" aria-hidden="true"></span><span>Self-hosted in Switzerland, in the DMZ of my homelab</span></p>
+    <p class="meta"><span>&copy; 2026 Lukas Dalloz</span><span>Last updated: <time datetime="2026-11-13">13 Nov 2026</time></span><a href="/en/datenschutz.html">Imprint and privacy</a><a href="#top">Back to top</a></p>
+  </div>
+</footer>
+</body>
+</html>

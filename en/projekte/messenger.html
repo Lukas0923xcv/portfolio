@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Self-hosted messenger, Lukas Dalloz</title>
+<meta name="description" content="School project: a self-hosted chat server with Matrix Synapse and Element, with documentation and a test concept.">
+<link rel="canonical" href="https://server-lukas.com/en/projekte/messenger.html">
+<link rel="alternate" hreflang="de" href="https://server-lukas.com/projekte/messenger.html">
+<link rel="alternate" hreflang="en" href="https://server-lukas.com/en/projekte/messenger.html">
+<link rel="alternate" hreflang="x-default" href="https://server-lukas.com/projekte/messenger.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Lukas Dalloz">
+<meta property="og:title" content="Self-hosted messenger, Lukas Dalloz">
+<meta property="og:description" content="School project: a self-hosted chat server with Matrix Synapse and Element, with documentation and a test concept.">
+<meta property="og:url" content="https://server-lukas.com/en/projekte/messenger.html">
+<meta property="og:image" content="https://server-lukas.com/og/en-messenger.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_GB">
+<meta property="og:locale:alternate" content="de_CH">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Self-hosted messenger, Lukas Dalloz">
+<meta name="twitter:description" content="School project: a self-hosted chat server with Matrix Synapse and Element, with documentation and a test concept.">
+<meta name="twitter:image" content="https://server-lukas.com/og/en-messenger.png">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#141413" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F4F4F1" media="(prefers-color-scheme: light)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/archivo.376f722003.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/style.92e1ba8896.css">
+<script src="/assets/js/theme.589229f0d0.js"></script>
+<script src="/assets/js/site.843f9f46b6.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Self-hosted messenger", "description": "School project: a self-hosted chat server with Matrix Synapse and Element, with documentation and a test concept.", "inLanguage": "en", "url": "https://server-lukas.com/en/projekte/messenger.html", "author": {"@type": "Person", "name": "Lukas Dalloz", "url": "https://server-lukas.com/", "jobTitle": "Apprentice IT specialist (Informatiker EFZ)", "sameAs": ["https://github.com/Lukas0923xcv"], "knowsLanguage": ["de", "en"], "address": {"@type": "PostalAddress", "addressCountry": "CH"}}}</script>
+</head>
+<body class="project">
+<a class="skip" href="#main">Skip to content</a>
+<div class="bar" id="bar">
+  <div class="page"><header class="top">
+    <a class="brand" href="/en/">Lukas Dalloz</a>
+    <div class="right">
+      <nav class="mainnav" aria-label="Navigation">
+        <a href="/en/#projects" aria-current="true">Projects</a>
+        <a href="/en/#about">About me</a>
+        <a href="/en/#path">So far</a>
+        <a href="/en/#contact">Contact</a>
+      </nav>
+      <div class="tools">
+        <div class="lang" role="group" aria-label="Language"><a href="/projekte/messenger.html" hreflang="de" lang="de">DE<span class="vh"> Deutsch</span></a><a href="/en/projekte/messenger.html" hreflang="en" lang="en" aria-current="true">EN<span class="vh"> English</span></a></div>
+        <button type="button" class="theme" id="theme" aria-label="Switch colour scheme" title="Switch colour scheme"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17a8.5 8.5 0 0 0 0-17z"/></svg></button>
+      </div>
+    </div>
+  </header></div>
+</div>
+<div class="page" id="top">
+<main id="main">
+
+
+  <div class="crumbs"><nav aria-label="Breadcrumb"><ol class="crumb"><li><a href="/en/#projects">Projects</a></li><li><a href="/en/projekte/messenger.html" aria-current="page">Self-hosted messenger</a></li></ol></nav><div class="pager"><a href="/en/projekte/homelab.html" rel="prev"><span class="vh">Previous project: </span>← My homelab</a></div></div>
+  <div class="case-hero">
+    <h1>Self-hosted messenger</h1>
+    <p class="lead">A private chat server with Matrix Synapse and Element, run as a project from planning and test concept to the finished result.</p>
+    <dl class="facts-row">
+      <div><dt>Context</dt><dd>School project, module 306 (project management)</dd></div>
+      <div><dt>School</dt><dd><span lang="de">Technische Fachschule Bern</span></dd></div>
+      <div><dt>Status</dt><dd>Completed</dd></div>
+      <div><dt>Tools</dt><dd>Matrix Synapse, Element, Docker, virtual machine</dd></div>
+    </dl>
+  </div>
+
+  <div class="case">
+    <section aria-labelledby="the-task">
+      <div class="prose">
+        <h2 id="the-task">The task<a class="anchor" href="#the-task" aria-label="Link to this section"><span aria-hidden="true">#</span></a></h2>
+        <p>Module 306 is about running an IT project properly: planning it, carrying it out, testing it and documenting it. The project was a messenger of our own, so messages stay on a server we control instead of with a large provider.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="how-it-s-built">
+      <h2 id="how-it-s-built">How it's built<a class="anchor" href="#how-it-s-built" aria-label="Link to this section"><span aria-hidden="true">#</span></a></h2>
+      <div class="shots-2">
+        <div class="prose">
+          <ul>
+            <li>The server runs in a virtual machine, with Docker wherever it made sense.</li>
+            <li>Matrix Synapse is the chat server, Element is the client on computers and phones.</li>
+            <li>Besides the setup, the project includes documentation, a test concept and a test report.</li>
+          </ul>
+        </div>
+        <figure class="figure">
+          <ol class="flow">
+            <li><strong>Element client</strong><span>On computers and phones.</span></li>
+            <li><strong>Encrypted connection</strong><span>HTTPS with the project's own certificate.</span></li>
+            <li class="stop"><strong>Matrix Synapse</strong><span>Chat server in Docker on a virtual machine.</span></li>
+          </ol>
+          <figcaption>How a message gets from the client to the server.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section aria-labelledby="challenges-and-solutions">
+      <h2 id="challenges-and-solutions">Challenges and solutions<a class="anchor" href="#challenges-and-solutions" aria-label="Link to this section"><span aria-hidden="true">#</span></a></h2>
+      <div class="problem">
+        <h3>The app didn't trust the certificate</h3>
+        <p>The server used a certificate that wasn't issued by a public certificate authority. Browsers can be told to accept it, but the client app refused to connect.</p>
+        <p class="fix"><strong>Solution:</strong> The certificate was installed manually as trusted on the client devices. After that, the app connected without errors.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="what-i-learned">
+      <h2 id="what-i-learned">What I learned<a class="anchor" href="#what-i-learned" aria-label="Link to this section"><span aria-hidden="true">#</span></a></h2>
+      <ul class="learned">
+        <li><strong>Running a project</strong><span>Planning in phases, keeping to the plan, and closing the project properly.</span></li>
+        <li><strong>Certificates and trust</strong><span>Why a device only trusts certain certificates, and how to add your own.</span></li>
+        <li><strong>Testing systematically</strong><span>Writing a test concept first, then testing against it and recording the results.</span></li>
+        <li><strong>Documenting for others</strong><span>Writing documentation that someone else can follow without asking.</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 id="what-i-d-do-differently">What I'd do differently<a class="anchor" href="#what-i-d-do-differently" aria-label="Link to this section"><span aria-hidden="true">#</span></a></h2>
+      <p>I would use a certificate from a public certificate authority, for example Let's Encrypt. Then nobody has to install it on their devices by hand.</p>
+    </section>
+
+    <nav class="next" aria-label="More projects"><a href="/en/projekte/homelab.html" rel="prev"><small>Previous project</small>My homelab</a><a class="right" href="/en/#projects"><small>All projects</small>Projects</a></nav>
+  </div>
+
+</main>
+</div>
+<footer>
+  <div class="page">
+    <p class="note"><span class="ch" aria-hidden="true"></span><span>Self-hosted in Switzerland, in the DMZ of my homelab</span></p>
+    <p class="meta"><span>&copy; 2026 Lukas Dalloz</span><span>Last updated: <time datetime="2026-11-13">13 Nov 2026</time></span><a href="/en/datenschutz.html">Imprint and privacy</a><a href="#top">Back to top</a></p>
+  </div>
+</footer>
+</body>
+</html>

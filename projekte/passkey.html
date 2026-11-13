@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Passkey-Login für pfSense, Lukas Dalloz</title>
+<meta name="description" content="Ein Open-Source-Add-on, das den Login auf pfSense mit einem Passkey als zweitem Faktor absichert.">
+<link rel="canonical" href="https://server-lukas.com/projekte/passkey.html">
+<link rel="alternate" hreflang="de" href="https://server-lukas.com/projekte/passkey.html">
+<link rel="alternate" hreflang="en" href="https://server-lukas.com/en/projekte/passkey.html">
+<link rel="alternate" hreflang="x-default" href="https://server-lukas.com/projekte/passkey.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Lukas Dalloz">
+<meta property="og:title" content="Passkey-Login für pfSense, Lukas Dalloz">
+<meta property="og:description" content="Ein Open-Source-Add-on, das den Login auf pfSense mit einem Passkey als zweitem Faktor absichert.">
+<meta property="og:url" content="https://server-lukas.com/projekte/passkey.html">
+<meta property="og:image" content="https://server-lukas.com/og/de-passkey.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="de_CH">
+<meta property="og:locale:alternate" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Passkey-Login für pfSense, Lukas Dalloz">
+<meta name="twitter:description" content="Ein Open-Source-Add-on, das den Login auf pfSense mit einem Passkey als zweitem Faktor absichert.">
+<meta name="twitter:image" content="https://server-lukas.com/og/de-passkey.png">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#141413" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F4F4F1" media="(prefers-color-scheme: light)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/archivo.376f722003.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/style.92e1ba8896.css">
+<script src="/assets/js/theme.589229f0d0.js"></script>
+<script src="/assets/js/site.843f9f46b6.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareSourceCode", "name": "Passkey-Login für pfSense", "description": "Ein Open-Source-Add-on, das den Login auf pfSense mit einem Passkey als zweitem Faktor absichert.", "inLanguage": "de", "url": "https://server-lukas.com/projekte/passkey.html", "author": {"@type": "Person", "name": "Lukas Dalloz", "url": "https://server-lukas.com/", "jobTitle": "Informatiker EFZ in Ausbildung", "sameAs": ["https://github.com/Lukas0923xcv"], "knowsLanguage": ["de", "en"], "address": {"@type": "PostalAddress", "addressCountry": "CH"}}, "codeRepository": "https://github.com/Lukas0923xcv/web-auth-pfsense"}</script>
+</head>
+<body class="project">
+<a class="skip" href="#main">Zum Inhalt springen</a>
+<div class="bar" id="bar">
+  <div class="page"><header class="top">
+    <a class="brand" href="/">Lukas Dalloz</a>
+    <div class="right">
+      <nav class="mainnav" aria-label="Navigation">
+        <a href="/#projects" aria-current="true">Projekte</a>
+        <a href="/#about">Über mich</a>
+        <a href="/#path">Werdegang</a>
+        <a href="/#contact">Kontakt</a>
+      </nav>
+      <div class="tools">
+        <div class="lang" role="group" aria-label="Sprache"><a href="/projekte/passkey.html" hreflang="de" lang="de" aria-current="true">DE<span class="vh"> Deutsch</span></a><a href="/en/projekte/passkey.html" hreflang="en" lang="en">EN<span class="vh"> English</span></a></div>
+        <button type="button" class="theme" id="theme" aria-label="Farbschema wechseln" title="Farbschema wechseln"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17a8.5 8.5 0 0 0 0-17z"/></svg></button>
+      </div>
+    </div>
+  </header></div>
+</div>
+<div class="page" id="top">
+<main id="main">
+
+
+  <div class="crumbs"><nav aria-label="Seitenpfad"><ol class="crumb"><li><a href="/#projects">Projekte</a></li><li><a href="/projekte/passkey.html" aria-current="page">Passkey-Login für pfSense</a></li></ol></nav><div class="pager"><a href="/projekte/netzwaechter.html" rel="next"><span class="vh">Nächstes Projekt: </span>Netzwächter →</a></div></div>
+  <div class="case-hero">
+    <h1>Passkey-Login für pfSense</h1>
+    <p class="lead">Ein Add-on, das den Login auf das Web-Interface der pfSense-Firewall mit einem Passkey absichert, als zweiten Faktor nach dem Passwort.</p>
+    <dl class="facts-row">
+      <div><dt>Kontext</dt><dd>Privatprojekt, <span lang="en">Open Source</span> (Apache 2.0)</dd></div>
+      <div><dt>Zeitraum</dt><dd>Oktober 2026, ein Tag</dd></div>
+      <div><dt>Status</dt><dd>Version 1.0.1, im Einsatz auf meiner Firewall</dd></div>
+      <div><dt>Werkzeuge</dt><dd>PHP, JavaScript, WebAuthn, mit KI als Unterstützung</dd></div>
+    </dl>
+  </div>
+
+  <div class="case">
+    <section aria-labelledby="ausgangslage">
+      <div class="prose">
+        <h2 id="ausgangslage">Ausgangslage<a class="anchor" href="#ausgangslage" aria-label="Link zu diesem Abschnitt"><span aria-hidden="true">#</span></a></h2>
+        <p>Das Web-Interface meiner pfSense-Firewall erreiche ich über einen Cloudflare Tunnel. Davor sitzt zwar Cloudflare Access, die Firewall selbst fragte aber nur nach einem Passwort. Für den wichtigsten Zugang in meinem ganzen Netz war mir das zu wenig.</p>
+        <p>pfSense bietet für sein Web-Interface keine Passkeys an, also habe ich sie selbst nachgerüstet. Ich bin kein Applikationsentwickler, darum habe ich den Code zusammen mit KI geschrieben: Ich habe festgelegt, was das Add-on können und welche Sicherheitsregeln es einhalten muss, und das Ergebnis geprüft, getestet und auf meiner eigenen Firewall installiert.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="so-funktioniert-es">
+      <div class="prose">
+        <h2 id="so-funktioniert-es">So funktioniert es<a class="anchor" href="#so-funktioniert-es" aria-label="Link zu diesem Abschnitt"><span aria-hidden="true">#</span></a></h2>
+        <ul>
+          <li>Nach dem normalen Passwort-Login prüft das Add-on auf jeder Seite des Web-Interface, ob die Sitzung schon mit einem Passkey bestätigt wurde. Wenn nicht, erscheint der Passkey-Schritt.</li>
+          <li>Passkeys registriert man pro Benutzer unter System &gt; WebAuthn Passkeys. Gespeichert werden sie in der Konfiguration von pfSense selbst und sind damit in jedem pfSense-Backup enthalten.</li>
+          <li>Die Signatur wird komplett auf der Firewall geprüft, ohne externen Dienst. Dazu gehört auch ein kleiner eigener Parser für CBOR, das Datenformat von WebAuthn.</li>
+          <li>Installieren und Aktualisieren geht mit einem einzigen Befehl, Einstellungen und Passkeys bleiben dabei erhalten.</li>
+        </ul>
+      </div>
+      <figure class="shot">
+        <picture><source type="image/avif" srcset="/assets/img/passkey-login-480.b440ac2a32.avif 480w, /assets/img/passkey-login-800.261445b521.avif 800w, /assets/img/passkey-login-1000.ec9eb91134.avif 1000w" sizes="(max-width: 820px) 100vw, 760px"><img src="/assets/img/passkey-login-1000.c7192a7304.webp" srcset="/assets/img/passkey-login-480.0089c27e00.webp 480w, /assets/img/passkey-login-800.5269bf9eb6.webp 800w, /assets/img/passkey-login-1000.c7192a7304.webp 1000w" sizes="(max-width: 820px) 100vw, 760px" width="1000" height="479" alt="Passkey-Schritt nach dem Login, rechts die Passkey-Auswahl des Browsers" loading="lazy" decoding="async"></picture>
+        <figcaption>Nach dem Passwort kommt der Passkey-Schritt. Der Browser bietet den gespeicherten Passkey an. (Hostname unkenntlich gemacht.)</figcaption>
+      </figure>
+      <figure class="shot">
+        <picture><source type="image/avif" srcset="/assets/img/passkey-verwaltung-480.ba1e4bae7a.avif 480w, /assets/img/passkey-verwaltung-800.876a5f77f2.avif 800w, /assets/img/passkey-verwaltung-1200.dd8b6c1808.avif 1200w" sizes="(max-width: 820px) 100vw, 760px"><img src="/assets/img/passkey-verwaltung-1200.752660a751.webp" srcset="/assets/img/passkey-verwaltung-480.746c1d59cd.webp 480w, /assets/img/passkey-verwaltung-800.51af332f68.webp 800w, /assets/img/passkey-verwaltung-1200.752660a751.webp 1200w" sizes="(max-width: 820px) 100vw, 760px" width="1200" height="301" alt="Verwaltungsseite mit registrierten Passkeys und dem Knopf zum Registrieren" loading="lazy" decoding="async"></picture>
+        <figcaption>Die Verwaltungsseite in pfSense: registrierte Passkeys pro Benutzer, ein neuer wird mit einem Namen hinzugefügt.</figcaption>
+      </figure>
+    </section>
+
+    <section aria-labelledby="schwierigkeiten-und-loesungen">
+      <h2 id="schwierigkeiten-und-loesungen">Schwierigkeiten und Lösungen<a class="anchor" href="#schwierigkeiten-und-loesungen" aria-label="Link zu diesem Abschnitt"><span aria-hidden="true">#</span></a></h2>
+      <div class="problem">
+        <h3>Sicher, ohne mich selbst auszusperren</h3>
+        <p>Ein zweiter Faktor auf der Firewall ist nur sinnvoll, wenn man ihn nicht umgehen kann. Gleichzeitig darf ein Fehler nie dazu führen, dass ich selbst nicht mehr auf meine Firewall komme. Beide Ziele ziehen in entgegengesetzte Richtungen.</p>
+        <div class="prose">
+          <ul>
+            <li><strong>Schrittweise einschalten.</strong> Der zweite Faktor wird erst erzwungen, wenn ich ihn einschalte, nachdem mindestens zwei Passkeys registriert sind.</li>
+            <li><strong>Ein Notzugang.</strong> Vertrauenswürdige Netze und die Konsole funktionieren auch, wenn alle Passkeys verloren sind. Verkehr über den Tunnel ist nie ausgenommen.</li>
+            <li><strong>Im Zweifel zu.</strong> Fehlen Dateien des Add-ons, sperrt das Web-Interface, statt den Passkey-Schritt zu überspringen.</li>
+            <li><strong>Updates überstehen.</strong> pfSense-Updates ersetzen die Dateien, in die sich das Add-on einhängt. Die Hooks werden deshalb bei jedem Start und alle 5 Minuten automatisch wieder eingesetzt.</li>
+            <li><strong>Keine Hintertür.</strong> Die Synchronisation für Hochverfügbarkeit (XMLRPC) braucht nur ein Passwort. Über den Tunnel oder einen anderen Proxy wird sie deshalb immer abgelehnt.</li>
+            <li><strong>Begrenzte Sitzungen.</strong> Eine Bestätigung läuft nach 12 Stunden ab, und wer einen Passkey entfernt, beendet auch die Sitzungen, die damit bestätigt wurden.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="was-ich-gelernt-habe">
+      <h2 id="was-ich-gelernt-habe">Was ich gelernt habe<a class="anchor" href="#was-ich-gelernt-habe" aria-label="Link zu diesem Abschnitt"><span aria-hidden="true">#</span></a></h2>
+      <ul class="learned">
+        <li><strong>Wie WebAuthn funktioniert</strong><span>Challenge, öffentlicher Schlüssel, Signaturzähler, und warum der Hostname entscheidet, welcher Passkey gilt.</span></li>
+        <li><strong>Wie pfSense anmeldet</strong><span>Wo sich ein zweiter Schritt sauber einhängen lässt, ohne den Rest zu beschädigen.</span></li>
+        <li><strong>Sicherheit vor Bequemlichkeit</strong><span>Im Zweifel lieber gesperrt als ungeschützt, solange es einen geplanten Weg zurück gibt.</span></li>
+        <li><strong>Arbeiten mit KI</strong><span>KI nutzen, um schnell voranzukommen, und dabei jeden Teil selbst prüfen und verstehen.</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 id="meine-rolle">Meine Rolle<a class="anchor" href="#meine-rolle" aria-label="Link zu diesem Abschnitt"><span aria-hidden="true">#</span></a></h2>
+      <p>Den Code habe ich mit KI geschrieben. Festgelegt habe ich, was das Add-on darf und was nicht, getestet und installiert habe ich es selbst. Ein Beispiel: Die Regel, dass der zweite Faktor erst gilt, wenn mindestens zwei Passkeys registriert sind, stammt von mir. Sie verhindert, dass ich mich mit dem Verlust eines einzigen Schlüssels aussperre.</p>
+    </section>
+
+    <section>
+      <h2 id="was-ich-anders-machen-wuerde">Was ich anders machen würde<a class="anchor" href="#was-ich-anders-machen-wuerde" aria-label="Link zu diesem Abschnitt"><span aria-hidden="true">#</span></a></h2>
+      <p>Die Sonderfälle wie pfSense-Updates, Hochverfügbarkeit und den Notzugang würde ich vor der ersten Zeile Code als Testliste aufschreiben und diese Liste nach jedem pfSense-Update wieder durchgehen.</p>
+    </section>
+
+    <section aria-labelledby="code">
+      <h2 id="code">Code<a class="anchor" href="#code" aria-label="Link zu diesem Abschnitt"><span aria-hidden="true">#</span></a></h2>
+      <p>Der ganze Code mit Installations- und Einrichtungsanleitung ist auf GitHub: <a href="https://github.com/Lukas0923xcv/web-auth-pfsense">web-auth-pfsense</a></p>
+    </section>
+
+    <nav class="next" aria-label="Weitere Projekte"><a href="/#projects"><small>Alle Projekte</small>Projekte</a><a class="right" href="/projekte/netzwaechter.html" rel="next"><small>Nächstes Projekt</small>Netzwächter</a></nav>
+  </div>
+
+</main>
+</div>
+<footer>
+  <div class="page">
+    <p class="note"><span class="ch" aria-hidden="true"></span><span>Selbst gehostet in der Schweiz, in der DMZ meines Homelabs</span></p>
+    <p class="meta"><span>&copy; 2026 Lukas Dalloz</span><span>Zuletzt aktualisiert: <time datetime="2026-11-13">13. Nov. 2026</time></span><a href="/datenschutz.html">Impressum und Datenschutz</a><a href="#top">Nach oben</a></p>
+  </div>
+</footer>
+</body>
+</html>

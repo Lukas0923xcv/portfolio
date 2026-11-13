@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /404.html
+Disallow: /en/404.html
+
+Sitemap: https://server-lukas.com/sitemap.xml

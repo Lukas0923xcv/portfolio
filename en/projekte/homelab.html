@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My homelab, Lukas Dalloz</title>
+<meta name="description" content="A Proxmox server run like a small company network: three network zones, single sign-on, automated updates and off-site backups.">
+<link rel="canonical" href="https://server-lukas.com/en/projekte/homelab.html">
+<link rel="alternate" hreflang="de" href="https://server-lukas.com/projekte/homelab.html">
+<link rel="alternate" hreflang="en" href="https://server-lukas.com/en/projekte/homelab.html">
+<link rel="alternate" hreflang="x-default" href="https://server-lukas.com/projekte/homelab.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Lukas Dalloz">
+<meta property="og:title" content="My homelab, Lukas Dalloz">
+<meta property="og:description" content="A Proxmox server run like a small company network: three network zones, single sign-on, automated updates and off-site backups.">
+<meta property="og:url" content="https://server-lukas.com/en/projekte/homelab.html">
+<meta property="og:image" content="https://server-lukas.com/og/en-homelab.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_GB">
+<meta property="og:locale:alternate" content="de_CH">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="My homelab, Lukas Dalloz">
+<meta name="twitter:description" content="A Proxmox server run like a small company network: three network zones, single sign-on, automated updates and off-site backups.">
+<meta name="twitter:image" content="https://server-lukas.com/og/en-homelab.png">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#141413" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F4F4F1" media="(prefers-color-scheme: light)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/archivo.376f722003.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/style.92e1ba8896.css">
+<script src="/assets/js/theme.589229f0d0.js"></script>
+<script src="/assets/js/site.843f9f46b6.js" defer></script>
+<script src="/assets/js/homelab.17619905ce.js" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "My homelab", "description": "A Proxmox server run like a small company network: three network zones, single sign-on, automated updates and off-site backups.", "inLanguage": "en", "url": "https://server-lukas.com/en/projekte/homelab.html", "author": {"@type": "Person", "name": "Lukas Dalloz", "url": "https://server-lukas.com/", "jobTitle": "Apprentice IT specialist (Informatiker EFZ)", "sameAs": ["https://github.com/Lukas0923xcv"], "knowsLanguage": ["de", "en"], "address": {"@type": "PostalAddress", "addressCountry": "CH"}}}</script>
+</head>
+<body class="project">
+<a class="skip" href="#main">Skip to content</a>
+<div class="bar" id="bar">
+  <div class="page"><header class="top">
+    <a class="brand" href="/en/">Lukas Dalloz</a>
+    <div class="right">
+      <nav class="mainnav" aria-label="Navigation">
+        <a href="/en/#projects" aria-current="true">Projects</a>
+        <a href="/en/#about">About me</a>
+        <a href="/en/#path">So far</a>
+        <a href="/en/#contact">Contact</a>
+      </nav>
+      <div class="tools">
+        <div class="lang" role="group" aria-label="Language"><a href="/projekte/homelab.html" hreflang="de" lang="de">DE<span class="vh"> Deutsch</span></a><a href="/en/projekte/homelab.html" hreflang="en" lang="en" aria-current="true">EN<span class="vh"> English</span></a></div>
+        <button type="button" class="theme" id="theme" aria-label="Switch colour scheme" title="Switch colour scheme"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17a8.5 8.5 0 0 0 0-17z"/></svg></button>
+      </div>
+    </div>
+  </header></div>
+</div>
+<div class="page" id="top">
+<main id="main">
+
+
+  <div class="crumbs"><nav aria-label="Breadcrumb"><ol class="crumb"><li><a href="/en/#projects">Projects</a></li><li><a href="/en/projekte/homelab.html" aria-current="page">My homelab</a></li></ol></nav><div class="pager"><a href="/en/projekte/netzwaechter.html" rel="prev"><span class="vh">Previous project: </span>← Netzwächter</a><a href="/en/projekte/messenger.html" rel="next"><span class="vh">Next project: </span>Self-hosted messenger →</a></div></div>
+  <div class="case-hero">
+    <h1>My homelab</h1>
+    <p class="lead">One Proxmox server at home that I run like a small company network: three network zones, single sign-on, automated updates and backups that leave the house.</p>
+    <dl class="facts-row">
+      <div><dt>Context</dt><dd>Personal project</dd></div>
+      <div><dt>Time</dt><dd>Since 2025</dd></div>
+      <div><dt>Status</dt><dd>Running every day, still growing</dd></div>
+      <div><dt>Tools</dt><dd>Proxmox VE, pfSense, TrueNAS, Docker, Ansible</dd></div>
+    </dl>
+  </div>
+
+  <nav class="toc" aria-label="On this page"><h2 class="toc-h">On this page</h2><ol><li><a href="#why-i-built-it">Why I built it</a></li><li><a href="#how-it-s-built">How it's built</a></li><li><a href="#challenges-and-solutions">Challenges and solutions</a></li><li><a href="#what-i-learned">What I learned</a></li><li><a href="#what-i-d-do-differently">What I'd do differently</a></li><li><a href="#recent-changes">Recent changes</a></li></ol></nav>
+
+  <div class="case">
+    <section aria-labelledby="why-i-built-it">
+      <div class="prose">
+        <h2 id="why-i-built-it">Why I built it<a class="anchor" href="#why-i-built-it" aria-label="Link to this section"><span aria-hidden="true">#</span></a></h2>
+        <p>I started the homelab in 2025 out of interest: I wanted a place where I can try things that aren't possible in my training, and break them without consequences. Today it also runs services my family and friends use every day, so it has to be reliable.</p>
+        <h3>Hardware</h3>
+        <ul class="hw">
+          <li><span>Processor</span><span>Intel Core Ultra 7 265KF</span></li>
+          <li><span>Memory</span><span>32 GB</span></li>
+          <li><span>System storage</span><span>2 × 1 TB NVMe</span></li>
+          <li><span>Data storage</span><span>4 hard disks in RAIDZ1 for TrueNAS</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="how-it-s-built">
+      <h2 id="how-it-s-built">How it's built<a class="anchor" href="#how-it-s-built" aria-label="Link to this section"><span aria-hidden="true">#</span></a></h2>
+      <div class="tabs" role="tablist" aria-label="Homelab">
+        <button role="tab" id="t-net" aria-controls="p-net" aria-selected="true">Network</button>
+        <button role="tab" id="t-svc" aria-controls="p-svc" aria-selected="false" tabindex="-1">Services</button>
+        <button role="tab" id="t-sec" aria-controls="p-sec" aria-selected="false" tabindex="-1">Security</button>
+        <button role="tab" id="t-ops" aria-controls="p-ops" aria-selected="false" tabindex="-1">Backups and upkeep</button>
+      </div>
+
+      <div class="panel" id="p-net" role="tabpanel" aria-labelledby="t-net">
+        <div class="split">
+          <div class="text">
+            <p>A pfSense firewall splits the lab into three zones. Public services live in a DMZ that's cut off from everything else, internal tools stay in the lab network, and test machines get a sandbox of their own.</p>
+            <p>Admin tools are never exposed directly. I reach them through Cloudflare Tunnels with multi-factor login, which also works from networks where a VPN isn't allowed.</p>
+            <div class="stack">pfSense, pfBlockerNG, Proxmox VE, Cloudflare Tunnel</div>
+          </div>
+          <figure class="figure">
+            <div class="net">
+              <p class="net-hint" id="net-hint">Pick a part of the network to see what it does.</p>
+              <div role="radiogroup" aria-labelledby="net-hint">
+              <button type="button" class="box" role="radio" aria-checked="false" data-node="internet">Internet</button>
+              <div class="line"></div>
+              <button type="button" class="box" role="radio" aria-checked="false" data-node="router">ISP router</button>
+              <div class="line"></div>
+              <button type="button" class="box" role="radio" aria-checked="false" data-node="fw">pfSense firewall</button>
+              <div class="line"></div>
+              <div class="fan"></div>
+              <div class="zones">
+                <button type="button" class="box" role="radio" aria-checked="false" data-node="lab">Lab<small>internal services</small></button>
+                <button type="button" class="box" role="radio" aria-checked="true" data-node="dmz">DMZ<small>proxy and public apps</small></button>
+                <button type="button" class="box" role="radio" aria-checked="false" data-node="iso">Isolated<small>test machines</small></button>
+              </div>
+              </div>
+              <div class="net-info" id="net-info" aria-live="polite"><h4>DMZ</h4><p>Where public services live: the reverse proxy with single sign-on, the web apps behind it and the Minecraft server. The DMZ is cut off from the other networks.</p></div>
+            </div>
+            <details class="as-text">
+              <summary>Read the diagram as text</summary>
+              <dl class="net-desc">
+                <div data-node="internet"><dt>Internet</dt><dd>Visitors only ever reach the reverse proxy and the game server. Everything else stays closed from the outside.</dd></div>
+                <div data-node="router"><dt>ISP router</dt><dd>The router hands incoming traffic straight to the firewall, so all filtering happens in one place.</dd></div>
+                <div data-node="fw"><dt>pfSense firewall</dt><dd>Routes and filters between all zones. Blocklists and country filters run first, and logging in to the firewall needs a passkey on top of the password.</dd></div>
+                <div data-node="lab"><dt>Lab</dt><dd>Internal services like the inventory, monitoring and automation. Nothing here is reachable from the internet. Admin access goes through Cloudflare Tunnels with multi-factor login.</dd></div>
+                <div data-node="dmz"><dt>DMZ</dt><dd>Where public services live: the reverse proxy with single sign-on, the web apps behind it and the Minecraft server. The DMZ is cut off from the other networks.</dd></div>
+                <div data-node="iso"><dt>Isolated</dt><dd>A sandbox for test machines. It has internet access but can't talk to anything else in the lab.</dd></div>
+              </dl>
+            </details>
+          </figure>
+        </div>
+      </div>
+
+      <div class="panel" id="p-svc" role="tabpanel" aria-labelledby="t-svc">
+        <div class="split">
+          <div class="text">
+            <p>These are the things people actually use. Everything that's reachable from outside sits behind the same reverse proxy and login, and the admin tools are only reachable for me, through Cloudflare.</p>
+            <div class="stack">Docker, LXC, Nginx Proxy Manager, Crafty Controller, immich</div>
+            <p class="live-line" data-status="minecraft" hidden></p>
+          </div>
+          <figure class="figure">
+            <div class="services">
+              <div class="svc"><h4>Photo library</h4><p>Private photo backup for my family, built on immich, with the photos on my storage server.</p><span class="who">Family</span></div>
+              <div class="svc"><h4>Minecraft server</h4><p>Managed with Crafty Controller. Friends join with a name on my domain.</p><span class="who">Friends</span></div>
+              <div class="svc private"><h4>Start page</h4><p>One page that links every tool in the lab. Designed and written by me.</p><span class="who">Just me</span></div>
+              <div class="svc private"><h4>Pokédex tracker</h4><p>A small web app for tracking my Pokémon collection.</p><span class="who">Just me</span></div>
+              <div class="svc private"><h4>Browser SSH terminal</h4><p>SSH to my servers from any browser, behind Cloudflare Access.</p><span class="who">Just me</span></div>
+              <div class="svc private"><h4>Admin-Tools</h4><p>Proxmox, firewall, storage, inventory, monitoring and automation.</p><span class="who">Just me</span></div>
+            </div>
+            <p class="legend"><span>Used by others</span><span class="private">Only for me</span></p>
+          </figure>
+        </div>
+      </div>
+
+      <div class="panel" id="p-sec" role="tabpanel" aria-labelledby="t-sec">
+        <div class="split">
+          <div class="text">
+            <p>A request from the internet has to pass several checks before it reaches one of my apps. Each layer catches something different, so one mistake in one place doesn't open everything.</p>
+            <p>Logins use passkeys or authenticator codes wherever I can set them up, including on the firewall, thanks to my own add-on.</p>
+            <div class="stack">pfBlockerNG, CrowdSec, Nginx Proxy Manager, Authentik, Cloudflare Access</div>
+          </div>
+          <figure class="figure">
+            <ol class="flow">
+              <li><strong>Blocklists and country filter</strong><span>pfSense drops known bad addresses and traffic from outside the allowed countries.</span></li>
+              <li><strong>Attack detection</strong><span>CrowdSec reads the proxy's logs and bans IPs that scan or attack.</span></li>
+              <li><strong>Reverse proxy</strong><span>Nginx Proxy Manager handles HTTPS and picks the right app.</span></li>
+              <li><strong>Login</strong><span>Authentik asks who you are before the app sees the request.</span></li>
+              <li class="stop"><strong>The app</strong><span>Only now does the request reach the service itself.</span></li>
+            </ol>
+            <figcaption>The path of a request from the internet to an app.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="panel" id="p-ops" role="tabpanel" aria-labelledby="t-ops">
+        <div class="split">
+          <div class="text">
+            <ul class="plain">
+              <li><strong>Updates.</strong> I update the whole lab from Ansible playbooks, started in Semaphore. Containers are updated by hand, and Diun e-mails me when a new image is out.</li>
+              <li><strong>Monitoring.</strong> Pulse watches every machine and e-mails me when something goes down, and the disks are checked with SMART.</li>
+              <li><strong>Inventory.</strong> Netbox lists every machine and IP address, synced from Proxmox automatically.</li>
+              <li><strong>Documentation.</strong> A full write-up of the lab, with the decisions behind it and a recovery guide for when something breaks.</li>
+            </ul>
+            <p class="live-line" data-status="backup" hidden></p>
+            <p class="live-line" data-status="updates" hidden></p>
+          </div>
+          <figure class="figure">
+            <ol class="flow">
+              <li><span class='when'>every day</span><strong>All virtual machines</strong><span>Backed up from Proxmox to the storage server.</span></li>
+              <li><span class='when'>every day</span><strong>TrueNAS storage server</strong><span>Four disks in RAIDZ1, with ZFS snapshots.</span></li>
+              <li class="stop"><span class='when'>every week</span><strong>Encrypted cloud copy</strong><span>The whole share leaves the house, encrypted before upload.</span></li>
+            </ol>
+            <figcaption>How a backup travels from a machine to off-site storage. Firewall and server configs are saved separately on top.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+
+      <figure class="shot">
+        <picture><source type="image/avif" srcset="/assets/img/homelab-startseite-480.a98734a917.avif 480w, /assets/img/homelab-startseite-800.e1d7abefa1.avif 800w, /assets/img/homelab-startseite-1200.bdc1d19521.avif 1200w" sizes="(max-width: 820px) 100vw, 760px"><img src="/assets/img/homelab-startseite-1200.d62d0ca2aa.webp" srcset="/assets/img/homelab-startseite-480.8645b1e9ca.webp 480w, /assets/img/homelab-startseite-800.00ab2df61d.webp 800w, /assets/img/homelab-startseite-1200.d62d0ca2aa.webp 1200w" sizes="(max-width: 820px) 100vw, 760px" width="1200" height="611" alt="Homelab start page with all services, grouped into apps, servers, access and operations" loading="lazy" decoding="async"></picture>
+        <figcaption>My start page links every service in the lab. I designed and wrote it myself. (Addresses blurred.)</figcaption>
+      </figure>
+    </section>
+
+    <section aria-labelledby="challenges-and-solutions">
+      <h2 id="challenges-and-solutions">Challenges and solutions<a class="anchor" href="#challenges-and-solutions" aria-label="Link to this section"><span aria-hidden="true">#</span></a></h2>
+      <div class="problem">
+        <h3>An IP address that kept changing</h3>
+        <p>My services are reached through my own domain, so it has to point to my current home IP (DynDNS). pfSense reported the wrong address: my router uses a 4G booster, and part of the outgoing traffic leaves through the mobile network with a different IP.</p>
+        <p class="fix"><strong>Solution:</strong> DynDNS now runs on the router itself, which knows the real fixed-line IP. My domain points to that name, so a change at home updates everything automatically.</p>
+      </div>
+      <div class="problem">
+        <h3>Too small for photos</h3>
+        <p>At first, everything went through Cloudflare Tunnels. For the photo library that doesn't work: Cloudflare limits the size of a single upload, and videos from a phone are quickly bigger than that.</p>
+        <p class="fix"><strong>Solution:</strong> I built a DMZ. Public services now come in directly through the firewall to a reverse proxy with single sign-on, while admin tools stay behind the tunnel. That made the whole setup clearer, not just the photo uploads.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="what-i-learned">
+      <h2 id="what-i-learned">What I learned<a class="anchor" href="#what-i-learned" aria-label="Link to this section"><span aria-hidden="true">#</span></a></h2>
+      <ul class="learned">
+        <li><strong>Many different systems</strong><span>Configuring hypervisor, firewall, storage, proxy, identity provider and monitoring, and making them work together.</span></li>
+        <li><strong>Industry best practices</strong><span>Network segmentation, least privilege, one central login, and backups with an off-site copy.</span></li>
+        <li><strong>Documentation pays off</strong><span>Every decision and every recovery step is written down, so a problem at night doesn't start with guessing.</span></li>
+        <li><strong>Running, not just building</strong><span>Updates, monitoring and alerts are just as much work as setting something up for the first time.</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 id="what-i-d-do-differently">What I'd do differently<a class="anchor" href="#what-i-d-do-differently" aria-label="Link to this section"><span aria-hidden="true">#</span></a></h2>
+      <p>I would plan the DMZ from the start. At first everything ran through Cloudflare Tunnels, and I had to rebuild that later for the photo library.</p>
+    </section>
+
+    <section aria-labelledby="recent-changes">
+      <div class="prose changelog">
+        <h2 id="recent-changes">Recent changes<a class="anchor" href="#recent-changes" aria-label="Link to this section"><span aria-hidden="true">#</span></a></h2>
+        <p>The lab is never finished. These are the latest changes, newest first.</p>
+        <ol class="log">
+          <li><time datetime="2026-11-09">9 Nov 2026</time><span>Redesigned the start page that links all my tools.</span></li>
+          <li><time datetime="2026-11-06">6 Nov 2026</time><span>Added an isolated network for test machines.</span></li>
+          <li><time datetime="2026-11-03">3 Nov 2026</time><span>CrowdSec on the reverse proxy, and Diun e-mails for new container images.</span></li>
+          <li><time datetime="2026-10-30">30 Oct 2026</time><span>Moved two apps into the DMZ, set up config backups and e-mail alerts.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <nav class="next" aria-label="More projects"><a href="/en/projekte/netzwaechter.html" rel="prev"><small>Previous project</small>Netzwächter</a><a class="right" href="/en/projekte/messenger.html" rel="next"><small>Next project</small>Self-hosted messenger</a></nav>
+  </div>
+
+</main>
+</div>
+<footer>
+  <div class="page">
+    <p class="note"><span class="ch" aria-hidden="true"></span><span>Self-hosted in Switzerland, in the DMZ of my homelab</span></p>
+    <p class="meta"><span>&copy; 2026 Lukas Dalloz</span><span>Last updated: <time datetime="2026-11-13">13 Nov 2026</time></span><a href="/en/datenschutz.html">Imprint and privacy</a><a href="#top">Back to top</a></p>
+  </div>
+</footer>
+</body>
+</html>

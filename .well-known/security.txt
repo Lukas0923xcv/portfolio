@@ -1,0 +1,4 @@
+Contact: mailto:lukas.dalloz@proton.me
+Expires: 2027-10-09T00:00:00.000Z
+Preferred-Languages: de, en
+Canonical: https://server-lukas.com/.well-known/security.txt
