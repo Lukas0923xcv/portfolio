@@ -95,6 +95,9 @@
     listeners.push(() => show(node));
   }
 
+  // ---------- Footer year ----------
+  document.querySelectorAll("[data-year]").forEach(el => el.textContent = new Date().getFullYear());
+
   // ---------- Start in the saved language ----------
   let saved = null;
   try { saved = localStorage.getItem("lang"); } catch (e) {}
