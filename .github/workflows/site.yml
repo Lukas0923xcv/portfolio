@@ -1,0 +1,61 @@
+name: Build and publish
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: site-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Build
+        run: python3 build.py
+
+      - name: Check links, titles, images and contrast
+        run: python3 tools/check.py
+
+      - name: Validate HTML (W3C Nu validator)
+        run: |
+          npm pack vnu-jar@24.10.17 --silent
+          tar xzf vnu-jar-*.tgz
+          java -jar package/build/dist/vnu.jar --skip-non-html --errors-only dist
+
+      - name: Browser checks
+        run: |
+          npm install --no-save playwright@1.49.1
+          npx playwright install --with-deps chromium
+          node tools/test-site.mjs
+
+      - name: Publish to the site branch
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        run: |
+          cp -r deploy dist/_deploy
+          cd dist
+          git init -q -b site
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Build of ${GITHUB_SHA::7}"
+          tag="site-$(date -u +%Y%m%d-%H%M)-${GITHUB_SHA::7}"
+          git tag "$tag"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" site "refs/tags/$tag"

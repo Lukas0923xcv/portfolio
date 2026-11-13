@@ -1,0 +1,6 @@
+dist/
+build-cv/
+test-output/
+node_modules/
+__pycache__/
+*.pyc

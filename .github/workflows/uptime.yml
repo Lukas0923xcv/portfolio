@@ -1,0 +1,19 @@
+name: Uptime
+
+# Checks the site from outside the homelab. GitHub e-mails you when a scheduled run fails.
+on:
+  schedule:
+    - cron: "17,47 * * * *"
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Start page and English page answer with 200
+        run: |
+          for url in https://server-lukas.com/ https://server-lukas.com/en/; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 20 --retry 2 --retry-delay 20 "$url")
+            echo "$url $code"
+            [ "$code" = "200" ] || exit 1
+          done

@@ -1,0 +1,11 @@
+{
+  "output": "/var/www/portfolio/status.json",
+  "service_urls": [
+    "https://photo.server-lukas.com/",
+    "https://auth.server-lukas.com/",
+    "https://server-lukas.com/"
+  ],
+  "minecraft_host": "play.server-lukas.com",
+  "backup_stamp_file": "/var/lib/portfolio-status/offsite-backup.done",
+  "updates_stamp_file": "/var/lib/portfolio-status/ansible-updates.done"
+}

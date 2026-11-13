@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Lukas Dalloz</title>
+<style>
+  @font-face { font-family: "Archivo"; src: url("__FONT__") format("woff2"); font-weight: 400 800; font-stretch: 100% 112%; }
+  @page { size: A4; margin: 16mm 18mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Archivo", Arial, sans-serif; font-size: 9.6pt; line-height: 1.45; color: #141413; }
+  header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2pt solid #141413; padding-bottom: 8pt; }
+  h1 { font-size: 26pt; font-weight: 800; font-stretch: 112%; letter-spacing: -.03em; line-height: 1; }
+  .role { margin-top: 4pt; font-size: 11pt; }
+  .contact { text-align: right; font-size: 9pt; line-height: 1.5; }
+  .tape { display: inline-block; background: #F5C518; padding: 1pt 5pt; font-weight: 700; }
+  section { display: grid; grid-template-columns: 34mm 1fr; gap: 6mm; margin-top: 9pt; padding-top: 7pt; border-top: .5pt solid #bbb; break-inside: avoid; }
+  section:first-of-type { border-top: 0; }
+  h2 { font-size: 10pt; font-weight: 800; font-stretch: 112%; }
+  h3 { font-size: 9.8pt; font-weight: 700; }
+  ul { list-style: none; }
+  li + li { margin-top: 5pt; }
+  .when { color: #555; font-size: 8.6pt; }
+  .muted { color: #43423D; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4pt 6mm; }
+  footer { margin-top: 12pt; font-size: 8pt; color: #63625B; }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Lukas Dalloz</h1>
+    <p class="role" data-en="Apprentice Informatiker EFZ, platform development">Informatiker EFZ in Ausbildung, Fachrichtung Plattformentwicklung</p>
+  </div>
+  <p class="contact">__MAIL__<br>server-lukas.com<br>github.com/Lukas0923xcv<br><span data-en="Switzerland">Schweiz</span></p>
+</header>
+
+<section>
+  <h2 data-en="Profile">Profil</h2>
+  <p data-en="Apprentice in platform development, focused on networks, servers and keeping systems running. At home I run a homelab like a small company network: three network zones, single sign-on, automated updates and off-site backups. When a project needs code, I write it with AI and test and run it myself.">Lernender in der Plattformentwicklung mit Schwerpunkt Netzwerk, Server und Betrieb. Zu Hause betreibe ich ein Homelab wie ein kleines Firmennetz: drei Netzzonen, Single Sign-on, automatische Updates und Backups ausser Haus. Braucht ein Projekt Code, schreibe ich ihn mit KI und teste und betreibe ihn selbst.</p>
+</section>
+
+<section>
+  <h2 data-en="Education">Ausbildung</h2>
+  <ul>
+    <li><span class="when" data-en="Since 2025, expected to finish in 2029">Seit 2025, Abschluss voraussichtlich 2029</span><h3 data-en="Informatiker EFZ, platform development">Informatiker EFZ, Fachrichtung Plattformentwicklung</h3><p class="muted" data-en="Technische Fachschule Bern, class INF2025. School and practical training at the same place. Focus in practice: networking, including a high-availability pfSense firewall cluster with CARP.">Technische Fachschule Bern, Klasse INF2025. Schule und Praxis am selben Ort. Schwerpunkt in der Praxis: Netzwerk, unter anderem ein hochverfügbarer pfSense-Firewall-Cluster mit CARP.</p></li>
+  </ul>
+</section>
+
+<section>
+  <h2 data-en="Projects">Projekte</h2>
+  <ul>
+    <li><span class="when" data-en="October 2026, open source">Oktober 2026, Open Source</span><h3 data-en="Passkey login for pfSense">Passkey-Login für pfSense</h3><p class="muted" data-en="Add-on that adds a passkey as a second factor to the pfSense web interface. Version 1.0.1, in use on my own firewall. PHP, JavaScript, WebAuthn.">Add-on, das dem Web-Interface von pfSense einen Passkey als zweiten Faktor hinzufügt. Version 1.0.1, im Einsatz auf meiner Firewall. PHP, JavaScript, WebAuthn.</p></li>
+    <li><span class="when" data-en="Autumn 2026">Herbst 2026</span><h3>Netzwächter</h3><p class="muted" data-en="LTE device that reports power cuts by SMS, with firmware and an Android app. ESP32, LTE, Flutter, Bluetooth.">LTE-Gerät, das Stromausfälle per SMS meldet, mit Firmware und Android-App. ESP32, LTE, Flutter, Bluetooth.</p></li>
+    <li><span class="when" data-en="Since 2025">Seit 2025</span><h3 data-en="Homelab">Homelab</h3><p class="muted" data-en="Proxmox server with a pfSense firewall, DMZ, Authentik single sign-on, TrueNAS storage, Ansible updates and weekly encrypted off-site backups. Used daily by my family and friends.">Proxmox-Server mit pfSense-Firewall, DMZ, Single Sign-on mit Authentik, TrueNAS-Speicher, Updates mit Ansible und wöchentlichen verschlüsselten Backups ausser Haus. Täglich genutzt von Familie und Freunden.</p></li>
+    <li><span class="when" data-en="School project, module 306">Schulprojekt, Modul 306</span><h3 data-en="Self-hosted messenger">Eigener Messenger</h3><p class="muted" data-en="Chat server with Matrix Synapse and Element, from planning and test concept to the finished project.">Chat-Server mit Matrix Synapse und Element, von der Planung über das Testkonzept bis zum Abschluss.</p></li>
+  </ul>
+</section>
+
+<section>
+  <h2 data-en="Skills">Kenntnisse</h2>
+  <div class="grid">
+    <p><strong data-en="Networking">Netzwerk</strong><br>pfSense, CARP, VLANs, NAT, DNS</p>
+    <p><strong>Server</strong><br>Proxmox VE, Linux, Docker, LXC, TrueNAS, ZFS</p>
+    <p><strong data-en="Security">Sicherheit</strong><br>Authentik, Cloudflare Zero Trust, CrowdSec, Passkeys</p>
+    <p><strong data-en="Operations">Betrieb</strong><br><span data-en="Ansible, Semaphore, Netbox, Pulse, documentation">Ansible, Semaphore, Netbox, Pulse, Dokumentation</span></p>
+    <p><strong data-en="Code, with AI">Code, mit KI</strong><br>PHP, C++ (Arduino), Flutter, HTML, CSS</p>
+    <p><strong data-en="Languages">Sprachen</strong><br><span data-en="German, English">Deutsch, Englisch</span></p>
+  </div>
+</section>
+
+<footer data-en="More on every project: server-lukas.com. As of __UPDATED__.">Mehr zu jedem Projekt: server-lukas.com. Stand: __UPDATED__.</footer>
+</body>
+</html>

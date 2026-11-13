@@ -1,44 +1,19 @@
-<!DOCTYPE html>
-<html lang="de" data-title-en="Netzwächter, Lukas Dalloz" data-desc-en="An LTE device with its own firmware and Android app that sends an SMS when the power goes out.">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Netzwächter, Lukas Dalloz</title>
-<meta name="description" content="Ein LTE-Gerät mit eigener Firmware und Android-App, das per SMS meldet, wenn der Strom ausfällt.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Netzwächter, Lukas Dalloz">
-<meta property="og:description" content="Ein LTE-Gerät mit eigener Firmware und Android-App, das per SMS meldet, wenn der Strom ausfällt.">
-<meta property="og:locale" content="de_CH">
-<meta property="og:locale:alternate" content="en_GB">
-<meta name="theme-color" content="#141413">
-<meta name="color-scheme" content="dark">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23F5C518'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='%23141413' text-anchor='middle'%3ELD%3C/text%3E%3C/svg%3E">
-<link rel="preload" href="../assets/fonts/archivo-variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/style.css">
-<script src="../assets/site.js" defer></script>
-</head>
-<body>
-<a class="skip" href="#main" data-en="Skip to content">Zum Inhalt springen</a>
-<div class="bar" id="bar">
-  <div class="page"><header class="top">
-    <a class="brand" href="../index.html">Lukas Dalloz</a>
-    <div class="right">
-      <nav aria-label="Navigation">
-        <a href="../index.html#projects" data-en="Projects">Projekte</a>
-        <a href="../index.html#about" data-en="About me">Über mich</a>
-        <a href="../index.html#contact" data-en="Contact">Kontakt</a>
-      </nav>
-      <div class="lang" role="group" aria-label="Sprache / Language">
-        <button data-lang="de" aria-pressed="true" lang="de" title="Deutsch">DE</button>
-        <button data-lang="en" aria-pressed="false" lang="en" title="English">EN</button>
-      </div>
-    </div>
-  </header></div>
-</div>
-<div class="page" id="top">
-<main id="main">
+<!--meta
+{
+ "title_de": "Netzwächter, Lukas Dalloz",
+ "title_en": "Netzwächter, Lukas Dalloz",
+ "desc_de": "Ein LTE-Gerät mit eigener Firmware und Android-App, das per SMS meldet, wenn der Strom ausfällt.",
+ "desc_en": "An LTE device with its own firmware and Android app that sends an SMS when the power goes out.",
+ "type": "project",
+ "slug": "netzwaechter",
+ "order": 2,
+ "short_de": "Netzwächter",
+ "short_en": "Netzwächter",
+ "schema": "SoftwareSourceCode",
+ "repo": "https://github.com/Lukas0923xcv/esp32"
+}
+-->
 
-  <p class="crumb"><a href="../index.html#projects" data-en="All projects">Alle Projekte</a></p>
 
   <div class="case-hero">
     <h1>Netzwächter</h1>
@@ -112,6 +87,10 @@
         </div>
         <figcaption data-en="Power comes from the adapter or the battery, and every switch is reported by SMS and in the app. Example messages.">Strom kommt vom Netzteil oder vom Akku. Jeder Wechsel wird per SMS und in der App gemeldet. Beispielmeldungen.</figcaption>
       </figure>
+        <details class="as-text">
+          <summary data-en="Read the diagram as text">Diagramm als Text lesen</summary>
+          <p data-en="In normal operation the power supply feeds the LilyGO board. When the power goes out, the 18650 battery takes over and the board sends an alarm SMS to a phone through its LTE modem and prepaid SIM. When the power returns, it sends an all-clear. The Android app connects to the board over Bluetooth.">Im Normalbetrieb versorgt das Netzteil das LilyGO-Board. Fällt der Strom aus, übernimmt der 18650-Akku, und das Board schickt über sein LTE-Modem und die Prepaid-SIM eine Alarm-SMS an ein Handy. Kommt der Strom zurück, folgt eine Entwarnung. Die Android-App verbindet sich per Bluetooth mit dem Board.</p>
+        </details>
     </section>
 
     <section aria-labelledby="s3">
@@ -143,21 +122,20 @@
       </ul>
     </section>
 
+    <section>
+      <h2 data-en="My part">Meine Rolle</h2>
+      <p data-en="I wrote the firmware and the app with AI. The hardware, the wiring and the testing are my own work. One decision of mine: two thresholds with a gap between them for detecting a power cut, so a short flicker doesn&#39;t wake anyone up.">Firmware und App habe ich mit KI geschrieben, Hardware, Verkabelung und Tests sind meine Arbeit. Ein Beispiel für eine Entscheidung von mir: zwei Schwellen mit Abstand dazwischen für die Stromerkennung, damit ein kurzes Flackern niemanden weckt.</p>
+    </section>
+
+    <section>
+      <h2 data-en="What I&#39;d do differently">Was ich anders machen würde</h2>
+      <p data-en="I would test the power detection on a simple bench setup first, before building the firmware around it. My first idea, using USB, didn&#39;t work.">Die Stromerkennung würde ich zuerst mit einem einfachen Testaufbau prüfen, bevor die Firmware darum herum entsteht. Meine erste Idee über USB hat nicht funktioniert.</p>
+    </section>
+
     <section aria-labelledby="s5">
       <h2 id="s5" data-en="Code">Code</h2>
       <p data-en="Firmware, app and the list of all SMS commands are on GitHub: &lt;a href='https://github.com/Lukas0923xcv/esp32'&gt;esp32&lt;/a&gt;">Firmware, App und die Liste aller SMS-Befehle sind auf GitHub: <a href="https://github.com/Lukas0923xcv/esp32">esp32</a></p>
     </section>
 
-    <nav class="next" aria-label="Weitere Projekte">
-      <a href="passkey.html"><small data-en="Previous project">Vorheriges Projekt</small><span data-en="Passkey login for pfSense">Passkey-Login für pfSense</span></a>
-      <a class="right" href="homelab.html"><small data-en="Next project">Nächstes Projekt</small><span data-en="My homelab">Mein Homelab</span></a>
-    </nav>
   </div>
 
-</main>
-</div>
-<footer>
-  <div class="page"><a class="to-top" href="#top" data-en="Back to top">Nach oben</a><span class="note"><span class="ch" aria-hidden="true"></span><span data-en="Self-hosted in Switzerland, in the DMZ of my homelab">Selbst gehostet in der Schweiz, in der DMZ meines Homelabs</span><span class="sep" aria-hidden="true">/</span><span>&copy; <span data-year>2026</span> Lukas Dalloz</span></span></div>
-</footer>
-</body>
-</html>
