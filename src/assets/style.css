@@ -199,7 +199,10 @@ a[href^="http"]:not(.btn)::after {
 .term-status::before { content: ""; flex: none; width: 8px; height: 8px; background: var(--tape); transform: translateY(-1px); }
 
 /* ---------- Home: ticker (decorative, full width) ---------- */
-.ticker { margin-inline: calc(50% - 50vw); border-block: 1px solid var(--line); padding: 20px 0; overflow: hidden; background: var(--bg); }
+.ticker { position: relative; border-block: 1px solid var(--line); padding: 20px 0; overflow: hidden; }
+.ticker::before, .ticker::after { content: ""; position: absolute; top: 0; bottom: 0; z-index: 1; width: 64px; pointer-events: none; }
+.ticker::before { left: 0; background: linear-gradient(90deg, var(--bg), transparent); }
+.ticker::after { right: 0; background: linear-gradient(-90deg, var(--bg), transparent); }
 .ticker-track { display: flex; gap: 48px; width: max-content; animation: tick 40s linear infinite; font-size: clamp(1.75rem, 3vw, 2.375rem); font-weight: 600; white-space: nowrap; }
 .ticker-track span { display: inline-flex; align-items: center; gap: 48px; }
 .ticker-track span::after { content: ""; width: .42em; height: .42em; background: var(--mark); transform: rotate(45deg); }
