@@ -145,7 +145,7 @@ class Localize(HTMLParser):
 
     def handle_startendtag(self, tag, attrs):
         if not self.skip:
-            self.tag(tag, attrs)
+            self.tag(tag, attrs, "" if tag in VOID else " /")
 
     def handle_endtag(self, tag):
         if self.skip:
