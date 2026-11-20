@@ -136,24 +136,23 @@
     <p class="kicker" data-en="§02 — focus project">§02 — fokus-projekt</p>
     <div class="focus-grid">
       <div>
-        <h2 class="h-sec" id="focus-h">Netzwächter</h2>
-        <p class="lead" data-en="While my grandparents were on holiday, their freezer failed and nobody noticed. Now a LilyGO T-A7670G with a prepaid SIM watches the power and sends an SMS the moment it's gone.">Während meine Grosseltern in den Ferien waren, fiel ihre Kühltruhe aus, und niemand merkte es. Jetzt überwacht ein LilyGO T-A7670G mit Prepaid-SIM den Strom und schickt sofort eine SMS, wenn er weg ist.</p>
-        <p class="pstack" data-en="ESP32 · LTE modem · SMS · Flutter app">ESP32 · LTE-Modem · SMS · Flutter-App</p>
+        <h2 class="h-sec" id="focus-h">Homelab</h2>
+        <p class="lead" data-en="I started it in 2025 out of curiosity. Today my family and friends use its services every day, so I run it like a small company network: three network zones, single sign-on, automated updates and backups that leave the house.">Angefangen habe ich es 2025 aus Interesse. Heute nutzen meine Familie und Freunde die Dienste darauf täglich, darum betreibe ich es wie ein kleines Firmennetz: drei Netzzonen, Single Sign-on, automatische Updates und Backups, die das Haus verlassen.</p>
+        <p class="pstack">Proxmox · pfSense · TrueNAS · Docker · Ansible</p>
         <p class="actions">
-          <a class="btn" href="projekte/netzwaechter.html"><span data-en="Read the case study">Zum Projekt</span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a class="btn-2" href="https://github.com/Lukas0923xcv/esp32" data-en="Code on GitHub">Code auf GitHub</a>
+          <a class="btn" href="projekte/homelab.html"><span data-en="Read the case study">Zum Projekt</span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </p>
       </div>
       <figure class="photo">
-        <img src="assets/img/netzwaechter-platine.webp" alt="Geöffnetes Gehäuse des Netzwächters mit der LilyGO-Platine, SIM-Karte und Antenne" data-alt-en="The Netzwächter's open case with the LilyGO board, SIM card and antenna" data-sizes="(max-width: 860px) 100vw, 760px">
-        <figcaption data-en="fig. 01 — the board in its 3D-printed case">fig. 01 — die Platine im 3D-gedruckten Gehäuse</figcaption>
+        <img src="assets/img/homelab-startseite.webp" alt="Startseite meines Homelabs mit allen Diensten" data-alt-en="Start page of my homelab with all services" data-sizes="(max-width: 860px) 100vw, 760px">
+        <figcaption data-en="fig. 01 — my start page, linking every service in the lab (addresses blurred)">fig. 01 — meine Startseite, sie verlinkt jeden Dienst im Lab (Adressen unkenntlich)</figcaption>
       </figure>
     </div>
-    <ol class="steps4">
-      <li><span class="no">01 — event</span><strong data-en="Power out">Strom weg</strong><span data-en="The power supply stops delivering 5 V, the battery takes over.">Das Netzteil liefert keine 5 V mehr, der Akku übernimmt.</span></li>
-      <li><span class="no">02 — detect</span><strong data-en="The board notices">Die Platine merkt es</strong><span data-en="The firmware measures the input and ignores short flickers.">Die Firmware misst den Eingang und ignoriert kurze Schwankungen.</span></li>
-      <li><span class="no">03 — send</span><strong data-en="SMS goes out">SMS raus</strong><span data-en="Through the prepaid SIM to up to five numbers.">Über die Prepaid-SIM an bis zu fünf Nummern.</span></li>
-      <li><span class="no">04 — notify</span><strong data-en="Phone rings">Handy klingelt</strong><span data-en="Wherever you are. Another SMS when the power is back.">Egal wo man gerade ist. Eine zweite SMS, wenn der Strom zurück ist.</span></li>
+    <ol class="steps4" aria-label="Der Weg einer Anfrage vom Internet bis zur App" data-aria-en="The path of a request from the internet to the app">
+      <li><span class="no">01 — filter</span><strong data-en="Firewall">Firewall</strong><span data-en="pfSense drops known bad addresses and traffic from countries that aren't allowed.">pfSense verwirft bekannte schädliche Adressen und Verkehr aus nicht erlaubten Ländern.</span></li>
+      <li><span class="no">02 — detect</span><strong>CrowdSec</strong><span data-en="Reads the proxy logs and blocks IPs that scan or attack.">Liest die Logs des Proxys und sperrt IPs, die scannen oder angreifen.</span></li>
+      <li><span class="no">03 — proxy</span><strong>Reverse Proxy</strong><span data-en="Nginx Proxy Manager handles HTTPS and picks the right app.">Nginx Proxy Manager übernimmt HTTPS und wählt die richtige App.</span></li>
+      <li><span class="no">04 — auth</span><strong>Login</strong><span data-en="Authentik asks who you are before the app ever sees the request.">Authentik fragt, wer Sie sind, bevor die App die Anfrage sieht.</span></li>
     </ol>
   </section>
 
