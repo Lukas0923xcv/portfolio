@@ -290,6 +290,9 @@ a[href^="http"]:not(.btn)::after {
 .portrait { flex: 0 1 320px; min-width: 0; }
 .portrait .frame { display: grid; place-items: center; aspect-ratio: 4 / 5; padding: 28px; border: 1px solid var(--line); background: var(--soft); }
 .portrait img { display: block; width: 100%; height: auto; }
+.portrait .placeholder { gap: 12px; align-content: center; border: 1.5px dashed var(--line-2); background: var(--panel); text-align: center; }
+.portrait .placeholder svg { width: 32px; height: 32px; fill: none; stroke: var(--fg-3); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.portrait .placeholder span { font-family: var(--mono); font-size: .875rem; color: var(--fg-3); }
 .about-text { flex: 1 1 480px; min-width: 0; }
 .about-text .lead { margin-top: 28px; }
 .about-text p:not(.lead) { margin-top: 16px; max-width: 38em; color: var(--fg-2); }
@@ -542,8 +545,7 @@ ul.plain li:first-child { padding-top: 0; }
   .hops { grid-template-columns: 20px 92px minmax(0, 1fr); }
   .lead { font-size: 1.1875rem; margin-top: 28px; }
   .btn, .btn-2 { padding: 0 20px; }
-  .portrait { flex-basis: 100%; }
-  .portrait .frame { aspect-ratio: 16 / 10; padding: 20px 15%; }
+  .portrait { flex-basis: 100%; max-width: 240px; }
 }
 @media (max-width: 560px) {
   .mainnav a { padding: 0 2px; font-size: .8125rem; }
