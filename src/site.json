@@ -14,6 +14,10 @@
   "bing_site_verification": "",
 
   "changelog": [
+    { "date": "2026-11-20", "de": "Die alte virtuelle pfSense abgeschaltet, die OPNsense trägt jetzt das ganze Netz.", "en": "Switched off the old virtual pfSense; the OPNsense now carries the whole network." },
+    { "date": "2026-11-19", "de": "DMZ und Lab auf die neue OPNsense-Firewall umgezogen, öffentliche Seiten laufen über den Cloudflare-Proxy.", "en": "Moved the DMZ and lab to the new OPNsense firewall; public sites now run through the Cloudflare proxy." },
+    { "date": "2026-11-18", "de": "Eigenes IoT-Netz eingerichtet, das nur ins Internet darf.", "en": "Set up a separate IoT network that may only reach the internet." },
+    { "date": "2026-11-12", "de": "Drei UniFi-Switches mit eigenem Controller in Betrieb genommen.", "en": "Brought three UniFi switches with their own controller online." },
     { "date": "2026-11-09", "de": "Startseite mit den Links zu allen Tools neu gestaltet.", "en": "Redesigned the start page that links all my tools." },
     { "date": "2026-11-06", "de": "Isoliertes Netz für Testmaschinen eingerichtet.", "en": "Added an isolated network for test machines." },
     { "date": "2026-11-03", "de": "CrowdSec auf dem Reverse Proxy und Diun-Mails für neue Container-Images.", "en": "CrowdSec on the reverse proxy, and Diun e-mails for new container images." },

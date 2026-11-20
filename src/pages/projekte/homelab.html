@@ -22,7 +22,7 @@
       <div><dt data-en="Context">Kontext</dt><dd data-en="Personal project">Privatprojekt</dd></div>
       <div><dt data-en="Time">Zeitraum</dt><dd data-en="Since 2025">Seit 2025</dd></div>
       <div><dt>Status</dt><dd data-en="Running every day, still growing">Täglich in Betrieb, wird laufend erweitert</dd></div>
-      <div><dt data-en="Tools">Werkzeuge</dt><dd>Proxmox VE, pfSense, TrueNAS, Docker, Ansible</dd></div>
+      <div><dt data-en="Tools">Werkzeuge</dt><dd>Proxmox VE, OPNsense, TrueNAS, Docker, Ansible</dd></div>
     </dl>
   </div>
 
@@ -37,6 +37,8 @@
           <li><span data-en="Memory">Arbeitsspeicher</span><span>32 GB</span></li>
           <li><span data-en="System storage">Systemspeicher</span><span data-en="2 × 1 TB NVMe">2 × 1 TB NVMe</span></li>
           <li><span data-en="Data storage">Datenspeicher</span><span data-en="4 hard disks in RAIDZ1 for TrueNAS">4 Festplatten im RAIDZ1 für TrueNAS</span></li>
+          <li><span data-en="Firewall">Firewall</span><span data-en="OPNsense on a Sophos SG135 (since November 2026)">OPNsense auf einer Sophos SG135 (seit November 2026)</span></li>
+          <li><span data-en="Network">Netzwerk</span><span data-en="Three managed UniFi switches, VLANs over one trunk">Drei verwaltete UniFi-Switches, VLANs über einen Trunk</span></li>
         </ul>
       </div>
     </section>
@@ -53,9 +55,9 @@
       <div class="panel" id="p-net" role="tabpanel" aria-labelledby="t-net">
         <div class="split">
           <div class="text">
-            <p data-en="A pfSense firewall splits the lab into three zones. Public services live in a DMZ that's cut off from everything else, internal tools stay in the lab network, and test machines get a sandbox of their own.">Eine pfSense-Firewall teilt das Lab in drei Zonen. Öffentliche Dienste laufen in einer DMZ, die vom Rest abgeschnitten ist, interne Tools bleiben im Lab-Netz, und Testmaschinen haben ihre eigene Sandbox.</p>
-            <p data-en="Admin tools are never exposed directly. I reach them through Cloudflare Tunnels with multi-factor login, which also works from networks where a VPN isn't allowed.">Admin-Tools sind nie direkt erreichbar. Ich greife über Cloudflare Tunnels mit Mehrfaktor-Login darauf zu. Das funktioniert auch aus Netzen, in denen kein VPN erlaubt ist.</p>
-            <div class="stack">pfSense, pfBlockerNG, Proxmox VE, Cloudflare Tunnel</div>
+            <p data-en="An OPNsense firewall splits the lab into three zones. Public services run in a DMZ that is cut off from the rest, internal tools stay in the lab network, and smart devices get their own network that may only reach the internet. Since November 2026 the firewall is a device of its own; before, it was a virtual pfSense on the server.">Eine OPNsense-Firewall teilt das Lab in drei Zonen. Öffentliche Dienste laufen in einer DMZ, die vom Rest abgeschnitten ist, interne Tools bleiben im Lab-Netz, und smarte Geräte haben ein eigenes Netz, das nur ins Internet darf. Seit November 2026 ist die Firewall ein eigenes Gerät, vorher war es eine virtuelle pfSense auf dem Server.</p>
+            <p data-en="From outside, only HTTPS (and only from Cloudflare) and the Minecraft port are open. Admin tools are never reachable directly: I use Cloudflare Tunnels with multi-factor login, which also works from networks that don't allow a VPN.">Von aussen sind nur HTTPS (und das nur von Cloudflare) und der Minecraft-Port offen. Admin-Tools sind nie direkt erreichbar: Ich greife über Cloudflare Tunnels mit Mehrfaktor-Login darauf zu. Das funktioniert auch aus Netzen, in denen kein VPN erlaubt ist.</p>
+            <div class="stack">OPNsense, UniFi, VLANs, Proxmox VE, Cloudflare</div>
           </div>
           <figure class="figure">
             <div class="net">
@@ -65,13 +67,13 @@
               <div class="line"></div>
               <button type="button" class="box" role="radio" aria-checked="false" data-node="router" data-en="ISP router">Router des Providers</button>
               <div class="line"></div>
-              <button type="button" class="box" role="radio" aria-checked="false" data-node="fw" data-en="pfSense firewall">pfSense-Firewall</button>
+              <button type="button" class="box" role="radio" aria-checked="false" data-node="fw" data-en="OPNsense firewall">OPNsense-Firewall</button>
               <div class="line"></div>
               <div class="fan"></div>
               <div class="zones">
                 <button type="button" class="box" role="radio" aria-checked="false" data-node="lab" data-en="Lab&lt;small&gt;internal services&lt;/small&gt;">Lab<small>interne Dienste</small></button>
                 <button type="button" class="box" role="radio" aria-checked="true" data-node="dmz" data-en="DMZ&lt;small&gt;proxy and public apps&lt;/small&gt;">DMZ<small>Proxy und öffentliche Apps</small></button>
-                <button type="button" class="box" role="radio" aria-checked="false" data-node="iso" data-en="Isolated&lt;small&gt;test machines&lt;/small&gt;">Isoliert<small>Testmaschinen</small></button>
+                <button type="button" class="box" role="radio" aria-checked="false" data-node="iot" data-en="IoT&lt;small&gt;smart devices&lt;/small&gt;">IoT<small>smarte Geräte</small></button>
               </div>
               </div>
               <div class="net-info" id="net-info" aria-live="polite"><h4>DMZ</h4><p data-en="Where public services live: the reverse proxy with single sign-on, the web apps behind it and the Minecraft server. The DMZ is cut off from the other networks.">Hier laufen die öffentlichen Dienste: der Reverse Proxy mit Single Sign-on, die Web-Apps dahinter und der Minecraft-Server. Die DMZ ist von den anderen Netzen abgeschnitten.</p></div>
@@ -79,12 +81,12 @@
             <details class="as-text">
               <summary data-en="Read the diagram as text">Diagramm als Text lesen</summary>
               <dl class="net-desc">
-                <div data-node="internet"><dt>Internet</dt><dd data-en="Visitors only ever reach the reverse proxy and the game server. Everything else stays closed from the outside.">Besucher erreichen nur den Reverse Proxy und den Game-Server. Alles andere bleibt von aussen zu.</dd></div>
+                <div data-node="internet"><dt>Internet</dt><dd data-en="Visitors come through the Cloudflare proxy to the reverse proxy, players straight to the game server. Everything else stays closed from outside.">Besucher kommen über den Cloudflare-Proxy zum Reverse Proxy, Spieler direkt zum Game-Server. Alles andere bleibt von aussen zu.</dd></div>
                 <div data-node="router"><dt data-en="ISP router">Router des Providers</dt><dd data-en="The router hands incoming traffic straight to the firewall, so all filtering happens in one place.">Der Router gibt eingehenden Verkehr direkt an die Firewall weiter, so wird alles an einem Ort gefiltert.</dd></div>
-                <div data-node="fw"><dt data-en="pfSense firewall">pfSense-Firewall</dt><dd data-en="Routes and filters between all zones. Blocklists and country filters run first, and logging in to the firewall needs a passkey on top of the password.">Routet und filtert zwischen allen Zonen. Blocklisten und Länderfilter greifen zuerst, und der Login auf die Firewall braucht zusätzlich zum Passwort einen Passkey.</dd></div>
+                <div data-node="fw"><dt data-en="OPNsense firewall">OPNsense-Firewall</dt><dd data-en="A device of its own running OPNsense. It routes and filters between all zones, accepts HTTPS only from Cloudflare and drops known bad addresses first.">Ein eigenes Gerät mit OPNsense. Es routet und filtert zwischen allen Zonen, nimmt HTTPS nur von Cloudflare an und verwirft bekannte schädliche Adressen zuerst.</dd></div>
                 <div data-node="lab"><dt>Lab</dt><dd data-en="Internal services like the inventory, monitoring and automation. Nothing here is reachable from the internet. Admin access goes through Cloudflare Tunnels with multi-factor login.">Interne Dienste wie Inventar, Monitoring und Automatisierung. Nichts davon ist aus dem Internet erreichbar. Admin-Zugriff läuft über Cloudflare Tunnels mit Mehrfaktor-Login.</dd></div>
                 <div data-node="dmz"><dt>DMZ</dt><dd data-en="Where public services live: the reverse proxy with single sign-on, the web apps behind it and the Minecraft server. The DMZ is cut off from the other networks.">Hier laufen die öffentlichen Dienste: der Reverse Proxy mit Single Sign-on, die Web-Apps dahinter und der Minecraft-Server. Die DMZ ist von den anderen Netzen abgeschnitten.</dd></div>
-                <div data-node="iso"><dt data-en="Isolated">Isoliert</dt><dd data-en="A sandbox for test machines. It has internet access but can&#39;t talk to anything else in the lab.">Eine Sandbox für Testmaschinen. Sie hat Internetzugang, kann aber mit nichts anderem im Lab sprechen.</dd></div>
+                <div data-node="iot"><dt>IoT</dt><dd data-en="Its own Wi-Fi for smart devices. It may reach the internet, but can't talk to anything else in the lab.">Ein eigenes WLAN für smarte Geräte. Es darf ins Internet, kann aber mit nichts anderem im Lab sprechen.</dd></div>
               </dl>
             </details>
           </figure>
@@ -115,19 +117,20 @@
       <div class="panel" id="p-sec" role="tabpanel" aria-labelledby="t-sec">
         <div class="split">
           <div class="text">
-            <p data-en="A request from the internet has to pass several checks before it reaches one of my apps. Each layer catches something different, so one mistake in one place doesn't open everything.">Eine Anfrage aus dem Internet muss mehrere Prüfungen bestehen, bevor sie eine meiner Apps erreicht. Jede Schicht fängt etwas anderes ab, ein Fehler an einer Stelle öffnet also nicht gleich alles.</p>
-            <p data-en="Logins use passkeys or authenticator codes wherever I can set them up, including on the firewall, thanks to my own add-on.">Für Logins nutze ich Passkeys oder Authenticator-Codes, wo immer es geht. Dank meinem eigenen Add-on auch auf der Firewall.</p>
-            <div class="stack">pfBlockerNG, CrowdSec, Nginx Proxy Manager, Authentik, Cloudflare Access</div>
+            <p data-en="A request from the internet has to pass several checks before it reaches one of my apps. Each layer catches something different, so one mistake doesn't open everything at once.">Eine Anfrage aus dem Internet muss mehrere Prüfungen bestehen, bevor sie eine meiner Apps erreicht. Jede Schicht fängt etwas anderes ab, ein Fehler an einer Stelle öffnet also nicht gleich alles.</p>
+            <p data-en="For logins I use passkeys or authenticator codes wherever I can. Admin interfaces such as the firewall also sit behind Cloudflare Access with multi-factor login.">Für Logins nutze ich Passkeys oder Authenticator-Codes, wo immer es geht. Admin-Oberflächen wie die Firewall liegen zusätzlich hinter Cloudflare Access mit Mehrfaktor-Login.</p>
+            <div class="stack">Cloudflare, OPNsense, CrowdSec, Nginx Proxy Manager, Authentik</div>
           </div>
           <figure class="figure">
             <ol class="flow">
-              <li data-en="<strong>Blocklists and country filter</strong><span>pfSense drops known bad addresses and traffic from outside the allowed countries.</span>"><strong>Blocklisten und Länderfilter</strong><span>pfSense verwirft bekannte schädliche Adressen und Verkehr aus nicht erlaubten Ländern.</span></li>
-              <li data-en="<strong>Attack detection</strong><span>CrowdSec reads the proxy's logs and bans IPs that scan or attack.</span>"><strong>Angriffserkennung</strong><span>CrowdSec liest die Logs des Proxys und sperrt IPs, die scannen oder angreifen.</span></li>
-              <li data-en="<strong>Reverse proxy</strong><span>Nginx Proxy Manager handles HTTPS and picks the right app.</span>"><strong>Reverse Proxy</strong><span>Nginx Proxy Manager übernimmt HTTPS und wählt die richtige App.</span></li>
-              <li data-en="<strong>Login</strong><span>Authentik asks who you are before the app sees the request.</span>"><strong>Login</strong><span>Authentik fragt, wer Sie sind, bevor die App die Anfrage sieht.</span></li>
-              <li class="stop" data-en="<strong>The app</strong><span>Only now does the request reach the service itself.</span>"><strong>Die App</strong><span>Erst jetzt erreicht die Anfrage den Dienst selbst.</span></li>
+              <li><strong data-en="Cloudflare proxy">Cloudflare-Proxy</strong><span data-en="Public sites run through Cloudflare, which filters before anything reaches my connection.">Öffentliche Seiten laufen über Cloudflare, das filtert, bevor etwas meinen Anschluss erreicht.</span></li>
+              <li><strong>Firewall</strong><span data-en="OPNsense only accepts HTTPS from Cloudflare and drops known bad addresses.">OPNsense nimmt HTTPS nur von Cloudflare an und verwirft bekannte schädliche Adressen.</span></li>
+              <li><strong data-en="Attack detection">Angriffserkennung</strong><span data-en="CrowdSec reads the proxy logs and blocks IPs that scan or attack.">CrowdSec liest die Logs des Proxys und sperrt IPs, die scannen oder angreifen.</span></li>
+              <li><strong>Reverse Proxy</strong><span data-en="Nginx Proxy Manager handles HTTPS and picks the right app.">Nginx Proxy Manager übernimmt HTTPS und wählt die richtige App.</span></li>
+              <li><strong>Login</strong><span data-en="Authentik asks who you are before the app sees the request.">Authentik fragt, wer Sie sind, bevor die App die Anfrage sieht.</span></li>
+              <li class="stop"><strong data-en="The app">Die App</strong><span data-en="Only now does the request reach the service itself.">Erst jetzt erreicht die Anfrage den Dienst selbst.</span></li>
             </ol>
-            <figcaption data-en="The path of a request from the internet to an app.">Der Weg einer Anfrage vom Internet bis zur App.</figcaption>
+            <figcaption data-en="The path of a request from the internet to the app.">Der Weg einer Anfrage vom Internet bis zur App.</figcaption>
           </figure>
         </div>
       </div>
@@ -150,7 +153,7 @@
               <li data-en="<span class='when'>every day</span><strong>TrueNAS storage server</strong><span>Four disks in RAIDZ1, with ZFS snapshots.</span>"><span class="when">täglich</span><strong>TrueNAS-Speicherserver</strong><span>Vier Disks im RAIDZ1, mit ZFS-Snapshots.</span></li>
               <li class="stop" data-en="<span class='when'>every week</span><strong>Encrypted cloud copy</strong><span>The whole share leaves the house, encrypted before upload.</span>"><span class="when">wöchentlich</span><strong>Verschlüsselte Cloud-Kopie</strong><span>Der ganze Share verlässt das Haus, vor dem Upload verschlüsselt.</span></li>
             </ol>
-            <figcaption data-en="How a backup travels from a machine to off-site storage. Firewall and server configs are saved separately on top.">Wie ein Backup von der Maschine bis ausser Haus kommt. Firewall- und Server-Konfigurationen werden zusätzlich separat gesichert.</figcaption>
+            <figcaption data-en="How a backup gets from the machine to off-site. Server configurations are also backed up separately.">Wie ein Backup von der Maschine bis ausser Haus kommt. Server-Konfigurationen werden zusätzlich separat gesichert.</figcaption>
           </figure>
         </div>
       </div>
@@ -172,7 +175,17 @@
       <div class="problem">
         <h3 data-en="Too small for photos">Zu klein für Fotos</h3>
         <p data-en="At first, everything went through Cloudflare Tunnels. For the photo library that doesn't work: Cloudflare limits the size of a single upload, and videos from a phone are quickly bigger than that.">Anfangs lief alles über Cloudflare Tunnels. Für die Fotobibliothek funktioniert das nicht: Cloudflare begrenzt die Grösse eines einzelnen Uploads, und Videos vom Handy sind schnell grösser.</p>
-        <p class="fix" data-en="&lt;strong&gt;Solution:&lt;/strong&gt; I built a DMZ. Public services now come in directly through the firewall to a reverse proxy with single sign-on, while admin tools stay behind the tunnel. That made the whole setup clearer, not just the photo uploads."><strong>Lösung:</strong> Ich habe eine DMZ aufgebaut. Öffentliche Dienste kommen jetzt direkt über die Firewall zu einem Reverse Proxy mit Single Sign-on, die Admin-Tools bleiben hinter dem Tunnel. Dadurch wurde das ganze Setup übersichtlicher, nicht nur die Foto-Uploads.</p>
+        <p class="fix" data-en="&lt;strong&gt;Solution:&lt;/strong&gt; I built a DMZ. Public services then reached a reverse proxy with single sign-on through the firewall, and the admin tools stayed behind the tunnel. That made the whole setup clearer, not just the photo uploads."><strong>Lösung:</strong> Ich habe eine DMZ aufgebaut. Öffentliche Dienste kamen danach über die Firewall zu einem Reverse Proxy mit Single Sign-on, die Admin-Tools blieben hinter dem Tunnel. Dadurch wurde das ganze Setup übersichtlicher, nicht nur die Foto-Uploads.</p>
+      </div>
+      <div class="problem">
+        <h3 data-en="A repeater that swallowed VLANs">Ein Repeater, der VLANs verschluckte</h3>
+        <p data-en="With the new firewall, the lab and the DMZ reach the server as VLANs over one trunk. Upstairs nothing arrived: the Wi-Fi repeater between the floors passes normal traffic but drops the VLAN tags.">Mit der neuen Firewall kommen Lab und DMZ als VLANs über einen Trunk zum Server. Oben kam aber nichts an: Der WLAN-Repeater zwischen den Stockwerken reicht normalen Verkehr weiter, wirft die VLAN-Tags aber weg.</p>
+        <p class="fix" data-en="&lt;strong&gt;Solution:&lt;/strong&gt; A cable between the floors and a third managed switch upstairs now carry the trunk. The repeater only provides Wi-Fi and is never plugged into a switch again, because it also created a loop."><strong>Lösung:</strong> Ein Kabel zwischen den Stockwerken und ein dritter verwalteter Switch oben tragen jetzt den Trunk. Der Repeater liefert nur noch WLAN und hängt nie mehr an einem Switch, weil er dort auch eine Schleife bildete.</p>
+      </div>
+      <div class="problem">
+        <h3 data-en="Changing the firewall without moving the servers">Firewall wechseln, ohne die Server umzustellen</h3>
+        <p data-en="The virtual pfSense was the gateway for every guest. A new firewall with new addresses would have meant reconfiguring every machine at once.">Die virtuelle pfSense war das Gateway jeder Maschine. Eine neue Firewall mit neuen Adressen hätte bedeutet, alle Maschinen auf einmal umzustellen.</p>
+        <p class="fix" data-en="&lt;strong&gt;Solution:&lt;/strong&gt; The OPNsense took over the same networks and gateway addresses, as virtual IPs from the start. I moved one zone at a time and kept the pfSense as a fallback until everything ran."><strong>Lösung:</strong> Die OPNsense hat dieselben Netze und Gateway-Adressen übernommen, von Anfang an als virtuelle IPs. Ich habe eine Zone nach der anderen umgezogen und die pfSense als Rückfallebene behalten, bis alles lief.</p>
       </div>
     </section>
 
