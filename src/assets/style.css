@@ -243,9 +243,27 @@ a[href^="http"]:not(.btn)::after {
 .prow .arrow { display: inline-flex; color: var(--mark); transition: transform .2s; }
 .prow .arrow svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .prow:hover .arrow { transform: translateX(6px); }
+/* expandable details per project; sits above the row-wide link */
+.pmore { position: relative; z-index: 1; grid-column: 2 / -1; margin-top: -8px; }
+.pmore summary { display: inline-flex; align-items: center; gap: 8px; min-height: var(--tap); cursor: pointer; list-style: none; font-family: var(--mono); font-size: .875rem; color: var(--mark); }
+.pmore summary::-webkit-details-marker { display: none; }
+.pmore summary::before { content: "+"; display: inline-grid; place-items: center; width: 20px; height: 20px; border: 1px solid currentColor; line-height: 1; }
+.pmore[open] summary::before { content: "−"; }
+.pmore summary:hover { text-decoration: underline; text-underline-offset: 4px; }
+.pmore dl { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 0 24px; max-width: 900px; margin-top: 8px; border-top: 1px solid var(--line); }
+.pmore dl div { display: contents; }
+.pmore dt, .pmore dd { padding: 12px 0; border-bottom: 1px solid var(--line); }
+.pmore dt { font-family: var(--mono); font-size: .8125rem; color: var(--fg-3); line-height: 1.9; }
+.pmore dd { font-size: 1rem; line-height: 1.55; color: var(--fg-2); }
+.pmore .pcase { margin-top: 12px; }
+.pmore .pcase a { display: inline-flex; align-items: center; min-height: var(--tap); font-family: var(--mono); font-size: .875rem; }
 @container (max-width: 860px) {
   .prow { grid-template-columns: 44px minmax(0, 1fr); row-gap: 8px; }
-  .prow .pdesc, .prow .pctx { grid-column: 2; }
+  .prow .pdesc, .prow .pctx, .pmore { grid-column: 2; }
+  .pmore { margin-top: 0; }
+  .pmore dl { grid-template-columns: minmax(0, 1fr); }
+  .pmore dt { padding-bottom: 0; border-bottom: 0; }
+  .pmore dd { padding-top: 2px; }
   .prow .arrow { display: none; }
 }
 
@@ -311,7 +329,7 @@ a[href^="http"]:not(.btn)::after {
 .contact .kicker { margin-bottom: 24px; }
 .contact h2 { font-size: clamp(3.125rem, 10vw, 10rem); letter-spacing: -.04em; line-height: .88; }
 .contact .lead { margin-top: 32px; }
-.harr { display: inline-block; width: .9em; height: .54em; vertical-align: .08em; fill: none; stroke: currentColor; stroke-width: 11; stroke-linecap: square; }
+.harr { display: inline-block; width: .9em; height: .54em; vertical-align: .08em; fill: none; stroke: currentColor; stroke-width: 11; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; }
 .harr.thin { stroke: var(--fg); stroke-width: 1.5px; vector-effect: non-scaling-stroke; }
 .harr.thin path { vector-effect: non-scaling-stroke; }
 .contact .big { display: inline-block; margin-top: 28px; font-family: var(--mono); font-size: clamp(1.125rem, 2.6vw, 1.75rem); overflow-wrap: anywhere; text-decoration-color: var(--mark); text-decoration-thickness: 2px; text-underline-offset: 8px; }
