@@ -12,9 +12,28 @@
 }
 -->
 
-  <section class="plain-page">
-    <p class="tag">404</p>
-    <h1 data-en="This page doesn't exist.">Diese Seite gibt es nicht.</h1>
-    <p class="lead" data-en="The link may be old, or the address has a typo. Everything that is on this site can be reached from the start page.">Vielleicht ist der Link veraltet, oder in der Adresse steckt ein Tippfehler. Alles, was es auf dieser Website gibt, erreichen Sie von der Startseite aus.</p>
-    <p class="links"><a class="btn" href="index.html" data-en="To the start page">Zur Startseite</a><a href="index.html#projects" data-en="All projects">Alle Projekte</a></p>
+  <section class="p404" aria-labelledby="h404">
+    <div>
+      <p class="kicker">ICMP type 3 — destination unreachable</p>
+      <h1 id="h404"><span aria-hidden="true">4<span class="outline">0</span>4</span><span class="vh" data-en="Page not found">Seite nicht gefunden</span></h1>
+      <p class="lead" data-en="This route doesn't exist (any more). The page may have moved, or the link had a typo. Everything on this site can be reached from the start page.">Diese Route existiert nicht (mehr). Vielleicht wurde die Seite verschoben, oder der Link hatte einen Tippfehler. Alles, was es auf dieser Website gibt, erreichen Sie von der Startseite aus.</p>
+      <p class="actions">
+        <a class="btn" href="index.html"><span data-en="To the start page">Zur Startseite</span><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn-2" href="index.html#projects" data-en="View projects">Projekte ansehen</a>
+        <a class="btn-2" href="index.html#contact" data-en="Contact">Kontakt</a>
+      </p>
+    </div>
+    <div class="term" aria-hidden="true">
+      <div class="term-bar"><i></i><i></i><i></i><span>tty1 — traceroute</span></div>
+      <div class="term-body">
+        <p><span class="prompt">$</span> traceroute <span data-en="this-page">diese-seite</span></p>
+        <div class="hops">
+          <span class="no">1</span><span>server-lukas.com</span>
+          <span class="no">2</span><span>nginx</span>
+          <span class="no">3</span><span class="v">* * *</span>
+          <span class="no">4</span><span class="v">* * *</span>
+        </div>
+        <p class="done" data-en="✕ Packet dropped: TTL exceeded">✕ Paket verworfen: TTL exceeded</p>
+      </div>
+    </div>
   </section>

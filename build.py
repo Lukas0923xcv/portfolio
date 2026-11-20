@@ -53,9 +53,16 @@ T = {  # interface strings that are not part of any page source
     "skip": ("Zum Inhalt springen", "Skip to content"),
     "nav": ("Navigation", "Navigation"),
     "projects": ("Projekte", "Projects"),
-    "about": ("Über mich", "About me"),
-    "path": ("Werdegang", "So far"),
+    "focus": ("Fokus", "Focus"),
+    "stack": ("Stack", "Stack"),
+    "about": ("Über mich", "About"),
     "contact": ("Kontakt", "Contact"),
+    "home": ("Lukas Dalloz, zur Startseite", "Lukas Dalloz, to the start page"),
+    "sitemap": ("sitemap", "sitemap"),
+    "legal": ("rechtliches", "legal"),
+    "tagline": ("Netzwerk · Plattform · Automation", "Network · platform · automation"),
+    "country": ("Schweiz", "Switzerland"),
+    "ttl": ("TTL 64 · keine Tracker, nur Pakete", "TTL 64 · no trackers, just packets"),
     "lang": ("Sprache", "Language"),
     "theme": ("Farbschema wechseln", "Switch colour scheme"),
     "top": ("Nach oben", "Back to top"),
@@ -74,6 +81,7 @@ T = {  # interface strings that are not part of any page source
     "mail_btn": ("E-Mail schreiben", "Write an e-mail"),
     "at": ("[at]", "[at]"),
     "job": ("Informatiker EFZ in Ausbildung", "Apprentice IT specialist (Informatiker EFZ)"),
+    "github": ("GitHub", "GitHub"),
 }
 
 
@@ -116,8 +124,11 @@ class Localize(HTMLParser):
         attrs = dict(attrs)
         en = attrs.pop("data-en", None)
         alt_en = attrs.pop("data-alt-en", None)
+        aria_en = attrs.pop("data-aria-en", None)
         if self.lang == "en" and alt_en is not None:
             attrs["alt"] = html.unescape(alt_en)
+        if self.lang == "en" and aria_en is not None:
+            attrs["aria-label"] = html.unescape(aria_en)
         parts = [tag] + [k if v is None else f'{k}="{esc(html.unescape(v))}"' for k, v in attrs.items()]
         self.out.append("<" + " ".join(parts) + close + ">")
         return en
@@ -134,7 +145,7 @@ class Localize(HTMLParser):
 
     def handle_startendtag(self, tag, attrs):
         if not self.skip:
-            self.tag(tag, attrs)
+            self.tag(tag, attrs, "" if tag in VOID else " /")
 
     def handle_endtag(self, tag):
         if self.skip:
@@ -253,9 +264,14 @@ def minify_js(js):
     return "\n".join(out)
 
 
-def font_instance(wght, wdth):
-    f = TTFont(SRC / "assets/fonts/archivo-variable.woff2")
-    inst = instancer.instantiateVariableFont(f, {"wght": wght, "wdth": wdth})
+FONT = SRC / "assets/fonts/bricolage-grotesque-latin.woff2"
+MONO = SRC / "assets/fonts/jetbrains-mono-latin.woff2"
+ARCHIVO = SRC / "assets/fonts/archivo-variable.woff2"   # only used by the CV (tools/cv.html)
+
+
+def font_instance(wght, opsz=14, path=FONT):
+    f = TTFont(path)
+    inst = instancer.instantiateVariableFont(f, {"wght": wght, "opsz": opsz} if path == FONT else {"wght": wght, "wdth": opsz})
     buf = io.BytesIO()
     inst.flavor = None
     inst.save(buf)
@@ -263,15 +279,15 @@ def font_instance(wght, wdth):
     return buf
 
 
-def subset_font(text):
+def subset_font(text, path=FONT):
     chars = set(text) | set(" !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"
-                            "ÄÖÜäöüßéèàçâêëïîôûÉÈÀ«»–—‘’“”„…·×©°↑")
+                            "ÄÖÜäöüßéèàçâêëïîôûÉÈÀ«»–—‘’“”„…·×©°↑→←§✓✕▌●")
     opts = subset.Options()
     opts.flavor = "woff2"
     opts.layout_features = ["kern", "liga", "calt", "tnum", "lnum"]
     opts.name_IDs = [1, 2]
     opts.notdef_outline = True
-    f = TTFont(SRC / "assets/fonts/archivo-variable.woff2")
+    f = TTFont(path)
     s = subset.Subsetter(opts)
     s.populate(unicodes=[ord(c) for c in chars if ord(c) > 31])
     s.subset(f)
@@ -282,9 +298,9 @@ def subset_font(text):
 
 
 def fallback_metrics():
-    """size-adjust and overrides so Arial/Liberation Sans takes the same space as Archivo."""
+    """size-adjust and overrides so Arial/Liberation Sans takes the same space as Bricolage Grotesque."""
     sample = "Netzwerke, Server, Betrieb. Ich arbeite im Netzwerkbereich und betreibe ein Homelab."
-    arch = ImageFont.truetype(font_instance(400, 100), 1000)
+    arch = ImageFont.truetype(font_instance(400), 1000)
     ref = None
     for cand in ("/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf", "Arial.ttf"):
         try:
@@ -293,18 +309,23 @@ def fallback_metrics():
         except OSError:
             continue
     ratio = arch.getlength(sample) / ref.getlength(sample) if ref else 1.1
-    f = TTFont(SRC / "assets/fonts/archivo-variable.woff2")
+    f = TTFont(FONT)
     upm, asc, desc = f["head"].unitsPerEm, f["hhea"].ascent, -f["hhea"].descent
     return {"size": ratio * 100, "ascent": asc / upm / ratio * 100, "descent": desc / upm / ratio * 100}
 
 
 def og_image(title, sub, lang, fonts):
     W, H = 1200, 630
-    im = Image.new("RGB", (W, H), "#141413")
+    im = Image.new("RGB", (W, H), "#F4F2EC")
     d = ImageDraw.Draw(im)
+    for x in range(0, W, 48):
+        d.line([(x, 0), (x, H)], fill="#E4E2DC")
+    for y in range(0, H, 48):
+        d.line([(0, y), (W, y)], fill="#E4E2DC")
     big, small, label = fonts
-    d.rectangle([80, 80, 80 + d.textlength("server-lukas.com", font=label) + 28, 80 + 46], fill="#F5C518")
-    d.text((94, 88), "server-lukas.com", font=label, fill="#141413")
+    d.rectangle([80, 80, 80 + 60, 80 + 60], outline="#3B30FF", width=3)
+    d.text((80 + 30, 80 + 31), "LD", font=label, fill="#3B30FF", anchor="mm")
+    d.text((164, 111), "server-lukas.com", font=label, fill="#5E6158", anchor="lm")
     # wrap the title to the width
     words, lines, line = title.split(), [], ""
     for w in words:
@@ -317,25 +338,22 @@ def og_image(title, sub, lang, fonts):
     lines.append(line)
     y = H - 110 - len(lines) * 96
     for ln in lines:
-        d.text((80, y), ln, font=big, fill="#F1EFE8")
+        d.text((80, y), ln, font=big, fill="#121410")
         y += 96
-    d.text((80, H - 92), sub, font=small, fill="#BDBAB0")
+    d.text((80, H - 92), sub, font=small, fill="#33362F")
     buf = io.BytesIO()
     im.save(buf, "PNG", optimize=True)
     return buf.getvalue()
 
 
 def icons(assets):
-    svg = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="#F5C518"/>'
-           '<rect x="12" y="40" width="40" height="6" fill="#141413"/><rect x="12" y="18" width="6" height="22" fill="#141413"/>'
-           '<rect x="28" y="18" width="6" height="22" fill="#141413"/><rect x="34" y="18" width="12" height="6" fill="#141413"/>'
-           '<rect x="34" y="34" width="12" height="6" fill="#141413"/><rect x="46" y="22" width="6" height="14" fill="#141413"/></svg>')
+    svg = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="#3B30FF"/>'
+           '<path fill="#fff" d="M13 18h6v22h12v6H13zM35 18h8a10 10 0 0 1 10 10v8a10 10 0 0 1-10 10h-8zm6 6v16h2a4 4 0 0 0 4-4v-8a4 4 0 0 0-4-4z"/></svg>')
     (DIST / "favicon.svg").write_text(svg)
-    im = Image.new("RGB", (180, 180), "#F5C518")
+    im = Image.new("RGB", (180, 180), "#3B30FF")
     d = ImageDraw.Draw(im)
-    s = 180 / 64
-    for x, y, w, h in ((12, 40, 40, 6), (12, 18, 6, 22), (28, 18, 6, 22), (34, 18, 12, 6), (34, 34, 12, 6), (46, 22, 6, 14)):
-        d.rectangle([x * s, y * s, (x + w) * s - 1, (y + h) * s - 1], fill="#141413")
+    f = ImageFont.truetype(font_instance(800, 96), 92)
+    d.text((90, 92), "LD", font=f, fill="#FFFFFF", anchor="mm")
     im.save(DIST / "apple-touch-icon.png", optimize=True)
 
 
@@ -449,26 +467,31 @@ def json_ld(page, lang):
     return f'<script type="application/ld+json">{json.dumps(data, ensure_ascii=False)}</script>\n'
 
 
+ARROW_UP = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 19V5M6 11l6-6 6 6"/></svg>'
+MOON = '<svg class="moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>'
+SUN = ('<svg class="sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/>'
+       '<path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>')
+SECTIONS = (("projects", "01"), ("focus", "02"), ("stack", "03"), ("about", "04"), ("contact", "05"))
+
+
 def header(page, lang):
     home = url_for("index.html", lang)
     pre = "" if page["type"] == "home" else home
-    cur = ' aria-current="true"' if page["type"] == "project" else ""
+    nav = "".join(
+        f'\n        <a href="{pre}#{key}"{" aria-current=\"true\"" if key == "projects" and page["type"] == "project" else ""}>'
+        f'<span class="n" aria-hidden="true">{no}</span>{t(key, lang)}</a>' for key, no in SECTIONS)
     langs = (f'<a href="{url_for(page["rel"], "de")}" hreflang="de" lang="de"{" aria-current=\"true\"" if lang == "de" else ""}>DE<span class="vh"> Deutsch</span></a>'
              f'<a href="{url_for(page["rel"], "en")}" hreflang="en" lang="en"{" aria-current=\"true\"" if lang == "en" else ""}>EN<span class="vh"> English</span></a>')
     return f'''<a class="skip" href="#main">{t("skip", lang)}</a>
 <div class="bar" id="bar">
   <div class="page"><header class="top">
-    <a class="brand" href="{home}">Lukas Dalloz</a>
+    <a class="brand" href="{home}" aria-label="{t("home", lang)}"><span class="ld" aria-hidden="true">LD</span><span class="host" aria-hidden="true">server-lukas.com</span></a>
     <div class="right">
-      <nav class="mainnav" aria-label="{t("nav", lang)}">
-        <a href="{pre}#projects"{cur}>{t("projects", lang)}</a>
-        <a href="{pre}#about">{t("about", lang)}</a>
-        <a href="{pre}#path">{t("path", lang)}</a>
-        <a href="{pre}#contact">{t("contact", lang)}</a>
+      <nav class="mainnav" aria-label="{t("nav", lang)}">{nav}
       </nav>
       <div class="tools">
         <div class="lang" role="group" aria-label="{t("lang", lang)}">{langs}</div>
-        <button type="button" class="theme" id="theme" aria-label="{t("theme", lang)}" title="{t("theme", lang)}"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17a8.5 8.5 0 0 0 0-17z"/></svg></button>
+        <button type="button" class="theme" id="theme" aria-label="{t("theme", lang)}" title="{t("theme", lang)}">{MOON}{SUN}</button>
       </div>
     </div>
   </header></div>
@@ -476,13 +499,21 @@ def header(page, lang):
 
 
 def footer(lang, updated):
+    home = url_for("index.html", lang)
     privacy = url_for("datenschutz.html", lang)
+    links = "".join(f'<li><a href="{home}#{key}">{t(key, lang)}</a></li>' for key, _ in SECTIONS)
     return f'''<footer>
   <div class="page">
-    <p class="note"><span class="ch" aria-hidden="true"></span><span>{t("selfhosted", lang)}</span></p>
-    <p class="meta"><span>&copy; {updated[:4]} {SITE["name"]}</span><span>{t("updated", lang)}: <time datetime="{updated}">{fmt_date(updated, lang)}</time></span><a href="{privacy}">{t("privacy", lang)}</a><a href="#top">{t("top", lang)}</a></p>
+    <div class="foot">
+      <div><p class="foot-name">{SITE["name"]}</p><p class="foot-sub">{t("tagline", lang)}<br>{t("country", lang)}</p></div>
+      <nav aria-label="Sitemap"><h2 class="foot-h">{t("sitemap", lang)}</h2><ul>{links}</ul></nav>
+      <div><h2 class="foot-h">{t("contact", lang).lower()}</h2><ul><li>{mail("inline", lang)}</li><li><a href="{SITE["github"]}">{t("github", lang)}</a></li></ul></div>
+      <div><h2 class="foot-h">{t("legal", lang)}</h2><ul><li><a href="{privacy}">{t("privacy", lang)}</a></li></ul></div>
+    </div>
+    <p class="meta"><span>&copy; {updated[:4]} {SITE["name"]}</span><span>{t("updated", lang)}: <time datetime="{updated}">{fmt_date(updated, lang)}</time></span><span class="note"><span class="ch" aria-hidden="true"></span>{t("selfhosted", lang)}</span><span>{t("ttl", lang)}</span></p>
   </div>
-</footer>'''
+</footer>
+<a class="totop" href="#top" aria-label="{t("top", lang)}">{ARROW_UP}</a>'''
 
 
 def head(page, lang, css, js_theme):
@@ -523,12 +554,12 @@ def head(page, lang, css, js_theme):
 <meta name="twitter:title" content="{esc(title)}">
 <meta name="twitter:description" content="{esc(desc)}">
 <meta name="twitter:image" content="{og}">
-<meta name="color-scheme" content="dark light">
-<meta name="theme-color" content="#141413" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#F4F4F1" media="(prefers-color-scheme: light)">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F4F2EC">
 {verify}<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" href="__FONT__" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="__MONO__" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{css}">
 <script src="{js_theme}"></script>
 __SCRIPTS__
@@ -543,6 +574,7 @@ def render(page, lang, projects, updated):
         body = body.replace(f"<!--opt:{key}-->", f'<p class="{key.replace("_", "-")}">{esc(val)}</p>' if val else "")
     body = body.replace("<!--mail:big-->", mail("big", lang)).replace("<!--mail:btn-->", mail("btn", lang)).replace("<!--mail:inline-->", mail("inline", lang))
     body = body.replace("<!--changelog-->", changelog(lang))
+    body = body.replace("<!--build-->", "build " + updated[:7].replace("-", "."))
     if SITE["changelog"]:
         c = SITE["changelog"][0]
         body = body.replace("<!--latest-change-->",
@@ -610,18 +642,20 @@ def main():
     # first pass: render bodies to learn which characters the font needs
     bodies = {(p["rel"], l): render(p, l, projects, updated) for p in pages for l in LANGS}
     chrome = "".join(header(p, l) + footer(l, updated) for p in pages for l in LANGS) + "".join(v for pair in T.values() for v in pair)
+    chrome += SITE["email_user"] + SITE["email_domain"] + "@ Kopiert Copied Bitte manuell kopieren Please copy by hand routen routes"
     text = html.unescape(re.sub(r"<[^>]+>", " ", "".join(bodies.values()) + chrome))
-    font = assets.put("fonts/archivo.woff2", subset_font(text), "woff2")
+    font = assets.put("fonts/bricolage-grotesque.woff2", subset_font(text), "woff2")
+    mono = assets.put("fonts/jetbrains-mono.woff2", subset_font(text, MONO), "woff2")
 
     m = fallback_metrics()
     css = (SRC / "assets/style.css").read_text(encoding="utf-8")
-    css = css.replace("__FONT__", font)
+    css = css.replace("__FONT__", font).replace("__MONO__", mono)
     css = css.replace("__SIZE_ADJUST__", f"{m['size']:.2f}%").replace("__ASCENT__", f"{m['ascent']:.2f}%").replace("__DESCENT__", f"{m['descent']:.2f}%")
     assets.put("style.css", minify_css(css).encode(), "css")
 
-    big = ImageFont.truetype(font_instance(800, 112), 84)
-    small = ImageFont.truetype(font_instance(400, 100), 30)
-    label = ImageFont.truetype(font_instance(700, 100), 26)
+    big = ImageFont.truetype(font_instance(800, 96), 88)
+    small = ImageFont.truetype(font_instance(400, 14), 30)
+    label = ImageFont.truetype(font_instance(700, 14), 26)
     (DIST / "og").mkdir()
     for p in pages:
         for l in LANGS:
@@ -632,7 +666,7 @@ def main():
     for p in pages:
         for l in LANGS:
             scripts = [assets.map["js/site.js"]] + ([assets.map["js/homelab.js"]] if p.get("slug") == "homelab" else [])
-            doc = page_html(p, l, bodies[(p["rel"], l)], assets, updated, scripts).replace("__FONT__", font)
+            doc = page_html(p, l, bodies[(p["rel"], l)], assets, updated, scripts).replace("__FONT__", font).replace("__MONO__", mono)
             write(url_for(p["rel"], l), doc)
 
     # CV PDFs, published under stable names so links can be shared
@@ -676,7 +710,8 @@ def cv_pages(updated):
     out = ROOT / "build-cv"
     out.mkdir(exist_ok=True)
     tpl = (ROOT / "tools/cv.html").read_text(encoding="utf-8")
-    font = next((DIST / "assets/fonts").glob("*.woff2"))
+    font = out / "archivo.woff2"
+    font.write_bytes(subset_font(tpl, ARCHIVO))
     for l in LANGS:
         doc = localize(tpl, l).replace("__FONT__", font.as_uri()).replace("__UPDATED__", fmt_date(updated, l))
         doc = doc.replace("__MAIL__", f"{SITE['email_user']}@{SITE['email_domain']}")

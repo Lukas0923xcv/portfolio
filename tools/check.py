@@ -99,8 +99,8 @@ def tokens(block):
     return dict(re.findall(r"--([\w-]+):(#[0-9A-Fa-f]{6})", block))
 
 
-dark = tokens(re.search(r":root\{color-scheme:dark;(.*?)\}", css).group(1))
-light = {**dark, **tokens(re.search(r':root\[data-theme="light"\]\{(.*?)\}', css).group(1))}
+light = tokens(re.search(r":root\{color-scheme:light;(.*?)\}", css).group(1))
+dark = {**light, **tokens(re.search(r':root\[data-theme="dark"\]\{(.*?)\}', css).group(1))}
 
 
 def lum(h):
@@ -115,7 +115,7 @@ def ratio(a, b):
 
 
 PAIRS = [("fg", "bg", 4.5), ("fg-2", "bg", 4.5), ("fg-3", "bg", 4.5), ("fg-2", "panel", 4.5), ("fg-3", "panel", 4.5),
-         ("ink", "tape", 4.5), ("mark", "bg", 3), ("fg-3", "bg", 3)]
+         ("ink", "tape", 4.5), ("mark", "bg", 4.5), ("mark", "panel", 4.5)]
 for name, theme in (("dark", dark), ("light", light)):
     for fg, bg, need in PAIRS:
         r = ratio(theme[fg], theme[bg])

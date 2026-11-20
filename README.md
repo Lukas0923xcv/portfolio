@@ -10,8 +10,9 @@ meines Homelabs, hinter Nginx Proxy Manager.
   `data-en="…"` desselben Elements. Oben in jeder Datei stehen Titel und Beschreibung.
 - `src/site.json` – Adresse, E-Mail, Änderungsprotokoll des Labs und optionale Angaben
   (was ich suche, ein GeoGuessr-Detail, Search-Console-Codes). Leere Felder erscheinen nicht.
-- `src/assets/` – CSS, JavaScript, Bilder, die Schrift Archivo (SIL Open Font License,
-  siehe `src/assets/fonts/OFL-Archivo.txt`) und die Lebenslauf-PDFs.
+- `src/assets/` – CSS, JavaScript, Bilder, die Schriften Bricolage Grotesque und JetBrains Mono
+  (SIL Open Font License, siehe `src/assets/fonts/OFL-*.txt`; Archivo nur noch für den Lebenslauf)
+  und die Lebenslauf-PDFs.
 - `build.py` – baut `dist/`: Seiten in beiden Sprachen (`/` und `/en/`), gemeinsamer Kopf und
   Fuss, Bilder in mehreren Grössen als AVIF und WebP, Schrift auf die verwendeten Zeichen
   gekürzt, Dateinamen mit Hash, Vorschaubilder für geteilte Links, Sitemap, `robots.txt`,
@@ -107,17 +108,20 @@ Besucherzahlen ohne Cookies, direkt aus dem Log: `sudo goaccess /var/log/nginx/a
 
 ## Wie das Design funktioniert
 
-- **Farben:** Graphit `#141413` oder helles Grau `#F4F4F1` als Grund, Schrift `#F1EFE8` bzw.
-  `#141413`, und genau eine Signalfarbe: Gelb `#F5C518` wie Beschriftungsband aus dem
-  Etikettendrucker. Gelb ist immer Hintergrund mit schwarzer Schrift darauf (Status „live“,
-  gewählter Teil im Netzwerkdiagramm, Kontaktband), nie Textfarbe auf hellem Grund. Für
-  Unterstreichungen und den Fokusrahmen im hellen Modus gibt es ein dunkles Ocker (`--mark`).
-- **Hell und dunkel:** folgt dem System, bis jemand umschaltet. Die Wahl liegt nur im Browser.
-- **Schrift:** Archivo, Überschriften fett und breit (`font-stretch: 112%`), Text normal.
-  Monospace nur für Status-Etiketten, Daten und Befehle.
-- **Formen:** eckig, keine Schatten, kein Leuchten, keine Kästen um Text. Abstände trennen
-  Abschnitte, Linien nur dort, wo Zeilen einer Liste getrennt werden.
-- **Links:** im Fliesstext und im Fuss unterstrichen, in Navigation und Projekttiteln nicht.
+- **Farben:** warmes Off-White `#F4F2EC` (dunkel: `#0E0F0C`) mit feinem 48-px-Raster wie
+  Millimeterpapier, Schrift `#121410` bzw. `#ECEAE3`, und genau eine Signalfarbe: Blau
+  `#3B30FF` (dunkel: `#A29DFF`). Blau ist Fläche mit heller Schrift (Knöpfe, gewählter Filter,
+  Automation-Kachel) oder Text, Unterstreichung und Fokusrahmen (`--mark`).
+- **Hell und dunkel:** hell ist Standard, der Knopf oben rechts schaltet auf dunkel. Die Wahl
+  liegt nur im Browser.
+- **Schrift:** Bricolage Grotesque für Text und grosse, enge Überschriften; JetBrains Mono für
+  Etiketten, Daten, Navigation und Knöpfe.
+- **Sprache der Oberfläche:** Netzwerk-Jargon als roter Faden: Abschnitte heissen
+  `§01 — routing-tabelle`, der Lebenslauf ist ein `traceroute`, der Kontakt ein `SYN → / ← ACK`,
+  die 404 ein `ICMP type 3`.
+- **Formen:** eckig, dünne Linien, Kacheln mit 1-px-Rahmen, keine Verläufe, kein Leuchten.
+  Einzige Bewegung: das Laufband mit den Werkzeugen (aus bei «Bewegung reduzieren»).
+- **Links:** im Fliesstext unterstrichen, in Navigation, Projektzeilen und Fuss nicht.
   Links auf andere Websites tragen einen kleinen Pfeil.
-- **Nicht hinzufügen:** Verläufe, Glas-Effekte, Emoji, Einblend-Animationen beim Scrollen,
-  Karten mit Rahmen und Schatten, eine zweite Akzentfarbe.
+- **Nicht hinzufügen:** eine zweite Akzentfarbe, Schatten, Glas-Effekte, Emoji,
+  Einblend-Animationen beim Scrollen.
