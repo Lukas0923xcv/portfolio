@@ -60,7 +60,7 @@ console.log("layout: checked", all.length, "pages at", Object.keys(views).join("
 // 2. Touch targets on a phone: links and buttons outside running text at least 44 x 44 px
 await open(views.android, "/", async page => {
   const small = await page.evaluate(() => [...document.querySelectorAll("a, button, summary")]
-    .filter(el => el.offsetParent && !el.matches(".card h3 a") && !el.closest("p:not(.links):not(.more):not(.card-links), dd, li.log, .vh, .skip"))
+    .filter(el => el.offsetParent && !el.matches(".prow h3 a") && !el.closest("p:not(.links):not(.more):not(.card-links), dd, li.log, .vh, .skip"))
     .map(el => [el, el.getBoundingClientRect()])
     .filter(([el, r]) => r.height < 44 || r.width < 24)
     .map(([el, r]) => `${el.textContent.trim().slice(0, 30)} (${Math.round(r.width)}x${Math.round(r.height)})`));
@@ -75,7 +75,8 @@ await open({ ...views.desktop, javaScriptEnabled: false }, "/projekte/homelab.ht
 await open({ ...views.desktop, javaScriptEnabled: false }, "/en/", async page => {
   const mail = await page.textContent(".contact .big");
   if (!/lukas\.dalloz \[at\] proton\.me/.test(mail)) fail(`no JS: e-mail fallback is "${mail}"`);
-  if (!(await page.textContent("h1")).includes("Networks")) fail("no JS: English page not in English");
+  if (!(await page.textContent("#projects-h")).includes("Work")) fail("no JS: English page not in English");
+  if (await page.isVisible(".chips")) fail("no JS: filter buttons shown although they cannot work");
 });
 console.log("no-JS: checked");
 
@@ -103,11 +104,17 @@ console.log("keyboard: checked");
 // 5. Theme switch: follows the system, then sticks after a reload
 await open({ ...views.desktop, colorScheme: "light" }, "/", async page => {
   const bg = () => page.evaluate(() => getComputedStyle(document.body).backgroundColor);
-  if (await bg() !== "rgb(244, 244, 241)") fail(`theme: light system gives ${await bg()}`);
+  if (await bg() !== "rgb(244, 242, 236)") fail(`theme: default is not light, gives ${await bg()}`);
   await page.click("#theme");
-  if (await bg() !== "rgb(20, 20, 19)") fail("theme: button does not switch to dark");
+  if (await bg() !== "rgb(14, 15, 12)") fail("theme: button does not switch to dark");
   await page.reload();
-  if (await bg() !== "rgb(20, 20, 19)") fail("theme: choice not kept after reload");
+  if (await bg() !== "rgb(14, 15, 12)") fail("theme: choice not kept after reload");
+});
+await open(views.desktop, "/", async page => {
+  await page.click('.chip[data-filter="hw"]');
+  const shown = await page.$$eval(".prow", rs => rs.filter(r => !r.hidden).length);
+  if (shown !== 1) fail(`filter: Hardware shows ${shown} projects, expected 1`);
+  if (!(await page.textContent("[data-count]")).startsWith("01 / 09")) fail("filter: counter not updated");
 });
 console.log("theme: checked");
 
@@ -130,13 +137,16 @@ console.log("theme: checked");
 if (shots) {
   const shot = async (name, opts, url, extra) => open({ ...opts, deviceScaleFactor: opts.deviceScaleFactor || 1 }, url, async page => {
     if (extra) await extra(page);
+    // scroll through once so lazy images are loaded before the full-page shot
+    await page.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 600) { scrollTo(0, y); await new Promise(r => setTimeout(r, 60)); } scrollTo(0, 0); });
+    await page.waitForTimeout(400);
     await page.screenshot({ path: path.join(outDir, name + ".png"), fullPage: true });
   });
-  await shot("home-dark", { ...views.desktop, colorScheme: "dark" }, "/");
+  await shot("home-dark", views.desktop, "/", async page => { await page.click("#theme"); });
   await shot("home-light", { ...views.desktop, colorScheme: "light" }, "/en/");
   await shot("home-phone", { ...views.android, colorScheme: "light" }, "/");
   await shot("homelab-light", { ...views.desktop, colorScheme: "light" }, "/projekte/homelab.html");
-  await shot("passkey-dark", { ...views.desktop, colorScheme: "dark" }, "/en/projekte/passkey.html");
+  await shot("passkey-dark", views.desktop, "/en/projekte/passkey.html", async page => { await page.click("#theme"); });
   await open(views.desktop, "/projekte/homelab.html", async page => {
     await page.pdf({ path: path.join(outDir, "homelab-print.pdf"), format: "A4", printBackground: true });
   });

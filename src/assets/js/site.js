@@ -2,10 +2,9 @@
   const html = document.documentElement;
   const de = html.lang === "de";
 
-  // ---------- Light and dark: follows the system until the visitor picks one ----------
+  // ---------- Light and dark: light unless the visitor switched to dark ----------
   const btn = document.getElementById("theme");
-  const current = () => html.getAttribute("data-theme") ||
-    (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+  const current = () => html.getAttribute("data-theme") === "dark" ? "dark" : "light";
   const label = () => {
     if (!btn) return;
     const next = current() === "dark" ? (de ? "Helles Design" : "Light design") : (de ? "Dunkles Design" : "Dark design");
@@ -19,7 +18,6 @@
       try { localStorage.setItem("theme", next); } catch (e) {}
       label();
     });
-    matchMedia("(prefers-color-scheme: light)").addEventListener("change", label);
     label();
   }
 
@@ -28,8 +26,10 @@
   const navLinks = document.body.classList.contains("home")
     ? [...document.querySelectorAll(".mainnav a")].filter(a => a.getAttribute("href").startsWith("#")) : [];
   const targets = navLinks.map(a => document.querySelector(a.getAttribute("href")));
+  const totop = document.querySelector(".totop");
   function onScroll() {
     if (bar) bar.classList.toggle("scrolled", window.scrollY > 4);
+    if (totop) totop.classList.toggle("on", window.scrollY > window.innerHeight * .8);
     if (!navLinks.length) return;
     let current = -1;
     targets.forEach((t, i) => { if (t && t.getBoundingClientRect().top < 160) current = i; });
@@ -45,6 +45,40 @@
     a.href = "mailto:" + addr;
     if (!a.hasAttribute("data-label")) a.textContent = addr;
   });
+
+  // ---------- Copy the address (start page) ----------
+  const copy = document.querySelector("button.copy");
+  const mailA = document.querySelector("a.mail[data-u]");
+  if (copy && mailA && navigator.clipboard) {
+    const text = copy.querySelector("span");
+    const idle = text.textContent;
+    let timer;
+    copy.hidden = false;
+    copy.addEventListener("click", () => {
+      const done = ok => {
+        text.textContent = ok ? (de ? "Kopiert ✓" : "Copied ✓") : (de ? "Bitte manuell kopieren" : "Please copy by hand");
+        clearTimeout(timer);
+        timer = setTimeout(() => { text.textContent = idle; }, 2000);
+      };
+      navigator.clipboard.writeText(mailA.dataset.u + "@" + mailA.dataset.d).then(() => done(true), () => done(false));
+    });
+  }
+
+  // ---------- Project filter (start page). Without JavaScript every project is listed. ----------
+  const chips = [...document.querySelectorAll(".chip[data-filter]")];
+  const rows = [...document.querySelectorAll(".prow[data-cat]")];
+  const count = document.querySelector("[data-count]");
+  if (chips.length && rows.length) {
+    chips[0].parentElement.hidden = false;
+    const pad = n => String(n).padStart(2, "0");
+    chips.forEach(c => c.addEventListener("click", () => {
+      const f = c.dataset.filter;
+      chips.forEach(o => o.setAttribute("aria-pressed", String(o === c)));
+      let shown = 0;
+      rows.forEach(r => { const on = f === "all" || r.dataset.cat === f; r.hidden = !on; if (on) shown++; });
+      if (count) count.textContent = `${pad(shown)} / ${pad(rows.length)} ${de ? "routen" : "routes"}`;
+    }));
+  }
 
   // ---------- Live lab status, written every few minutes by deploy/status/write_status.py ----------
   const fmt = iso => new Date(iso).toLocaleDateString(de ? "de-CH" : "en-GB", { day: "numeric", month: "short" });
