@@ -255,13 +255,13 @@ a[href^="http"]:not(.btn)::after {
 .focus-grid .lead { margin-top: 28px; max-width: 32em; }
 .focus-grid .pstack { margin-top: 24px; font-family: var(--mono); font-size: .875rem; color: var(--fg-3); }
 .photo { flex: 1.4 1 520px; min-width: 0; }
-.photo img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; border: 1px solid var(--line); }
+.photo img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
 .photo figcaption, .portrait figcaption { margin-top: 10px; font-family: var(--mono); font-size: .8125rem; color: var(--fg-3); }
 .steps4 { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; counter-reset: s; }
 .steps4 li { flex: 1 1 200px; min-width: 0; display: flex; flex-direction: column; gap: 20px; min-height: 168px; padding: 20px; border: 1px solid var(--line); background: var(--panel); }
 .steps4 .no { font-family: var(--mono); font-size: .875rem; color: var(--mark); }
 .steps4 strong { margin-top: auto; font-size: 1.75rem; font-weight: 600; line-height: 1.1; }
-.steps4 span:last-child { font-size: 1rem; line-height: 1.5; color: var(--fg-3); }
+.steps4 li > span:last-child { font-size: 1rem; line-height: 1.5; color: var(--fg-3); }
 
 /* stack as a bento grid */
 .bento-wrap { container-type: inline-size; margin-top: 40px; }
