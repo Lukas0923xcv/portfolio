@@ -95,7 +95,7 @@ await open(views.desktop, "/en/projekte/homelab.html", async page => {
   await page.focus('.net [aria-checked="true"]');
   await page.keyboard.press("ArrowDown");
   const info = await page.textContent("#net-info h4");
-  if (info !== "Isolated") fail(`diagram: ArrowDown from DMZ shows "${info}"`);
+  if (info !== "IoT") fail(`diagram: ArrowDown from DMZ shows "${info}"`);
   await page.keyboard.press("Home");
   if ((await page.textContent("#net-info p")).indexOf("Visitors") !== 0) fail("diagram: English text missing for Internet");
 });
