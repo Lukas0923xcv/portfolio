@@ -71,6 +71,16 @@
           <p class="pdesc" data-en="SMS alarm when the power goes out: a LilyGO T-A7670G with a prepaid SIM, its own firmware and an Android app.">SMS-Alarm bei Stromausfall: ein LilyGO T-A7670G mit Prepaid-SIM, eigener Firmware und Android-App.</p>
           <span class="pctx" data-en="Hardware · personal">Hardware · privat</span>
           <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <details class="pmore">
+            <summary><span data-en="Details">Details</span><span class="vh">: Netzwächter</span></summary>
+            <dl>
+              <div><dt data-en="why">warum</dt><dd data-en="While my grandparents were on holiday, their freezer failed and nobody noticed. One SMS at the right moment would have been enough.">Während meine Grosseltern in den Ferien waren, fiel ihre Kühltruhe aus, und niemand merkte es. Eine SMS im richtigen Moment hätte gereicht.</dd></div>
+              <div><dt data-en="how">umsetzung</dt><dd data-en="An ESP32 with an LTE modem and an 18650 battery. The firmware notices when the power supply stops delivering, and sends an alarm and an all-clear to up to five numbers. More than 20 SMS commands control it remotely, and the Android app shows its status over Bluetooth.">Ein ESP32 mit LTE-Modem und 18650-Akku. Die Firmware merkt, wenn das Netzteil keine Spannung mehr liefert, und schickt Alarm und Entwarnung an bis zu fünf Nummern. Über 20 SMS-Befehle steuern das Gerät aus der Ferne, die Android-App zeigt den Status per Bluetooth.</dd></div>
+              <div><dt data-en="my part">meine rolle</dt><dd data-en="Hardware, wiring and testing. I wrote the firmware and app with AI and tested every version on the real hardware.">Hardware, Verkabelung und Tests. Firmware und App habe ich mit KI geschrieben und jede Version an der echten Hardware geprüft.</dd></div>
+              <div><dt data-en="status">stand</dt><dd data-en="SMS alarm and app work (app v1.5.0).">SMS-Alarm und App funktionieren (App v1.5.0).</dd></div>
+            </dl>
+            <p class="pcase"><a href="projekte/netzwaechter.html" data-en="Read the full case study">Ganze Fallstudie lesen</a></p>
+          </details>
         </li>
         <li class="prow" data-cat="sec">
           <span class="no">02</span>
@@ -78,13 +88,32 @@
           <p class="pdesc" data-en="A second factor for the pfSense web interface: after the password, a passkey. Built in one day with AI, open source.">Ein zweiter Faktor für das Web-Interface von pfSense: nach dem Passwort ein Passkey. An einem Tag mit KI gebaut, Open Source.</p>
           <span class="pctx" data-en="Security · personal">Sicherheit · privat</span>
           <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <details class="pmore">
+            <summary><span data-en="Details">Details</span><span class="vh" data-en=": Passkey login for pfSense">: Passkey-Login für pfSense</span></summary>
+            <dl>
+              <div><dt data-en="why">warum</dt><dd data-en="The login to my firewall only asked for a password, and pfSense offers no passkeys for its web interface.">Der Login auf meine Firewall verlangte nur ein Passwort, und pfSense bietet für sein Web-Interface keine Passkeys an.</dd></div>
+              <div><dt data-en="how">umsetzung</dt><dd data-en="An add-on that asks for a passkey after the password. The signature is checked entirely on the firewall, with no outside service. An emergency way in from trusted networks keeps me from locking myself out, and the hooks survive pfSense updates.">Ein Add-on, das nach dem Passwort einen Passkey verlangt. Die Signatur wird komplett auf der Firewall geprüft, ohne externen Dienst. Ein Notzugang aus vertrauenswürdigen Netzen verhindert, dass ich mich aussperre, und die Hooks überstehen pfSense-Updates.</dd></div>
+              <div><dt data-en="my part">meine rolle</dt><dd data-en="I decided what the add-on may do, for example that it only applies once two passkeys are registered, and tested it. I wrote the code with AI.">Ich habe festgelegt, was das Add-on darf, zum Beispiel dass es erst ab zwei registrierten Passkeys greift, und es getestet. Den Code habe ich mit KI geschrieben.</dd></div>
+              <div><dt data-en="status">stand</dt><dd data-en="Version 1.0.1, open source (Apache 2.0).">Version 1.0.1, Open Source (Apache 2.0).</dd></div>
+            </dl>
+            <p class="pcase"><a href="projekte/passkey.html" data-en="Read the full case study">Ganze Fallstudie lesen</a></p>
+          </details>
         </li>
         <li class="prow" data-cat="plat">
           <span class="no">03</span>
-          <div><h3><a href="projekte/homelab.html">Homelab proxmox-01</a></h3><p class="pstack">Proxmox · pfSense · TrueNAS · Ansible</p></div>
-          <p class="pdesc" data-en="A Proxmox server I run like a small company network: three network zones, single sign-on, automated updates and off-site backups.">Ein Proxmox-Server, den ich wie ein kleines Firmennetz betreibe: drei Netzzonen, Single Sign-on, automatische Updates und Backups ausser Haus.</p>
+          <div><h3><a href="projekte/homelab.html">Homelab proxmox-01</a></h3><p class="pstack">Proxmox · OPNsense · TrueNAS · Ansible</p></div>
+          <p class="pdesc" data-en="A Proxmox server I run like a small company network: separate network zones, single sign-on, automated updates and off-site backups.">Ein Proxmox-Server, den ich wie ein kleines Firmennetz betreibe: getrennte Netzzonen, Single Sign-on, automatische Updates und Backups ausser Haus.</p>
           <span class="pctx" data-en="Platform · personal">Plattform · privat</span>
           <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <details class="pmore">
+            <summary><span data-en="Details">Details</span><span class="vh">: Homelab proxmox-01</span></summary>
+            <dl>
+              <div><dt data-en="why">warum</dt><dd data-en="Started in 2025 out of curiosity, as a place to try things. Today family and friends use its services every day, so it has to be reliable.">Angefangen 2025 aus Interesse, als Ort zum Ausprobieren. Heute nutzen Familie und Freunde die Dienste täglich, darum muss es zuverlässig laufen.</dd></div>
+              <div><dt data-en="how">umsetzung</dt><dd data-en="A Proxmox host with TrueNAS storage (four disks in RAIDZ1). Public services run in a separate DMZ behind a reverse proxy, Authentik and CrowdSec. Updates run through Ansible, Pulse watches everything, and backups go to storage daily and off-site, encrypted, every week.">Ein Proxmox-Host mit TrueNAS-Speicher (vier Disks im RAIDZ1). Öffentliche Dienste laufen in einer abgetrennten DMZ hinter Reverse Proxy, Authentik und CrowdSec. Updates laufen über Ansible, Pulse überwacht alles, Backups gehen täglich auf den Speicher und wöchentlich verschlüsselt ausser Haus.</dd></div>
+              <div><dt data-en="status">stand</dt><dd data-en="Running daily. Since November 2026 a dedicated OPNsense handles the firewall.">Täglich in Betrieb. Seit November 2026 übernimmt eine eigene OPNsense die Firewall.</dd></div>
+            </dl>
+            <p class="pcase"><a href="projekte/homelab.html" data-en="Read the full case study">Ganze Fallstudie lesen</a></p>
+          </details>
         </li>
         <li class="prow" data-cat="auto">
           <span class="no">04</span>
@@ -92,6 +121,14 @@
           <p class="pdesc" data-en="Webhooks from NetBox trigger a rulebook; Python scripts set switch ports and keep the inventory in sync.">Webhooks aus NetBox lösen ein Rulebook aus; Python-Skripte setzen Switch-Ports und synchronisieren das Inventar.</p>
           <span class="pctx" data-en="Automation · apprenticeship">Automation · Lehre</span>
           <span></span>
+          <details class="pmore">
+            <summary><span data-en="Details">Details</span><span class="vh">: NetBox × Ansible EDA</span></summary>
+            <dl>
+              <div><dt data-en="goal">ziel</dt><dd data-en="Whatever changes in NetBox should reach the switches without manual work, and NetBox should stay accurate.">Was in NetBox geändert wird, soll ohne Handarbeit auf den Switches ankommen, und NetBox soll stimmen.</dd></div>
+              <div><dt data-en="how">umsetzung</dt><dd data-en="A webhook from NetBox starts a rulebook in Ansible Event-Driven Automation. It calls Python scripts that change the switch port and reconcile the inventory.">Ein Webhook aus NetBox startet ein Rulebook in Ansible Event-Driven Automation. Das ruft Python-Skripte auf, die den Switch-Port anpassen und das Inventar abgleichen.</dd></div>
+              <div><dt data-en="context">rahmen</dt><dd data-en="A project in my apprenticeship. Because it concerns the school's network, I only describe it briefly here.">Projekt in meiner Lehre. Weil es das Netz der Schule betrifft, beschreibe ich es hier nur kurz.</dd></div>
+            </dl>
+          </details>
         </li>
         <li class="prow" data-cat="net">
           <span class="no">05</span>
@@ -99,13 +136,29 @@
           <p class="pdesc" data-en="Looking after a high-availability pair of pfSense Plus firewalls: if one fails, the other takes over.">Betreuung eines hochverfügbaren pfSense-Plus-Clusters: Fällt eine Firewall aus, übernimmt die andere.</p>
           <span class="pctx" data-en="Network · apprenticeship">Netzwerk · Lehre</span>
           <span></span>
+          <details class="pmore">
+            <summary><span data-en="Details">Details</span><span class="vh" data-en=": Firewall cluster">: Firewall-Cluster</span></summary>
+            <dl>
+              <div><dt data-en="how">umsetzung</dt><dd data-en="Two pfSense Plus firewalls that share one address through CARP. I look after them day to day: rules, updates and checking that failover works cleanly.">Zwei pfSense-Plus-Firewalls, die über CARP eine gemeinsame Adresse teilen. Ich betreue sie im Alltag: Regeln, Updates und das Prüfen, ob die Übernahme im Fehlerfall sauber klappt.</dd></div>
+              <div><dt data-en="context">rahmen</dt><dd data-en="Part of my apprenticeship at the TF Bern. Because it is the school's network, I only describe it briefly here.">Teil meiner Lehre an der TF Bern. Weil es das Netz der Schule ist, beschreibe ich es hier nur kurz.</dd></div>
+            </dl>
+          </details>
         </li>
         <li class="prow" data-cat="net">
           <span class="no">06</span>
           <div><h3 data-en="OPNsense firewall">OPNsense-Firewall</h3><p class="pstack">OPNsense · VLAN · DMZ</p></div>
-          <p class="pdesc" data-en="In progress: a dedicated OPNsense for the homelab, with separate networks for LAN and DMZ. It will replace the virtual pfSense.">Im Aufbau: eine eigene OPNsense fürs Homelab, mit getrennten Netzen für LAN und DMZ. Sie löst die virtuelle pfSense ab.</p>
+          <p class="pdesc" data-en="A dedicated OPNsense for the homelab with separate networks for LAN and DMZ. Replaced the virtual pfSense in November 2026.">Eigene OPNsense fürs Homelab mit getrennten Netzen für LAN und DMZ. Hat im November 2026 die virtuelle pfSense abgelöst.</p>
           <span class="pctx" data-en="Network · personal">Netzwerk · privat</span>
           <span></span>
+          <details class="pmore">
+            <summary><span data-en="Details">Details</span><span class="vh" data-en=": OPNsense firewall">: OPNsense-Firewall</span></summary>
+            <dl>
+              <div><dt data-en="why">warum</dt><dd data-en="Until now the firewall ran as a virtual pfSense on the Proxmox host. Now a dedicated OPNsense does the job.">Bisher lief die Firewall als virtuelle pfSense auf dem Proxmox-Host. Jetzt übernimmt eine eigene OPNsense diese Aufgabe.</dd></div>
+              <div><dt data-en="how">umsetzung</dt><dd data-en="LAN and DMZ arrive as VLANs over a trunk, and the existing subnets stayed the same so the move needed no changes to the services. The gateways sit on a virtual IP from the start, so a second device for high availability can be added later.">LAN und DMZ kommen als VLANs über einen Trunk, die bisherigen Subnetze blieben gleich, damit der Umzug ohne Umbau der Dienste ging. Die Gateways liegen von Anfang an auf einer virtuellen IP, damit später ein zweites Gerät für Hochverfügbarkeit dazukommen kann.</dd></div>
+              <div><dt data-en="status">stand</dt><dd data-en="Since November 2026 the whole network runs through the OPNsense, the pfSense is switched off.">Seit November 2026 läuft das ganze Netz über die OPNsense, die pfSense ist abgeschaltet.</dd></div>
+              <div><dt data-en="next">als nächstes</dt><dd data-en="A second factor for the web interface, and a separate network for IoT devices that may only reach the internet.">Ein zweiter Faktor für das Web-Interface und ein eigenes Netz für IoT-Geräte, das nur ins Internet darf.</dd></div>
+            </dl>
+          </details>
         </li>
         <li class="prow" data-cat="plat">
           <span class="no">07</span>
@@ -113,6 +166,13 @@
           <p class="pdesc" data-en="Running the AI platform of the AI team at the TF Bern, including the network plan of its DMZ.">Betrieb der KI-Plattform des KI-Teams der TF Bern, dazu der Netzwerkplan ihrer DMZ.</p>
           <span class="pctx" data-en="Platform · apprenticeship">Plattform · Lehre</span>
           <span></span>
+          <details class="pmore">
+            <summary><span data-en="Details">Details</span><span class="vh" data-en=": AI platform">: KI-Plattform</span></summary>
+            <dl>
+              <div><dt data-en="how">umsetzung</dt><dd data-en="I look after the OpenWebUI-based AI platform used by the ICT department. I also drew the system's network plan in Visio on the school's template, showing the DMZ and the Docker services inside it.">Ich betreue die KI-Plattform auf Basis von OpenWebUI, die die Berufsgruppe ICT nutzt. Dazu habe ich den Netzwerkplan des Systems gezeichnet, in Visio nach der Vorlage der Schule, mit der DMZ und den Docker-Diensten darin.</dd></div>
+              <div><dt data-en="context">rahmen</dt><dd data-en="Part of my apprenticeship in the AI team. The school's internals stay out of this page.">Teil meiner Lehre im KI-Team. Interna der Schule bleiben hier aussen vor.</dd></div>
+            </dl>
+          </details>
         </li>
         <li class="prow" data-cat="plat">
           <span class="no">08</span>
@@ -120,13 +180,30 @@
           <p class="pdesc" data-en="My own chat server, from planning and the test concept to documentation and test report.">Ein eigener Chat-Server, von der Planung über das Testkonzept bis zu Dokumentation und Testprotokoll.</p>
           <span class="pctx" data-en="Platform · school">Plattform · Schule</span>
           <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <details class="pmore">
+            <summary><span data-en="Details">Details</span><span class="vh" data-en=": Self-hosted messenger">: Eigener Messenger</span></summary>
+            <dl>
+              <div><dt data-en="goal">ziel</dt><dd data-en="In module 306 (project management), run an IT project properly: plan, build, test, document. The topic: a messenger whose messages stay on our own server.">Im Modul 306 (Projektmanagement) ein IT-Projekt sauber abwickeln: planen, umsetzen, testen, dokumentieren. Das Thema: ein Messenger, dessen Nachrichten auf dem eigenen Server bleiben.</dd></div>
+              <div><dt data-en="how">umsetzung</dt><dd data-en="Matrix Synapse in Docker on a virtual machine, Element as the client on computer and phone. At first the app didn't trust our own certificate, fixed by installing it on the devices.">Matrix Synapse in Docker auf einer virtuellen Maschine, Element als Client auf Computer und Handy. Die App vertraute dem eigenen Zertifikat zuerst nicht, gelöst durch Installieren des Zertifikats auf den Geräten.</dd></div>
+              <div><dt data-en="status">stand</dt><dd data-en="Completed, with documentation, a test concept and a test report.">Abgeschlossen, mit Dokumentation, Testkonzept und Testprotokoll.</dd></div>
+            </dl>
+            <p class="pcase"><a href="projekte/messenger.html" data-en="Read the full case study">Ganze Fallstudie lesen</a></p>
+          </details>
         </li>
         <li class="prow" data-cat="net">
           <span class="no">09</span>
-          <div><h3 data-en="Minecraft network">Minecraft-Netz</h3><p class="pstack">Cloudflare DNS · Subdomains</p></div>
-          <p class="pdesc" data-en="In progress: several servers, each reachable through its own subdomain of server-lukas.com.">Im Aufbau: mehrere Server, jeder über eine eigene Subdomain von server-lukas.com erreichbar.</p>
+          <div><h3 data-en="Minecraft network">Minecraft-Netz</h3><p class="pstack">Crafty Controller · DNS</p></div>
+          <p class="pdesc" data-en="A Minecraft server for friends, reachable through my own domain. More servers will follow, each on its own subdomain.">Ein Minecraft-Server für Freunde, erreichbar über meine eigene Domain. Weitere Server folgen, jeder auf einer eigenen Subdomain.</p>
           <span class="pctx" data-en="Network · personal">Netzwerk · privat</span>
           <span></span>
+          <details class="pmore">
+            <summary><span data-en="Details">Details</span><span class="vh" data-en=": Minecraft network">: Minecraft-Netz</span></summary>
+            <dl>
+              <div><dt data-en="how">umsetzung</dt><dd data-en="Java servers managed with Crafty Controller in my homelab's DMZ. Friends connect through a name on server-lukas.com instead of an IP.">Java-Server, verwaltet mit Crafty Controller in der DMZ meines Homelabs. Freunde verbinden sich über einen Namen auf server-lukas.com statt über eine IP.</dd></div>
+              <div><dt data-en="status">stand</dt><dd data-en="One server is running and in use.">Ein Server läuft und wird genutzt.</dd></div>
+              <div><dt data-en="next">als nächstes</dt><dd data-en="Several servers, each on its own subdomain, and my own Fabric server with mods.">Mehrere Server, jeder über eine eigene Subdomain, und ein eigener Fabric-Server mit Mods.</dd></div>
+            </dl>
+          </details>
         </li>
       </ol>
     </div>
@@ -202,7 +279,7 @@
 
   <section class="contact" id="contact" aria-labelledby="contact-h">
     <p class="kicker">§05 — handshake</p>
-    <h2 id="contact-h"><span aria-hidden="true">SYN <svg class="harr" viewBox="0 0 100 60" focusable="false"><path d="M4 30h88M64 6l28 24-28 24"/></svg><br><span class="outline"><svg class="harr thin" viewBox="0 0 100 60" focusable="false"><path d="M96 30H8M36 6 8 30l28 24"/></svg> ACK</span></span><span class="vh">SYN, ACK</span></h2>
+    <h2 id="contact-h"><span aria-hidden="true">SYN <svg class="harr" viewBox="0 0 100 60" focusable="false"><path d="M4 30H80M58 7l26 23-26 23"/></svg><br><span class="outline"><svg class="harr thin" viewBox="0 0 100 60" focusable="false"><path d="M96 30H20M42 7 16 30l26 23"/></svg> ACK</span></span><span class="vh">SYN, ACK</span></h2>
     <p class="lead" data-en="A question about one of my projects, or an apprenticeship or job I might fit? Write me an e-mail, I'll reply.">Haben Sie eine Frage zu einem Projekt oder eine Stelle, auf die ich passen könnte? Schreiben Sie mir eine E-Mail, ich antworte.</p>
     <!--opt:looking_for-->
     <p><!--mail:big--></p>
