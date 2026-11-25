@@ -1,6 +1,6 @@
 # Portfolio Lukas Dalloz
 
-Statische Website auf Deutsch und Englisch, ohne Framework. Ein kleines Python-Skript
+Statische Website auf Deutsch und Englisch, ohne Framework. Ein einfaches Python-Skript
 baut aus `src/` die fertige Website in `dist/`. Sie läuft auf einem nginx-LXC in der DMZ
 meines Homelabs, hinter Nginx Proxy Manager.
 
