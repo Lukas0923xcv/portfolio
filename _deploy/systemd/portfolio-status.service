@@ -1,0 +1,8 @@
+[Unit]
+Description=Write status.json for the portfolio site
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=www-data
+ExecStart=/usr/bin/python3 /usr/local/lib/portfolio/write_status.py /etc/portfolio-status.json
