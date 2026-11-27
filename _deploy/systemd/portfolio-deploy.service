@@ -1,0 +1,8 @@
+[Unit]
+Description=Deploy the newest build of the portfolio site
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/portfolio-deploy -y
