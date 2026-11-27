@@ -1,0 +1,115 @@
+<!--meta
+{
+ "title_de": "KI-Plattform und ASK Desktop, Lukas Dalloz",
+ "title_en": "AI platform and ASK Desktop, Lukas Dalloz",
+ "desc_de": "Lehrprojekt: Betrieb der KI-Plattform ASK und ASK Desktop, eine Agent-App, die mit dem Sprachmodell der Schule selbständig in einem Ordner auf dem Laptop arbeitet.",
+ "desc_en": "Apprenticeship project: running the AI platform ASK, and ASK Desktop, an agent app that uses the school's language model to work in a folder on the laptop by itself.",
+ "type": "project",
+ "slug": "ask-desktop",
+ "order": 5,
+ "short_de": "ASK Desktop",
+ "short_en": "ASK Desktop",
+ "schema": "CreativeWork"
+}
+-->
+
+
+  <div class="case-hero">
+    <h1 data-en="AI platform and ASK Desktop">KI-Plattform und ASK Desktop</h1>
+    <p class="lead" data-en="I look after ASK, the school's AI platform based on OpenWebUI. On top of it I'm building ASK Desktop, a harness that turns the chat into an agent: it works in a folder on the laptop, runs code, checks its results and can undo every task.">Ich betreue ASK, die KI-Plattform der Schule auf Basis von OpenWebUI. Darauf baue ich ASK Desktop, einen Harness, der aus dem Chat einen Agenten macht: Er arbeitet in einem Ordner auf dem Laptop, führt Code aus, prüft seine Ergebnisse und kann jeden Auftrag rückgängig machen.</p>
+    <dl class="facts-row">
+      <div><dt data-en="Context">Kontext</dt><dd data-en="Apprenticeship, AI team">Lehre, KI-Team</dd></div>
+      <div><dt data-en="School">Schule</dt><dd>Technische Fachschule Bern</dd></div>
+      <div><dt>Status</dt><dd data-en="In development, version 0.4.2 (beta)">In Entwicklung, Version 0.4.2 (Beta)</dd></div>
+      <div><dt data-en="Tools">Werkzeuge</dt><dd>OpenWebUI, Tauri 2, Rust, React, Python, GitHub Actions</dd></div>
+    </dl>
+  </div>
+
+  <div class="case">
+    <section aria-labelledby="s1">
+      <div class="prose">
+        <h2 id="s1" data-en="The starting point">Ausgangslage</h2>
+        <p data-en="ASK is the OpenWebUI instance that learners at the TF Bern use. I look after it in the AI team and drew its network plan: the DMZ and the Docker services inside it. In the browser, ASK can only chat. It can't open a folder, run a script or check whether its answer works.">ASK ist die OpenWebUI-Instanz, die die Lernenden der TF Bern nutzen. Ich betreue sie im KI-Team und habe ihren Netzwerkplan gezeichnet: die DMZ und die Docker-Dienste darin. Im Browser kann ASK nur chatten. Es kann keinen Ordner öffnen, kein Skript ausführen und nicht prüfen, ob seine Antwort funktioniert.</p>
+        <p data-en="Tools like Claude Code show what an agent can do when it works directly in the files. ASK Desktop brings that way of working to the school's own model, without the learners needing admin rights or a server of their own.">Werkzeuge wie Claude Code zeigen, was ein Agent kann, wenn er direkt in den Dateien arbeitet. ASK Desktop bringt diese Arbeitsweise zum eigenen Modell der Schule, ohne dass die Lernenden Admin-Rechte oder einen eigenen Server brauchen.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="s2">
+      <h2 id="s2" data-en="How it's built">Aufbau</h2>
+      <div class="shots-2">
+        <div class="prose">
+          <ul>
+            <li data-en="You sign in once on the ASK page, also with the Microsoft account. After that the app talks to the model directly through ASK's API, streamed and with a list of tools.">Man meldet sich einmal auf der ASK-Seite an, auch über das Microsoft-Konto. Danach spricht die App das Modell direkt über die Schnittstelle von ASK an, gestreamt und mit einer Werkzeugliste.</li>
+            <li data-en="The app runs the tools itself: read, write and edit files, search, run commands, keep a task list. ASK only ever sees text, and the ASK server never reaches the laptop.">Die Werkzeuge führt die App selbst aus: Dateien lesen, schreiben und ändern, suchen, Befehle ausführen, eine Aufgabenliste führen. ASK sieht nur Text, und der ASK-Server erreicht den Laptop nie.</li>
+            <li data-en="Commands run in a terminal server of its own, written in Rust, on 127.0.0.1 with low integrity level and a folder lock. The model can write in the chosen folder, not in the rest of the system.">Befehle laufen in einem eigenen Terminal-Server in Rust, auf 127.0.0.1 mit niedriger Integritätsstufe und Ordnersperre. Das Modell kann im gewählten Ordner schreiben, nicht im Rest des Systems.</li>
+            <li data-en="Before every task the app saves the whole folder. Afterwards the chat shows what changed, with an undo button.">Vor jedem Auftrag sichert die App den ganzen Ordner. Danach zeigt der Chat, was sich geändert hat, mit einem Knopf zum Rückgängigmachen.</li>
+            <li data-en="Built-in skills for Word, Excel, PowerPoint and PDF, a Python of its own, a browser pane, GitHub, projects, memory and helper agents.">Mitgelieferte Skills für Word, Excel, PowerPoint und PDF, ein eigenes Python, ein Browser-Bereich, GitHub, Projekte, Gedächtnis und Hilfsagenten.</li>
+          </ul>
+        </div>
+        <figure class="figure">
+          <ol class="flow">
+            <li data-en="&lt;strong&gt;Chat in the app&lt;/strong&gt;&lt;span&gt;React interface in Tauri, every step visible as a line.&lt;/span&gt;"><strong>Chat in der App</strong><span>Oberfläche in React und Tauri, jeder Schritt als Zeile sichtbar.</span></li>
+            <li data-en="&lt;strong&gt;ASK API&lt;/strong&gt;&lt;span&gt;The model answers with text or a tool call.&lt;/span&gt;"><strong>Schnittstelle von ASK</strong><span>Das Modell antwortet mit Text oder einem Werkzeugaufruf.</span></li>
+            <li data-en="&lt;strong&gt;Agent loop in Rust&lt;/strong&gt;&lt;span&gt;Checks the call and runs it.&lt;/span&gt;"><strong>Arbeitsschleife in Rust</strong><span>Prüft den Aufruf und führt ihn aus.</span></li>
+            <li class="stop" data-en="&lt;strong&gt;Sandboxed terminal&lt;/strong&gt;&lt;span&gt;Low integrity, locked to the chosen folder.&lt;/span&gt;"><strong>Terminal in der Sandbox</strong><span>Niedrige Integritätsstufe, auf den gewählten Ordner gesperrt.</span></li>
+          </ol>
+          <figcaption data-en="How a task goes from the chat to the laptop and back.">So geht ein Auftrag vom Chat auf den Laptop und zurück.</figcaption>
+        </figure>
+      </div>
+      <figure class="shot">
+        <div class="shot-ph" role="img" aria-label="Platzhalter für einen Screenshot von ASK Desktop" data-aria-en="Placeholder for a screenshot of ASK Desktop">
+          <span aria-hidden="true" data-en="[PLACEHOLDER: screenshot of ASK Desktop with a running task, 1600×1000]">[PLATZHALTER: Screenshot von ASK Desktop mit einem laufenden Auftrag, 1600×1000]</span>
+        </div>
+        <figcaption data-en="PLACEHOLDER: ASK Desktop during a task. Each step appears as a line like ● Command(python analysis.py) with its output below.">PLATZHALTER: ASK Desktop während eines Auftrags. Jeder Schritt erscheint als Zeile wie ● Befehl(python auswertung.py) mit der Ausgabe darunter.</figcaption>
+      </figure>
+    </section>
+
+    <section aria-labelledby="s3">
+      <h2 id="s3" data-en="Challenges and solutions">Schwierigkeiten und Lösungen</h2>
+      <div class="problem">
+        <h3 data-en="The terminal had no folder lock">Das Terminal hatte keine Ordnersperre</h3>
+        <p data-en="The first version used open-terminal, the terminal server of OpenWebUI. In the test its file API accepted paths with .. and absolute paths, so the model could read C:\Windows\win.ini. It also listened on all networks by default.">Die erste Fassung nutzte open-terminal, den Terminal-Server von OpenWebUI. Im Test nahm seine Datei-Schnittstelle Pfade mit .. und absolute Pfade an, das Modell konnte also C:\Windows\win.ini lesen. Zudem hörte er standardmässig auf allen Netzwerken.</p>
+        <p class="fix" data-en="&lt;strong&gt;Solution:&lt;/strong&gt; A terminal server of its own in Rust with the same interface, bound to 127.0.0.1, with a folder lock in the file API. Commands run with low integrity level in a job object. If a folder can't be marked, the app refuses it instead of running without protection."><strong>Lösung:</strong> Ein eigener Terminal-Server in Rust mit derselben Schnittstelle, gebunden an 127.0.0.1, mit Ordnersperre in der Datei-Schnittstelle. Befehle laufen mit niedriger Integritätsstufe in einem Job-Objekt. Lässt sich ein Ordner nicht kennzeichnen, lehnt die App ihn ab, statt ohne Schutz zu laufen.</p>
+      </div>
+      <div class="problem">
+        <h3 data-en="What the model writes can't be trusted">Was das Modell schreibt, ist nicht vertrauenswürdig</h3>
+        <p data-en="The terminal is sandboxed, the app itself is not. A review found three ways out: a manipulated backup list made undo write outside the folder, a double click would start a .bat file the model had created, and the check for external links in Office files could be bypassed.">Das Terminal läuft in der Sandbox, die App selbst nicht. Eine Durchsicht fand drei Wege hinaus: Eine manipulierte Sicherungsliste liess «Rückgängig» ausserhalb des Ordners schreiben, ein Doppelklick hätte eine vom Modell angelegte .bat-Datei gestartet, und die Prüfung auf externe Verweise in Office-Dateien liess sich umgehen.</p>
+        <p class="fix" data-en="&lt;strong&gt;Solution:&lt;/strong&gt; Backups moved out of the working folder and every entry is checked when read. Without asking, the app only opens documents, images and text. Office files are parsed properly, and whatever can't be read counts as rejected."><strong>Lösung:</strong> Die Sicherungen liegen jetzt ausserhalb des Arbeitsordners, und jeder Eintrag wird beim Lesen geprüft. Ohne Rückfrage öffnet die App nur noch Dokumente, Bilder und Text. Office-Dateien werden richtig gelesen, und was sich nicht lesen lässt, gilt als abgelehnt.</p>
+      </div>
+      <div class="problem">
+        <h3 data-en="ASK doesn't always pass on the tools">ASK gibt die Werkzeuge nicht immer weiter</h3>
+        <p data-en="Depending on the model and settings, ASK rejects the tool list or the model writes its tool calls as plain text.">Je nach Modell und Einstellung lehnt ASK die Werkzeugliste ab, oder das Modell schreibt seine Werkzeugaufrufe als normalen Text.</p>
+        <p class="fix" data-en="&lt;strong&gt;Solution:&lt;/strong&gt; A text mode. The app then describes the tools in the system prompt, reads the calls out of the text and sends the results back in the same format."><strong>Lösung:</strong> Ein Textmodus. Die App beschreibt die Werkzeuge dann im Systemprompt, liest die Aufrufe aus dem Text und schickt die Ergebnisse im selben Format zurück.</p>
+      </div>
+      <figure class="shot">
+        <div class="shot-ph" role="img" aria-label="Platzhalter für einen Screenshot der Rückgängig-Funktion" data-aria-en="Placeholder for a screenshot of the undo feature">
+          <span aria-hidden="true" data-en="[PLACEHOLDER: screenshot «Files: 1 changed · 2 new» with the undo button, 1600×600]">[PLATZHALTER: Screenshot «Dateien: 1 geändert · 2 neu» mit dem Rückgängig-Knopf, 1600×600]</span>
+        </div>
+        <figcaption data-en="PLACEHOLDER: after a task the chat shows what changed in the folder, and one click resets it.">PLATZHALTER: Nach einem Auftrag zeigt der Chat, was sich im Ordner geändert hat, und ein Klick setzt es zurück.</figcaption>
+      </figure>
+    </section>
+
+    <section aria-labelledby="s4">
+      <h2 id="s4" data-en="My role">Meine Rolle</h2>
+      <div class="prose">
+        <p data-en="I decide what the app has to do and what it must not do, for example that it never works around a setting of the ASK admins and refuses a folder it can't protect. I write the code with AI, test every version and run the releases.">Ich lege fest, was die App können muss und was sie nicht darf, zum Beispiel dass sie nie eine Einstellung der ASK-Admins umgeht und einen Ordner ablehnt, den sie nicht schützen kann. Den Code schreibe ich mit KI, ich teste jede Version und betreue die Releases.</p>
+        <p data-en="Every decision taken along the way is written down with its reason, more than 80 so far, including the switch from Electron to Tauri with a main process in Rust.">Jeder Entscheid unterwegs ist mit Begründung festgehalten, bisher über 80, darunter der Wechsel von Electron zu Tauri mit einem Hauptprozess in Rust.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="s5">
+      <h2 id="s5" data-en="What I learned">Was ich gelernt habe</h2>
+      <ul class="learned">
+        <li data-en="&lt;strong&gt;How an agent works&lt;/strong&gt;&lt;span&gt;The loop of model, tool call and result, and why context and instructions matter so much with a smaller model.&lt;/span&gt;"><strong>Wie ein Agent funktioniert</strong><span>Die Schleife aus Modell, Werkzeugaufruf und Ergebnis, und warum Kontext und Anweisungen bei einem kleineren Modell so viel ausmachen.</span></li>
+        <li data-en="&lt;strong&gt;Sandboxing on Windows&lt;/strong&gt;&lt;span&gt;Integrity levels, job objects and why a sandbox is only as strong as what the app trusts afterwards.&lt;/span&gt;"><strong>Sandbox unter Windows</strong><span>Integritätsstufen, Job-Objekte und warum eine Sandbox nur so stark ist wie das, was die App danach vertraut.</span></li>
+        <li data-en="&lt;strong&gt;Shipping software&lt;/strong&gt;&lt;span&gt;Signed updates, beta and full releases by label, and CI on Linux and Windows for every pull request.&lt;/span&gt;"><strong>Software ausliefern</strong><span>Signierte Updates, Beta und Vollversion per Label, und CI auf Linux und Windows bei jedem Pull Request.</span></li>
+        <li data-en="&lt;strong&gt;Writing decisions down&lt;/strong&gt;&lt;span&gt;A decision with its reason saves the same discussion twice.&lt;/span&gt;"><strong>Entscheide festhalten</strong><span>Ein Entscheid mit Begründung erspart die gleiche Diskussion ein zweites Mal.</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 data-en="What I&#39;d do differently">Was ich anders machen würde</h2>
+      <p data-en="I would start directly with Tauri and a terminal server of my own. Moving from Electron and open-terminal later meant porting about 9,700 lines and keeping installed apps updating across the switch.">Ich würde direkt mit Tauri und einem eigenen Terminal-Server anfangen. Der spätere Umzug von Electron und open-terminal hiess rund 9’700 Zeilen portieren und dafür sorgen, dass installierte Apps über den Wechsel hinweg Updates bekommen.</p>
+    </section>
+
+  </div>

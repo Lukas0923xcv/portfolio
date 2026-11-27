@@ -63,7 +63,7 @@
     </div>
 
     <div class="routes">
-      <p class="routes-head"><span data-en="dest / project">dest / projekt</span><span data-count aria-live="polite" data-en="09 / 09 routes">09 / 09 routen</span></p>
+      <p class="routes-head"><span data-en="dest / project">dest / projekt</span><span data-count aria-live="polite" data-en="08 / 08 routes">08 / 08 routen</span></p>
       <ol class="prows">
         <li class="prow" data-cat="hw">
           <span class="no">01</span>
@@ -162,16 +162,19 @@
         </li>
         <li class="prow" data-cat="plat">
           <span class="no">07</span>
-          <div><h3 data-en="AI platform">KI-Plattform</h3><p class="pstack">OpenWebUI · Docker · VLAN</p></div>
-          <p class="pdesc" data-en="Running the AI platform of the AI team at the TF Bern, including the network plan of its DMZ.">Betrieb der KI-Plattform des KI-Teams der TF Bern, dazu der Netzwerkplan ihrer DMZ.</p>
+          <div><h3><a href="projekte/ask-desktop.html" data-en="AI platform and ASK Desktop">KI-Plattform und ASK Desktop</a></h3><p class="pstack">OpenWebUI · Tauri · Rust · React</p></div>
+          <p class="pdesc" data-en="Running the AI platform of the AI team at the TF Bern, and building ASK Desktop: an agent app on top of it that works on files on the laptop by itself.">Betrieb der KI-Plattform des KI-Teams der TF Bern, und darauf aufbauend ASK Desktop: eine Agent-App, die selbständig mit Dateien auf dem Laptop arbeitet.</p>
           <span class="pctx" data-en="Platform · apprenticeship">Plattform · Lehre</span>
-          <span></span>
+          <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           <details class="pmore">
-            <summary><span data-en="Details">Details</span><span class="vh" data-en=": AI platform">: KI-Plattform</span></summary>
+            <summary><span data-en="Details">Details</span><span class="vh" data-en=": AI platform and ASK Desktop">: KI-Plattform und ASK Desktop</span></summary>
             <dl>
-              <div><dt data-en="how">umsetzung</dt><dd data-en="I look after the OpenWebUI-based AI platform used by the ICT department. I also drew the system's network plan in Visio on the school's template, showing the DMZ and the Docker services inside it.">Ich betreue die KI-Plattform auf Basis von OpenWebUI, die die Berufsgruppe ICT nutzt. Dazu habe ich den Netzwerkplan des Systems gezeichnet, in Visio nach der Vorlage der Schule, mit der DMZ und den Docker-Diensten darin.</dd></div>
+              <div><dt data-en="platform">plattform</dt><dd data-en="I look after ASK, the OpenWebUI-based AI platform used by the ICT department. I also drew the system's network plan in Visio on the school's template, showing the DMZ and the Docker services inside it.">Ich betreue ASK, die KI-Plattform auf Basis von OpenWebUI, die die Berufsgruppe ICT nutzt. Dazu habe ich den Netzwerkplan des Systems gezeichnet, in Visio nach der Vorlage der Schule, mit der DMZ und den Docker-Diensten darin.</dd></div>
+              <div><dt data-en="harness">harness</dt><dd data-en="ASK Desktop is a Windows app in the style of a terminal agent: you describe a task, and the model reads and writes files, runs Python and checks its results in a folder on the laptop. The tools run in a local sandbox with low integrity level and a folder lock, and every task can be undone.">ASK Desktop ist eine Windows-App im Stil eines Terminal-Agenten: Man beschreibt einen Auftrag, und das Modell liest und schreibt Dateien, führt Python aus und prüft seine Ergebnisse in einem Ordner auf dem Laptop. Die Werkzeuge laufen in einer lokalen Sandbox mit niedriger Integritätsstufe und Ordnersperre, jeder Auftrag lässt sich rückgängig machen.</dd></div>
+              <div><dt data-en="status">stand</dt><dd data-en="In development, currently version 0.4.2 (beta). New versions are built and published by GitHub Actions, and installed apps update themselves.">In Entwicklung, aktuell Version 0.4.2 (Beta). Neue Versionen baut und veröffentlicht GitHub Actions, installierte Apps aktualisieren sich selbst.</dd></div>
               <div><dt data-en="context">rahmen</dt><dd data-en="Part of my apprenticeship in the AI team. The school's internals stay out of this page.">Teil meiner Lehre im KI-Team. Interna der Schule bleiben hier aussen vor.</dd></div>
             </dl>
+            <p class="pcase"><a href="projekte/ask-desktop.html" data-en="Read the full case study">Ganze Fallstudie lesen</a></p>
           </details>
         </li>
         <li class="prow" data-cat="plat">
@@ -188,21 +191,6 @@
               <div><dt data-en="status">stand</dt><dd data-en="Completed, with documentation, a test concept and a test report.">Abgeschlossen, mit Dokumentation, Testkonzept und Testprotokoll.</dd></div>
             </dl>
             <p class="pcase"><a href="projekte/messenger.html" data-en="Read the full case study">Ganze Fallstudie lesen</a></p>
-          </details>
-        </li>
-        <li class="prow" data-cat="net">
-          <span class="no">09</span>
-          <div><h3 data-en="Minecraft network">Minecraft-Netz</h3><p class="pstack">Crafty Controller · DNS</p></div>
-          <p class="pdesc" data-en="A Minecraft server for friends, reachable through my own domain. More servers will follow, each on its own subdomain.">Ein Minecraft-Server für Freunde, erreichbar über meine eigene Domain. Weitere Server folgen, jeder auf einer eigenen Subdomain.</p>
-          <span class="pctx" data-en="Network · personal">Netzwerk · privat</span>
-          <span></span>
-          <details class="pmore">
-            <summary><span data-en="Details">Details</span><span class="vh" data-en=": Minecraft network">: Minecraft-Netz</span></summary>
-            <dl>
-              <div><dt data-en="how">umsetzung</dt><dd data-en="Java servers managed with Crafty Controller in my homelab's DMZ. Friends connect through a name on server-lukas.com instead of an IP.">Java-Server, verwaltet mit Crafty Controller in der DMZ meines Homelabs. Freunde verbinden sich über einen Namen auf server-lukas.com statt über eine IP.</dd></div>
-              <div><dt data-en="status">stand</dt><dd data-en="One server is running and in use.">Ein Server läuft und wird genutzt.</dd></div>
-              <div><dt data-en="next">als nächstes</dt><dd data-en="Several servers, each on its own subdomain, and my own Fabric server with mods.">Mehrere Server, jeder über eine eigene Subdomain, und ein eigener Fabric-Server mit Mods.</dd></div>
-            </dl>
           </details>
         </li>
       </ol>

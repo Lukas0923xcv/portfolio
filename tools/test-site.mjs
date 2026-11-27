@@ -114,7 +114,7 @@ await open(views.desktop, "/", async page => {
   await page.click('.chip[data-filter="hw"]');
   const shown = await page.$$eval(".prow", rs => rs.filter(r => !r.hidden).length);
   if (shown !== 1) fail(`filter: Hardware shows ${shown} projects, expected 1`);
-  if (!(await page.textContent("[data-count]")).startsWith("01 / 09")) fail("filter: counter not updated");
+  if (!(await page.textContent("[data-count]")).startsWith("01 / 08")) fail("filter: counter not updated");
 });
 console.log("theme: checked");
 

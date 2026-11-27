@@ -22,6 +22,7 @@ only you have: a photo, a fact, access to the server or an account. `[ ] SERVER`
 - [ ] YOU: photo or short clip of the Netzwächter sending its SMS.
 - [ ] YOU: real SMS screenshot next to the drawn SMS bubbles.
 - [ ] YOU: real screenshot of the messenger (Element with a test chat).
+- [ ] YOU: two screenshots for the ASK Desktop page (a running task, and the «Dateien: 1 geändert · 2 neu» undo bar). Replace the `.shot-ph` placeholders in `src/pages/projekte/ask-desktop.html`.
 - [x] "Was ich anders machen würde" on every project page. Written from the problems each page already describes; check they say what you would say.
 - [x] "Meine Rolle" on the two AI-assisted projects, with one concrete decision each.
 - [x] GitHub link on the passkey and Netzwächter cards.
